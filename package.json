@@ -1,0 +1,27 @@
+{
+    "name": "vuepress-website-starter",
+    "description": "AMC Website",
+    "license": "MIT",
+    "private": true,
+    "author": "Joris Noordermeer",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jorisnoo/vuepress-website-starter.git"
+    },
+    "bugs": {
+        "url": "https://github.com/jorisnoo/vuepress-website-starter/issues"
+    },
+    "homepage": "https://github.com/jorisnoo/vuepress-website-starter#readme",
+    "scripts": {
+        "dev": "vuepress dev src",
+        "build": "vuepress build src",
+        "prod": "npm run build",
+        "lint": "eslint --ext .js,.vue src/.vuepress",
+        "lintfix": "eslint --fix --ext .js,.vue src/.vuepress"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "tailwindcss": "^1.4.4",
+        "vuepress": "^1.4.1"
+    }
+}
