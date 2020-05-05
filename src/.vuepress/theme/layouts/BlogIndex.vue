@@ -3,7 +3,7 @@
     import BlogList from "../components/BlogList";
 
     export default {
-        name: 'Blog',
+        name: 'BlogIndex',
         extends: Layout,
         components: {
             BlogList,
@@ -11,10 +11,5 @@
         data: () => ({
             pageComponent: 'BlogList',
         }),
-        // computed: {
-        //     pageComponent() {
-        //         return 'touring-page';
-        //     },
-        // },
     };
 </script>

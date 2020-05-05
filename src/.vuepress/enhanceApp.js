@@ -4,5 +4,6 @@ export default ({
     router, // the router instance for the app
     siteData // site metadata
 }) => {
-    //
+    // If you need to load vue plugins, a store or the like,
+    // this could be done here
 };
