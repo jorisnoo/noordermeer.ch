@@ -1,6 +1,6 @@
+!.vuepress
 node_modules
 vendor
 public
-dist
 /.idea
 /.vscode
