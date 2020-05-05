@@ -4,10 +4,10 @@
 
     export default {
         name: 'BlogIndex',
-        extends: Layout,
         components: {
             BlogList,
         },
+        extends: Layout,
         data: () => ({
             pageComponent: 'BlogList',
         }),

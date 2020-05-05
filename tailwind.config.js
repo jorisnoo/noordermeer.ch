@@ -1,10 +1,10 @@
 module.exports = {
-  purge: [
-      './src/.vuepress/theme/**/*.vue',
-  ],
-  theme: {
-    extend: {},
-  },
-  variants: {},
-  plugins: [],
-}
+    purge: [
+        './src/.vuepress/theme/**/*.vue',
+    ],
+    theme: {
+        extend: {},
+    },
+    variants: {},
+    plugins: [],
+};

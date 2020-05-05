@@ -3,17 +3,17 @@
     import Navigation from "../components/Navigation";
 
     export default {
-        name: 'Error',
-        extends: Layout,
+        name: 'Error', // eslint-disable-line vue/match-component-file-name
         components: {
             Navigation,
         },
+        extends: Layout,
     };
 </script>
 
 <template>
     <div>
-        <Navigation/>
+        <Navigation />
         <div class="container mx-auto mt-8 md:max-w-lg lg:max-w-3xl">
             <h1>404</h1>
             <p class="my-25">

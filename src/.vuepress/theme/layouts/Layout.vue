@@ -21,12 +21,12 @@
 
 <template>
     <div>
-        <Navigation/>
+        <Navigation />
         <div class="container mx-auto mt-8 md:max-w-lg lg:max-w-3xl">
-            <Content/>
+            <Content />
             <component
-                v-if="layout.pageComponent"
                 :is="layout.pageComponent"
+                v-if="layout.pageComponent"
             />
             <template v-if="layout.showBackButton">
                 <br>
