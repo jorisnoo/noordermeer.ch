@@ -5,11 +5,15 @@
     export default {
         name: 'BlogIndex',
         components: {
+            Layout,
             BlogList,
         },
-        extends: Layout,
-        data: () => ({
-            pageComponent: 'BlogList',
-        }),
     };
 </script>
+
+<template>
+    <Layout>
+        <Content />
+        <BlogList />
+    </Layout>
+</template>
