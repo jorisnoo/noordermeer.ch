@@ -4,9 +4,9 @@
         data() {
             return {
                 links: [
-                    {path: '/', label: 'Home'},
-                    {path: '/about', label: 'About'},
-                    {path: '/blog', label: 'Blog'},
+                    {path: '/', label: 'Info'},
+                    {path: '/about', label: 'Work'},
+                    // {path: '/blog', label: 'Blog'},
                 ],
             };
         },

@@ -1,6 +1,6 @@
 module.exports = {
-    title: 'Vuepress Website Starter',
-    description: 'Build a website with Vuepress and Tailwind with ease',
+    title: 'Joris Noordermeer — Web Development',
+    description: 'Joris Noordermeer is specialized in website and application development.',
     dest: 'public',
     head: [
         // ['link', {rel: 'apple-touch-icon', sizes: "180x180", href: '/meta/apple-touch-icon.png'}],
@@ -24,29 +24,29 @@ module.exports = {
     plugins: {
         // Using the official Vuepress blog plugin for the blog section
         // See https://vuepress-plugin-blog.ulivz.com/ for documentation
-        '@vuepress/blog': {
-            directories: [
-                {
-                    id: 'post',
-                    dirname: 'blog',
-                    path: '/blog',
-                    layout: 'BlogIndex',
-                    itemLayout: 'BlogPost',
-                },
-            ],
-        },
+        // '@vuepress/blog': {
+        //     directories: [
+        //         {
+        //             id: 'post',
+        //             dirname: 'blog',
+        //             path: '/blog',
+        //             layout: 'BlogIndex',
+        //             itemLayout: 'BlogPost',
+        //         },
+        //     ],
+        // },
         // Set meta tags automatically
         // See https://github.com/webmasterish/vuepress-plugin-autometa#options for documentation
         'autometa': {
-            canonical_base: 'https://vuepress-wbite-starter.netlify.app',
+            canonical_base: 'https://noordermeer.ch',
             site: {
-                name: 'Vuepress Website Starter',
+                name: 'Joris Noordermeer — Web Development',
             },
         },
         // Generate a sitemap
         // See https://github.com/ekoeryanto/vuepress-plugin-sitemap#options for documentation
         'sitemap': {
-            hostname: 'https://vuepress-wbite-starter.netlify.app',
+            hostname: 'https://noordermeer.ch',
             changefreq: 'weekly',
             exclude: [
                 '/404.html',

@@ -1,17 +1,17 @@
 {
-    "name": "vuepress-website-starter",
-    "description": "AMC Website",
+    "name": "noordermeer.ch",
+    "description": "Professional Website of Joris Noordermeer",
     "license": "MIT",
     "private": true,
     "author": "Joris Noordermeer",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/jorisnoo/vuepress-website-starter.git"
+        "url": "git+https://github.com/jorisnoo/noordermeer.ch.git"
     },
     "bugs": {
-        "url": "https://github.com/jorisnoo/vuepress-website-starter/issues"
+        "url": "https://github.com/jorisnoo/noordermeer.ch/issues"
     },
-    "homepage": "https://github.com/jorisnoo/vuepress-website-starter#readme",
+    "homepage": "https://github.com/jorisnoo/noordermeer.ch#readme",
     "scripts": {
         "dev": "vuepress dev src",
         "build": "vuepress build src",
