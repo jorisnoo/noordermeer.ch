@@ -1,7 +1,7 @@
-.content__default a {
-    @apply text-teal-600 underline;
-}
+/*.content__default a {*/
+/*    @apply text-teal-600 underline;*/
+/*}*/
 
-.content__default a:hover {
-    @apply no-underline;
-}
+/*.content__default a:hover {*/
+/*    @apply no-underline;*/
+/*}*/

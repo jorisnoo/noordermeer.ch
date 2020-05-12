@@ -1,5 +1,5 @@
 body {
-    @apply bg-gray-200;
+    @apply bg-white;
 }
 
 /* Hide the "outbound" icon added by VuePress to external links */

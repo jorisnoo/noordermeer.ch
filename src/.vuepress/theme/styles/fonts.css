@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-stretch: normal;
+    unicode-range: U+000-5FF;
+    src: local('DM Sans Regular'), local('DMSans-Regular'),
+    url('../fonts/dm-sans-v4-latin-regular.woff2') format('woff2'),
+    url('../fonts/dm-sans-v4-latin-regular.woff') format('woff');
+}
