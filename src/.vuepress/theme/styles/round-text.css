@@ -1,0 +1,9 @@
+.name {
+    @apply text-white bg-black rounded-full px-4 inline-block;
+}
+
+.round-link {
+    @apply rounded-full px-4 inline-block;
+}
+
+

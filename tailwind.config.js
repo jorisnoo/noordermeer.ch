@@ -16,6 +16,9 @@ module.exports = {
             green: '#149646',
             blue: '#1e50f0',
         },
+        fontSize: {
+            base: ['8vw', 1.148222222],
+        },
         extend: {},
     },
     variants: {},
