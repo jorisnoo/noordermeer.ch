@@ -17,7 +17,7 @@ module.exports = {
             blue: '#1e50f0',
         },
         fontSize: {
-            base: ['8vw', 1.148222222],
+            base: ['8vw', 1.111111111],
         },
         extend: {},
     },
