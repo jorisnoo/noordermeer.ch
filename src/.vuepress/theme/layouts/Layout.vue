@@ -10,13 +10,13 @@
 </script>
 
 <template>
-    <div class="p-4 flex flex-col justify-center">
-        <div class="inline-block">
-            <span class="name mb-2">Joris</span>
-            <span class="name mb-2">Noordermeer</span>
+    <div class="p-4 lg:flex">
+        <div>
+            <span class="name mb-2/9 lg:hidden">Joris</span>
+            <span class="name mb-2/9 lg:hidden">Noordermeer</span>
             <Navigation />
         </div>
-        <div class="p-2 mt-2">
+        <div class="content p-1/3 mt-2/9">
             <slot><Content /></slot>
         </div>
     </div>

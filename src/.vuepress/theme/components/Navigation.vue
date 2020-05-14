@@ -5,19 +5,16 @@
 </script>
 
 <template>
-    <nav class="inline-block">
+    <nav>
         <router-link
             to="/"
             class="round-link hover:bg-blue"
             exact-active-class="bg-blue"
-        >
-            Info
-        </router-link><router-link
+        >Info</router-link>
+        <router-link
             to="/work"
             class="round-link hover:bg-green"
             active-class="bg-green"
-        >
-            Work
-        </router-link>
+        >Work</router-link>
     </nav>
 </template>
