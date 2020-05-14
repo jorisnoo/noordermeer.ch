@@ -13,10 +13,10 @@
 <template>
     <Layout>
         <h1>404</h1>
-        <p class="my-25">
+        <p>
             Looks like we've got some broken links.
         </p>
-        <router-link to="/" class="typo-text-normal hover:text-blue">
+        <router-link to="/">
             Take me home
         </router-link>
     </Layout>

@@ -14,6 +14,10 @@ body {
     @apply underline;
 }
 
+.content a:hover {
+    @apply text-black;
+}
+
 @screen md {
     body {
         @apply text-md;

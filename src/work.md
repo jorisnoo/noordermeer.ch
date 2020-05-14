@@ -1,6 +1,7 @@
 ---
 permalink: work
-layout: Work
+page: Work
+title: Work
 projects: 
     -   name: Aaron Wegmann
         url: https://aaronwegmann.ch
@@ -10,4 +11,5 @@ projects:
         url: https://letsmuseeum.com/
     -   name: My Private Banker
         url: https://myprivatebanker.io/
+        hidden: true
 ---
