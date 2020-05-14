@@ -16,6 +16,9 @@ module.exports = {
             green: '#149646',
             blue: '#1e50f0',
         },
+        linearGradientColors: {
+            'fade-out': ['transparent', '#e6e6e6 20%'],
+        },
         fontSize: {
             base: ['8vw', 1.111111111],
             md: ['3.84rem', 1.071428571],
@@ -34,5 +37,7 @@ module.exports = {
         },
     },
     variants: {},
-    plugins: [],
+    plugins: [
+        require('tailwindcss-gradients'),
+    ],
 };

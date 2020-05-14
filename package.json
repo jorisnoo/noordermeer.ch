@@ -22,6 +22,7 @@
     "dependencies": {
         "@vuepress/plugin-blog": "^1.9.2",
         "tailwindcss": "^1.4.4",
+        "tailwindcss-gradients": "^3.0.0",
         "vuepress": "^1.4.1"
     },
     "devDependencies": {
