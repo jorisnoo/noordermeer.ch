@@ -16,7 +16,7 @@
             :key="'project'+project.name"
         >
             <a
-                class="round-link"
+                class="round-link mb-2"
                 :class="{
                     'hover:bg-green': index%3 === 0,
                     'hover:bg-red': index%3 === 1,
