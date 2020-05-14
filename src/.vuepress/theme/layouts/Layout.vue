@@ -18,10 +18,12 @@
             </div>
             <Navigation class="lg:sticky lg:top-0 lg:py-6"/>
         </div>
-        <div class="flex-col justify-between p-1/3 mt-2/9 lg:p-6 lg:pb-0 lg:mt-0 lg:flex">
-            <div class="container content lg:px-4">
-                <slot><Content /></slot>
-            </div>
+        <div class="flex-col justify-between mt-2/9 lg:p-6 lg:pb-0 lg:mt-0 lg:flex">
+            <slot>
+                <div class="container content p-1/3 lg:py-0 lg:px-4">
+                    <Content />
+                </div>
+            </slot>
             <div class="sticky bottom-0 hidden pt-12 pb-6 lg:block bg-gradient-b-fade-out">
                 <span class="name">Noordermeer</span>
             </div>
