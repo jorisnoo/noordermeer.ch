@@ -25,7 +25,7 @@
             </div>
             <Navigation class="lg:sticky lg:top-0 lg:py-6" />
         </div>
-        <div class="flex-col justify-between mt-2/9 lg:p-6 lg:pb-0 lg:mt-0 lg:flex">
+        <div class="flex-col justify-between mt-2/9 pt-2 lg:p-6 lg:pb-0 lg:mt-0 lg:flex">
             <transition
                 name="fade"
                 mode="out-in"
