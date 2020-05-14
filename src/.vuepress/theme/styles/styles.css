@@ -5,6 +5,5 @@
 @import "tailwindcss/components";
 @import "./typography.css";
 @import "./content.css";
-@import "./round-text.css";
 
 @import "tailwindcss/utilities";

@@ -18,8 +18,11 @@ module.exports = {
         },
         fontSize: {
             base: ['8vw', 1.111111111],
-            md: ['3.84rem', 1.111111111],
-            lg: ['4.375rem', 1.111111111],
+            md: ['3.84rem', 1.071428571],
+            lg: ['4.375rem', 1.071428571],
+        },
+        letterSpacing: {
+            tight: '-.02em',
         },
         extend: {
             padding: {
