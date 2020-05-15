@@ -140,7 +140,7 @@ export default function intro(options) {
         if (windowHeight > window.innerHeight && windowWidth > window.innerWidth) {
             DomBody.applyForce(joris, {x: joris.position.x, y: joris.position.y}, {x: -0.01, y: -0.03});
             DomBody.applyForce(noordermeer, {x: noordermeer.position.x, y: noordermeer.position.y}, {
-                x: -0.03,
+                x: -0.01,
                 y: -0.09,
             });
 
@@ -160,10 +160,10 @@ export default function intro(options) {
                 y: -0.09,
             });
         } else if (windowWidth > window.innerWidth) {
-            DomBody.applyForce(joris, {x: joris.position.x, y: joris.position.y}, {x: -0.01, y: -0.01});
+            DomBody.applyForce(joris, {x: joris.position.x, y: joris.position.y}, {x: -0.01, y: -0.005});
             DomBody.applyForce(noordermeer, {x: noordermeer.position.x, y: noordermeer.position.y}, {
                 x: -0.03,
-                y: -0.02,
+                y: -0.01,
             });
         }
 
