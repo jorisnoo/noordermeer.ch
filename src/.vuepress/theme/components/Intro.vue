@@ -6,14 +6,31 @@
         data() {
             return {
                 isDragging: false,
+                showWebdev: true,
             };
         },
         mounted() {
-            intro(() => {
-                this.isDragging = true;
-                this.clearSelection();
-            }, () => {
-                this.isDragging = false;
+            intro({
+                elements: {
+                    joris: this.$refs['joris'],
+                    noordermeer: this.$refs['noordermeer'],
+                    webDevelopment: this.$refs['webDevelopment'],
+                    wallLeft: this.$refs['wallLeft'],
+                    wallRight: this.$refs['wallRight'],
+                    wallBottom: this.$refs['wallBottom'],
+                },
+                callbacks: {
+                    startdrag: () => {
+                        this.isDragging = true;
+                        this.clearSelection();
+                    },
+                    enddrag: () => {
+                        this.isDragging = false;
+                    },
+                    removeWebdev: () => {
+                        this.showWebdev = false;
+                    },
+                },
             });
         },
         methods: {
@@ -29,13 +46,17 @@
 </script>
 
 <template>
-    <div class="absolute overflow-hidden inset-0 z-10" :class="{'pointer-events-none': !isDragging}">
-        <div id="debug" class="hidden"/>
-        <div id="wall-bottom" class="h-1 w-screen"/>
-        <div id="wall-left" class="h-wall w-1"/>
-        <div id="wall-right" class="h-wall w-1"/>
-        <span id="joris" class="name select-none">Joris</span>
-        <span id="noordermeer" class="name select-none">Noordermeer</span>
-        <span id="webdevelopment" class="name select-none">Web Development</span>
+    <div class="fixed overflow-hidden inset-0 z-10" :class="{'pointer-events-none': !isDragging}">
+        <div id="debug" class="" />
+        <div ref="wallBottom" class="h-1 w-screen" />
+        <div ref="wallLeft" class="h-screen w-1" />
+        <div ref="wallRight" class="h-screen w-1" />
+        <span ref="joris" class="name select-none">Joris</span>
+        <span ref="noordermeer" class="name select-none">Noordermeer</span>
+        <span
+            v-if="showWebdev"
+            ref="webDevelopment"
+            class="name select-none"
+        >Web Development</span>
     </div>
 </template>
