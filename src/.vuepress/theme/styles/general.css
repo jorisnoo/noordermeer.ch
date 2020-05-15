@@ -2,6 +2,18 @@ body {
     @apply bg-white;
 }
 
+:root {
+    --selection-color: #f9325a;
+}
+
+::selection {
+    background: var(--selection-color);
+}
+
+::-moz-selection {
+    background: var(--selection-color);
+}
+
 /* Hide the "outbound" icon added by VuePress to external links */
 .icon.outbound {
     @apply hidden;

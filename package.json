@@ -21,6 +21,8 @@
     },
     "dependencies": {
         "@vuepress/plugin-blog": "^1.9.2",
+        "matter-dom-plugin": "^1.0.0",
+        "matter-js": "^0.14.2",
         "tailwindcss": "^1.4.4",
         "tailwindcss-gradients": "^3.0.0",
         "vuepress": "^1.4.1"
