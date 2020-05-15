@@ -15,7 +15,7 @@
                 return this.$frontmatter.page || false;
             },
         },
-        created() {
+        mounted() {
             // Set a random text selection color
             let selectionColor = ['#f9325a', '#149646', '#1e50f0'][Math.floor(Math.random() * 3)];
             document.documentElement.style.setProperty('--selection-color', selectionColor);

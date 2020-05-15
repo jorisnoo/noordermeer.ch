@@ -110,11 +110,25 @@ export default function intro(options) {
     Events.on(runner, 'tick', checkWebDev);
 
     function checkWebDev() {
+
+
         if (render.mapping.worldToView(webDevelopment.position.y) > windowHeight * 1.5) {
             Matter.Composite.remove(world, webDevelopment);
             options.callbacks.removeWebdev();
             Events.off(runner, 'tick', checkWebDev);
         }
+
+        // todo: check for name bodies and reset their position
+        // DomBody.setPosition(joris, {
+        //     x: render.mapping.viewToWorld(startPositions.joris.x),
+        //     y: render.mapping.viewToWorld(startPositions.joris.y),
+        // });
+        // DomBody.setPosition(noordermeer, {
+        //     x: render.mapping.viewToWorld(startPositions.noordermeer.x),
+        //     y: render.mapping.viewToWorld(startPositions.noordermeer.y),
+        // });
+
+
     }
 
     // Bind mouse events
@@ -128,31 +142,12 @@ export default function intro(options) {
 
     function resizeCanvas() {
 
-        // var h = window.height;
-        // var w = window.width;
-        // console.log(render);
-        // World.bounds.max.x = windowHeight;
-        // World.bounds.max.y = window.innerHeight;
-
-        // let ratioHeight = window.innerHeight / render.mapping.worldToView(wallBottom.position.y);
-
-
         if (windowHeight > window.innerHeight && windowWidth > window.innerWidth) {
             DomBody.applyForce(joris, {x: joris.position.x, y: joris.position.y}, {x: -0.01, y: -0.03});
             DomBody.applyForce(noordermeer, {x: noordermeer.position.x, y: noordermeer.position.y}, {
                 x: -0.01,
                 y: -0.09,
             });
-
-            // DomBody.setPosition(joris, {
-            //     x: render.mapping.viewToWorld(startPositions.joris.x),
-            //     y: render.mapping.viewToWorld(startPositions.joris.y),
-            // });
-            // DomBody.setPosition(noordermeer, {
-            //     x: render.mapping.viewToWorld(startPositions.noordermeer.x),
-            //     y: render.mapping.viewToWorld(startPositions.noordermeer.y),
-            // });
-
         } else if (windowHeight > window.innerHeight) {
             DomBody.applyForce(joris, {x: joris.position.x, y: joris.position.y}, {x: 0, y: -0.03});
             DomBody.applyForce(noordermeer, {x: noordermeer.position.x, y: noordermeer.position.y}, {
