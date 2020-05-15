@@ -11,6 +11,7 @@ export default function intro(element) {
         World = Matter.World,
         Bodies = Matter.Bodies,
         Body = Matter.Body;
+    let Events = Matter.Events;
     var RenderDom = Matter.RenderDom;
     var DomBodies = Matter.DomBodies;
     var DomBody = Matter.DomBody;
@@ -38,20 +39,22 @@ export default function intro(element) {
     let runner = Runner.create();
     Runner.run(runner, engine);
 
-    var joris = DomBodies.block(200, -400, {
+    var joris = DomBodies.block(200, -200, {
         Dom: {
-            render: render,
+            render,
             element: document.querySelector('#joris'),
         },
-        // frictionAir: 0.2,
+        chamfer: { radius: 6 },
+        // frictionAir: 0.3,
     });
 
-    var noordermeer = DomBodies.block(600, -400, {
+    var noordermeer = DomBodies.block(600, -300, {
         Dom: {
-            render: render,
+            render,
             element: document.querySelector('#noordermeer'),
         },
-        // frictionAir: 0.2,
+        chamfer: { radius: 6 },
+        // frictionAir: 0.5,
     });
 
     World.add(world, [
@@ -61,15 +64,15 @@ export default function intro(element) {
 
         DomBodies.block(window.innerWidth / 2, window.innerHeight - 20, {
             Dom: {
-                render: render,
+                render,
                 element: document.querySelector('#wall-bottom'),
             },
             isStatic: true,
         }),
     ]);
 
-    // DomBody.rotate( block, -20);
-    DomBody.setAngularVelocity(joris, Math.PI / 44);
+    DomBody.rotate(noordermeer, 60);
+    DomBody.rotate(joris, -60);
 
     /** Mouse control **/
     let mouse = Mouse.create(document.body);
@@ -87,6 +90,18 @@ export default function intro(element) {
 
     // keep the mouse in sync with rendering
     render.mouse = mouse;
+    var counter = 0;
+    Events.on(runner, 'beforeUpdate', spin);
+
+    function spin() {
+        if(counter<10) {
+            counter += 1;
+            DomBody.setAngularVelocity(noordermeer, 0.1/counter);
+            DomBody.setAngularVelocity(joris, -0.1/counter);
+        } else {
+            Events.off(runner, 'beforeUpdate', spin);
+        }
+    }
 
     // engine.timing.timeScale = 0.2;
 
