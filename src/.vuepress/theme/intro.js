@@ -22,7 +22,7 @@ export default function intro(startDrag, endDrag) {
     // create engine
     let engine = Engine.create({
         timing: {
-            timeScale: 0.3,
+            timeScale: 0.4,
         },
     });
     let world = engine.world;
@@ -39,23 +39,23 @@ export default function intro(startDrag, endDrag) {
     let runner = Runner.create();
     Runner.run(runner, engine);
 
-    let joris = DomBodies.block(200, -400, {
+    let joris = DomBodies.block(200, -600, {
         Dom: {
             render,
             element: document.querySelector('#joris'),
         },
         chamfer: {radius: 6},
-        frictionAir: 0.1,
+        frictionAir: 0.09,
         // frictionAir: 0.3,
     });
 
-    let noordermeer = DomBodies.block(600, -600, {
+    let noordermeer = DomBodies.block(600, -700, {
         Dom: {
             render,
             element: document.querySelector('#noordermeer'),
         },
         chamfer: { radius: 6 },
-        frictionAir: 0.1,
+        frictionAir: 0.09,
     });
 
     let webdevelopment = DomBodies.block(window.innerWidth / 2, -300, {
@@ -67,7 +67,7 @@ export default function intro(startDrag, endDrag) {
         collisionFilter: {
             mask: 0x0002,
         },
-        frictionAir: 0.1,
+        frictionAir: 0.09,
     });
 
     World.add(world, [
@@ -114,7 +114,18 @@ export default function intro(startDrag, endDrag) {
     // keep the mouse in sync with rendering
     render.mouse = mouse;
     // var counter = 0;
-    // // Events.on(runner, 'beforeUpdate', spin);
+
+    // Remove Webdev once it's out
+    Events.on(runner, 'tick', checkWebDev);
+    function checkWebDev() {
+        if(render.mapping.worldToView(webdevelopment.position.y) > window.innerHeight * 1.5) {
+            Matter.Composite.remove(world, webdevelopment);
+            document.querySelector('#webdevelopment').remove();
+            Events.off(runner, 'tick', checkWebDev);
+        }
+    }
+
+
     //
     // function spin() {
     //     if(counter<10) {
