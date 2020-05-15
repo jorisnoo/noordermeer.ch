@@ -1,7 +1,7 @@
 import Matter from 'matter-js';
 import 'matter-dom-plugin';
 
-export default function intro(element) {
+export default function intro(startDrag, endDrag) {
 
     Matter.use('matter-dom-plugin');
 
@@ -22,7 +22,7 @@ export default function intro(element) {
     // create engine
     let engine = Engine.create({
         timing: {
-            timeScale: 0.2,
+            timeScale: 0.3,
         },
     });
     let world = engine.world;
@@ -39,47 +39,70 @@ export default function intro(element) {
     let runner = Runner.create();
     Runner.run(runner, engine);
 
-    var joris = DomBodies.block(200, -200, {
+    let joris = DomBodies.block(200, -400, {
         Dom: {
             render,
             element: document.querySelector('#joris'),
         },
-        chamfer: { radius: 6 },
+        chamfer: {radius: 6},
+        frictionAir: 0.1,
         // frictionAir: 0.3,
     });
 
-    var noordermeer = DomBodies.block(600, -300, {
+    let noordermeer = DomBodies.block(600, -600, {
         Dom: {
             render,
             element: document.querySelector('#noordermeer'),
         },
         chamfer: { radius: 6 },
-        // frictionAir: 0.5,
+        frictionAir: 0.1,
+    });
+
+    let webdevelopment = DomBodies.block(window.innerWidth / 2, -300, {
+        Dom: {
+            render,
+            element: document.querySelector('#webdevelopment'),
+        },
+        chamfer: { radius: 6 },
+        collisionFilter: {
+            mask: 0x0002,
+        },
+        frictionAir: 0.1,
     });
 
     World.add(world, [
 
         joris,
         noordermeer,
+        webdevelopment,
 
         DomBodies.block(window.innerWidth / 2, window.innerHeight - 20, {
             Dom: {
-                render,
-                element: document.querySelector('#wall-bottom'),
-            },
-            isStatic: true,
+                render, element: document.querySelector('#wall-bottom'),
+            }, isStatic: true,
+        }),
+        DomBodies.block(-1, 0, {
+            Dom: {
+                render, element: document.querySelector('#wall-left'),
+            }, isStatic: true,
+        }),
+        DomBodies.block(window.innerWidth, 0, {
+            Dom: {
+                render, element: document.querySelector('#wall-right'),
+            }, isStatic: true,
         }),
     ]);
 
-    DomBody.rotate(noordermeer, 60);
-    DomBody.rotate(joris, -60);
+    DomBody.rotate(noordermeer, -Math.PI/6);
+    DomBody.rotate(joris, Math.PI/12);
+    DomBody.rotate(webdevelopment, Math.PI/6);
 
     /** Mouse control **/
     let mouse = Mouse.create(document.body);
     let MouseConstraint = DomMouseConstraint.create(engine, {
         mouse: mouse,
         constraint: {
-            stiffness: 0.001,
+            stiffness: 0.003,
             render: {
                 visible: true,
             },
@@ -90,18 +113,21 @@ export default function intro(element) {
 
     // keep the mouse in sync with rendering
     render.mouse = mouse;
-    var counter = 0;
-    Events.on(runner, 'beforeUpdate', spin);
+    // var counter = 0;
+    // // Events.on(runner, 'beforeUpdate', spin);
+    //
+    // function spin() {
+    //     if(counter<10) {
+    //         counter += 1;
+    //         DomBody.setAngularVelocity(noordermeer, -0.1/counter);
+    //         DomBody.setAngularVelocity(joris, 0.1/counter);
+    //     } else {
+    //         Events.off(runner, 'beforeUpdate', spin);
+    //     }
+    // }
 
-    function spin() {
-        if(counter<10) {
-            counter += 1;
-            DomBody.setAngularVelocity(noordermeer, 0.1/counter);
-            DomBody.setAngularVelocity(joris, -0.1/counter);
-        } else {
-            Events.off(runner, 'beforeUpdate', spin);
-        }
-    }
+    Events.on(MouseConstraint, 'startdrag', startDrag);
+    Events.on(MouseConstraint, 'enddrag', endDrag);
 
     // engine.timing.timeScale = 0.2;
 
@@ -142,4 +168,7 @@ export default function intro(element) {
     //         Matter.Runner.stop(runner);
     //     }
     // };
+    return {
+
+    };
 };

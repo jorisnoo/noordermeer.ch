@@ -1,11 +1,12 @@
 <script>
+    import Intro from '../components/Intro';
     import Navigation from "../components/Navigation";
     import Work from "../pages/Work";
-    import intro from '../intro';
 
     export default {
         name: 'Layout',
         components: {
+            Intro,
             Navigation,
             Work,
         },
@@ -19,23 +20,12 @@
             let selectionColor = ['#f9325a', '#149646', '#1e50f0'][Math.floor(Math.random() * 3)];
             document.documentElement.style.setProperty('--selection-color', selectionColor);
         },
-        mounted() {
-            intro();
-        },
     };
 </script>
 
 <template>
     <div>
-        <div class="absolute overflow-hidden inset-0 z-10 pointer-events-none">
-            <div id="debug" class="" />
-            <div id="wall-bottom" class="h-1 w-screen"></div>
-            <span id="joris" class="name">Joris</span>
-            <span id="noordermeer" class="name">Noordermeer</span>
-            <!--            <span class="name" id="webdevelopment">Web Development</span>-->
-            <!--            <span class="name block absolute w-screen" id="block2">Noordermeer</span>-->
-        </div>
-
+        <Intro />
         <div class="p-4 lg:flex lg:py-0">
             <div class="relative flex-col-reverse justify-between flex-shrink-0 lg:max-w-sm lg:min-h-screen lg:w-1/4 lg:flex">
                 <div class="lg:py-6 lg:sticky lg:bottom-0">
