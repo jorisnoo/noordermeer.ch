@@ -7,6 +7,7 @@
             return {
                 isDragging: false,
                 showWebdev: true,
+                introHasRun: false,
             };
         },
         mounted() {
@@ -31,6 +32,7 @@
                         this.showWebdev = false;
                     },
                     end: () => {
+                        this.introHasRun = true;
                         this.$emit('end');
                     },
                 },

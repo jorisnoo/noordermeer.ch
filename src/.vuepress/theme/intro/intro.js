@@ -1,24 +1,19 @@
 import Matter from 'matter-js';
 import 'matter-dom-plugin';
-import { throttle, debounce } from 'throttle-debounce';
+import {throttle, debounce} from 'throttle-debounce';
 
 export default function intro(options) {
-
     Matter.use('matter-dom-plugin');
 
-    var Engine = Matter.Engine,
-        Render = Matter.Render,
+    let Engine = Matter.Engine,
         Runner = Matter.Runner,
         World = Matter.World,
-        Bodies = Matter.Bodies,
-        Body = Matter.Body;
-    let Events = Matter.Events;
-    var RenderDom = Matter.RenderDom;
-    var DomBodies = Matter.DomBodies;
-    var DomBody = Matter.DomBody;
-    // var MouseConstraint = Matter.MouseConstraint;
-    var DomMouseConstraint = Matter.DomMouseConstraint;
-    var Mouse = Matter.Mouse;
+        Events = Matter.Events,
+        RenderDom = Matter.RenderDom,
+        DomBodies = Matter.DomBodies,
+        DomBody = Matter.DomBody,
+        DomMouseConstraint = Matter.DomMouseConstraint,
+        Mouse = Matter.Mouse;
 
     let windowHeight = window.innerHeight;
     let windowWidth = window.innerWidth;
@@ -40,6 +35,10 @@ export default function intro(options) {
         joris: {x: 200, y: -600, rotation: Math.PI / 12},
         noordermeer: {x: 600, y: -700, rotation: -Math.PI / 6},
         webDevelopment: {x: windowWidth * 0.5, y: -300, rotation: Math.PI / 6},
+        wallBottom: {
+            x: windowWidth * 0.5,
+            y: windowWidth >= 1024 ? windowHeight - 22 : windowHeight * 3,
+        },
     };
     calculateStartPositions();
 
@@ -68,7 +67,7 @@ export default function intro(options) {
         }),
 
         // Create Walls
-        wallBottom: DomBodies.block(windowWidth / 2, windowHeight - 22, {
+        wallBottom: DomBodies.block(startPositions.wallBottom.x, startPositions.wallBottom.y, {
             Dom: {render, element: options.elements.wallBottom}, isStatic: true,
         }),
         wallLeft: DomBodies.block(-1, windowHeight / 2, {
@@ -92,10 +91,7 @@ export default function intro(options) {
     let mouse = Mouse.create(document.body);
     let MouseConstraint = DomMouseConstraint.create(engine, {
         mouse: mouse,
-        constraint: {
-            stiffness: 0.003,
-            render: {visible: false},
-        },
+        constraint: {stiffness: 0.003},
     });
     World.add(world, MouseConstraint);
 
@@ -126,9 +122,9 @@ export default function intro(options) {
             reInsertBlock('noordermeer');
         }
 
-        if(!blocksHaveReachedFloor
-            && render.mapping.worldToView(blocks.joris.position.y) > windowHeight * 0.75
-            && render.mapping.worldToView(blocks.noordermeer.position.y) > windowHeight * 0.75
+        if (!blocksHaveReachedFloor
+            && render.mapping.worldToView(blocks.joris.position.y) > Math.min(500, windowHeight * 0.75)
+            && render.mapping.worldToView(blocks.noordermeer.position.y) > Math.min(500, windowHeight * 0.75)
         ) {
             blocksHaveReachedFloor = true;
             options.callbacks.end();
@@ -136,7 +132,7 @@ export default function intro(options) {
     }
 
     function resizeCanvas() {
-        if(window.innerWidth < 1024 && runner.enabled) {
+        if (window.innerWidth < 1024 && runner.enabled) {
             stopEngine();
             reInsertBlock('joris');
             reInsertBlock('noordermeer');
@@ -153,23 +149,32 @@ export default function intro(options) {
 
         // Push up the blocks on resize
         if (windowHeight > window.innerHeight && windowWidth > window.innerWidth) {
-            DomBody.applyForce(blocks.joris, {x: blocks.joris.position.x, y: blocks.joris.position.y}, {x: -0.01, y: -0.03});
-            DomBody.applyForce(blocks.noordermeer, {x: blocks.noordermeer.position.x, y: blocks.noordermeer.position.y}, {
-                x: -0.01,
-                y: -0.09,
-            });
+            DomBody.applyForce(blocks.joris,
+                {x: blocks.joris.position.x, y: blocks.joris.position.y},
+                {x: -0.01, y: -0.03},
+            );
+            DomBody.applyForce(blocks.noordermeer,
+                {x: blocks.noordermeer.position.x, y: blocks.noordermeer.position.y},
+                {x: -0.01, y: -0.09},
+            );
         } else if (windowHeight > window.innerHeight) {
-            DomBody.applyForce(blocks.joris, {x: blocks.joris.position.x, y: blocks.joris.position.y}, {x: 0, y: -0.03});
-            DomBody.applyForce(blocks.noordermeer, {x: blocks.noordermeer.position.x, y: blocks.noordermeer.position.y}, {
-                x: 0,
-                y: -0.09,
-            });
+            DomBody.applyForce(blocks.joris,
+                {x: blocks.joris.position.x, y: blocks.joris.position.y},
+                {x: 0, y: -0.03},
+            );
+            DomBody.applyForce(blocks.noordermeer,
+                {x: blocks.noordermeer.position.x, y: blocks.noordermeer.position.y},
+                {x: 0,y: -0.09},
+            );
         } else if (windowWidth > window.innerWidth) {
-            DomBody.applyForce(blocks.joris, {x: blocks.joris.position.x, y: blocks.joris.position.y}, {x: -0.01, y: -0.005});
-            DomBody.applyForce(blocks.noordermeer, {x: blocks.noordermeer.position.x, y: blocks.noordermeer.position.y}, {
-                x: -0.01,
-                y: -0.01,
-            });
+            DomBody.applyForce(blocks.joris,
+                {x: blocks.joris.position.x, y: blocks.joris.position.y},
+                {x: -0.01, y: -0.005},
+            );
+            DomBody.applyForce(blocks.noordermeer,
+                {x: blocks.noordermeer.position.x, y: blocks.noordermeer.position.y},
+                {x: -0.01, y: -0.01},
+            );
         }
 
         if (windowHeight > window.innerHeight || windowWidth > window.innerWidth) {
