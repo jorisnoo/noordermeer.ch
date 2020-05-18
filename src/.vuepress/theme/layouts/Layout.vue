@@ -30,9 +30,7 @@
 
 <template>
     <div>
-        <Intro
-            @end="introHasPlayed = true"
-        />
+        <Intro @end="introHasPlayed = true" />
         <div
             class="transition-opacity duration-500 ease-in p-4 lg:flex lg:py-0"
             :class="{'opacity-0': !introHasPlayed}"

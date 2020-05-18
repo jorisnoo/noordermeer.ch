@@ -54,8 +54,8 @@
         <div ref="wallBottom" class="h-1 w-screen" />
         <div ref="wallLeft" class="h-screen w-1" />
         <div ref="wallRight" class="h-screen w-1" />
-        <span ref="joris" class="name select-none">Joris</span>
-        <span ref="noordermeer" class="name select-none">Noordermeer</span>
+        <span ref="joris" class="name select-none hidden lg:inline-block">Joris</span>
+        <span ref="noordermeer" class="name select-none hidden lg:inline-block">Noordermeer</span>
         <span
             v-if="showWebdev"
             ref="webDevelopment"
