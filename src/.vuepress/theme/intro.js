@@ -1,6 +1,6 @@
 import Matter from 'matter-js';
 import 'matter-dom-plugin';
-import debounce from 'debounce';
+import { throttle, debounce } from 'throttle-debounce';
 
 export default function intro(options) {
 
@@ -24,17 +24,11 @@ export default function intro(options) {
     let windowWidth = window.innerWidth;
 
     // create engine
-    let engine = Engine.create({
-        timing: {
-            timeScale: 0.4,
-        },
-    });
+    let engine = Engine.create({timing: {timeScale: 0.4}});
     let world = engine.world;
 
     // create renderer
-    let render = RenderDom.create({
-        engine: engine,
-    });
+    let render = RenderDom.create({engine});
     RenderDom.run(render);
 
     // create runner
@@ -44,7 +38,9 @@ export default function intro(options) {
     let startPositions = {
         joris: {x: 200, y: -600},
         noordermeer: {x: 600, y: -700},
+        webDevelopment: {x: windowWidth / 2, y: -300},
     };
+    calculateStartPositions();
 
     // Create objects
     let joris = DomBodies.block(startPositions.joris.x, startPositions.joris.y, {
@@ -59,17 +55,15 @@ export default function intro(options) {
         frictionAir: 0.09,
     });
 
-    let webDevelopment = DomBodies.block(windowWidth / 2, -300, {
+    let webDevelopment = DomBodies.block(startPositions.webDevelopment.x, startPositions.webDevelopment.y, {
         Dom: {render, element: options.elements.webDevelopment},
         chamfer: {radius: 6},
-        collisionFilter: {
-            mask: 0x0002,
-        },
+        collisionFilter: {mask: 0x0002},
         frictionAir: 0.09,
     });
 
     // Create Walls
-    let wallBottom = DomBodies.block(windowWidth / 2, windowHeight - 20, {
+    let wallBottom = DomBodies.block(windowWidth / 2, windowHeight - 22, {
         Dom: {render, element: options.elements.wallBottom}, isStatic: true,
     });
     let wallLeft = DomBodies.block(-1, windowHeight / 2, {
@@ -94,9 +88,7 @@ export default function intro(options) {
         mouse: mouse,
         constraint: {
             stiffness: 0.003,
-            render: {
-                visible: true,
-            },
+            render: {visible: false},
         },
     });
     World.add(world, MouseConstraint);
@@ -106,42 +98,42 @@ export default function intro(options) {
     DomBody.rotate(joris, Math.PI / 12);
     DomBody.rotate(webDevelopment, Math.PI / 6);
 
-    // Remove Webdev once it's out
-    Events.on(runner, 'tick', checkWebDev);
-
-    function checkWebDev() {
-
-
-        if (render.mapping.worldToView(webDevelopment.position.y) > windowHeight * 1.5) {
-            Matter.Composite.remove(world, webDevelopment);
-            options.callbacks.removeWebdev();
-            Events.off(runner, 'tick', checkWebDev);
-        }
-
-        // todo: check for name bodies and reset their position
-        // DomBody.setPosition(joris, {
-        //     x: render.mapping.viewToWorld(startPositions.joris.x),
-        //     y: render.mapping.viewToWorld(startPositions.joris.y),
-        // });
-        // DomBody.setPosition(noordermeer, {
-        //     x: render.mapping.viewToWorld(startPositions.noordermeer.x),
-        //     y: render.mapping.viewToWorld(startPositions.noordermeer.y),
-        // });
-
-
-    }
+    // Bind tick event
+    Events.on(runner, 'tick', throttle(500, checkBlockPositions));
 
     // Bind mouse events
     Events.on(MouseConstraint, 'startdrag', options.callbacks.startdrag);
     Events.on(MouseConstraint, 'enddrag', options.callbacks.enddrag);
 
-
     // Listen to window resize
-    window.addEventListener('resize', debounce(resizeCanvas, 200));
+    window.addEventListener('resize', debounce(200, resizeCanvas));
 
+    function checkBlockPositions() {
+        // Remove the "Web Development" block once it fell down
+        if (render.mapping.worldToView(webDevelopment.position.y) > windowHeight * 1.5) {
+            Matter.Composite.remove(world, webDevelopment);
+            options.callbacks.removeWebdev();
+        }
+
+        // Revert the positions of the others in case the fall down
+        if (render.mapping.worldToView(joris.position.y) > windowHeight * 3) {
+            calculateStartPositions();
+            DomBody.setPosition(joris, {
+                x: render.mapping.viewToWorld(startPositions.joris.x),
+                y: render.mapping.viewToWorld(startPositions.joris.y),
+            });
+        }
+        if (render.mapping.worldToView(noordermeer.position.y) > windowHeight * 3) {
+            calculateStartPositions();
+            DomBody.setPosition(noordermeer, {
+                x: render.mapping.viewToWorld(startPositions.noordermeer.x),
+                y: render.mapping.viewToWorld(startPositions.noordermeer.y),
+            });
+        }
+    }
 
     function resizeCanvas() {
-
+        // Push up the blocks on resize
         if (windowHeight > window.innerHeight && windowWidth > window.innerWidth) {
             DomBody.applyForce(joris, {x: joris.position.x, y: joris.position.y}, {x: -0.01, y: -0.03});
             DomBody.applyForce(noordermeer, {x: noordermeer.position.x, y: noordermeer.position.y}, {
@@ -175,7 +167,7 @@ export default function intro(options) {
     function resizeWalls() {
         DomBody.setPosition(wallBottom, {
             x: render.mapping.viewToWorld(window.innerWidth / 2),
-            y: render.mapping.viewToWorld(window.innerHeight),
+            y: render.mapping.viewToWorld(window.innerHeight - 22),
         });
 
         DomBody.setPosition(wallRight, {
@@ -189,6 +181,10 @@ export default function intro(options) {
         });
     }
 
+    function calculateStartPositions() {
+        startPositions.joris.x = 32 + options.elements.joris.offsetWidth / 2;
+        startPositions.noordermeer.x = document.querySelector('#right-side').offsetLeft - 32 + options.elements.noordermeer.offsetWidth / 2;
+    }
 }
 
 

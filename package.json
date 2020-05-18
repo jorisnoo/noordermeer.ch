@@ -21,11 +21,11 @@
     },
     "dependencies": {
         "@vuepress/plugin-blog": "^1.9.2",
-        "debounce": "^1.2.0",
         "matter-dom-plugin": "^1.0.0",
         "matter-js": "^0.14.2",
         "tailwindcss": "^1.4.6",
         "tailwindcss-gradients": "^3.0.0",
+        "throttle-debounce": "^2.1.0",
         "vuepress": "^1.5.0"
     },
     "devDependencies": {
