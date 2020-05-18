@@ -10,6 +10,11 @@
             Navigation,
             Work,
         },
+        data() {
+            return {
+                introHasPlayed: false,
+            };
+        },
         computed: {
             pageComponent() {
                 return this.$frontmatter.page || false;
@@ -25,8 +30,13 @@
 
 <template>
     <div>
-        <Intro />
-        <div class="p-4 lg:flex lg:py-0">
+        <Intro
+            @end="introHasPlayed = true"
+        />
+        <div
+            class="transition-opacity duration-500 ease-in p-4 lg:flex lg:py-0"
+            :class="{'opacity-0': !introHasPlayed}"
+        >
             <div class="relative flex-shrink-0 lg:max-w-sm lg:min-h-screen lg:w-1/4">
                 <span class="name mb-2/9 lg:hidden">Joris</span>
                 <span class="name mb-2/9 lg:hidden">Noordermeer</span>

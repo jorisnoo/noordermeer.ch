@@ -1,5 +1,5 @@
 <script>
-    import intro from "../intro";
+    import intro from "../intro/intro";
 
     export default {
         name: 'Intro',
@@ -29,6 +29,9 @@
                     },
                     removeWebdev: () => {
                         this.showWebdev = false;
+                    },
+                    end: () => {
+                        this.$emit('end');
                     },
                 },
             });

@@ -22,6 +22,7 @@ export default function intro(options) {
 
     let windowHeight = window.innerHeight;
     let windowWidth = window.innerWidth;
+    let blocksHaveReachedFloor = false;
 
     // create engine
     let engine = Engine.create({timing: {timeScale: 0.4}});
@@ -38,28 +39,30 @@ export default function intro(options) {
     let startPositions = {
         joris: {x: 200, y: -600},
         noordermeer: {x: 600, y: -700},
-        webDevelopment: {x: windowWidth / 2, y: -300},
+        webDevelopment: {x: windowWidth * 0.5, y: -300},
     };
     calculateStartPositions();
+
+    let frictionAir = 0.1;
 
     // Create objects
     let joris = DomBodies.block(startPositions.joris.x, startPositions.joris.y, {
         Dom: {render, element: options.elements.joris},
         chamfer: {radius: 6},
-        frictionAir: 0.09,
+        frictionAir,
     });
 
     let noordermeer = DomBodies.block(startPositions.noordermeer.x, startPositions.noordermeer.y, {
         Dom: {render, element: options.elements.noordermeer},
         chamfer: {radius: 6},
-        frictionAir: 0.09,
+        frictionAir,
     });
 
     let webDevelopment = DomBodies.block(startPositions.webDevelopment.x, startPositions.webDevelopment.y, {
         Dom: {render, element: options.elements.webDevelopment},
         chamfer: {radius: 6},
         collisionFilter: {mask: 0x0002},
-        frictionAir: 0.09,
+        frictionAir,
     });
 
     // Create Walls
@@ -129,6 +132,14 @@ export default function intro(options) {
                 x: render.mapping.viewToWorld(startPositions.noordermeer.x),
                 y: render.mapping.viewToWorld(startPositions.noordermeer.y),
             });
+        }
+
+        if(!blocksHaveReachedFloor
+            && render.mapping.worldToView(joris.position.y) > windowHeight * 0.75
+            && render.mapping.worldToView(noordermeer.position.y) > windowHeight * 0.75
+        ) {
+            blocksHaveReachedFloor = true;
+            options.callbacks.end();
         }
     }
 
