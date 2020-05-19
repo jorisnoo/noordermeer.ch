@@ -1,6 +1,10 @@
 module.exports = {
     title: 'Joris Noordermeer — Web Development',
     description: 'Joris Noordermeer specializes in website and application development.',
+    themeConfig: {
+        domain: 'https://noordermeer.ch',
+        author: 'Joris Noordermeer',
+    },
     dest: 'public',
     head: [
         ['link', {rel: 'apple-touch-icon', sizes: "180x180", href: '/meta/apple-touch-icon.png'}],
@@ -35,22 +39,21 @@ module.exports = {
         //         },
         //     ],
         // },
-        // Set meta tags automatically
-        // See https://github.com/webmasterish/vuepress-plugin-autometa#options for documentation
-        'autometa': {
-            canonical_base: 'https://noordermeer.ch',
-            site: {
-                name: 'Joris Noordermeer — Web Development',
-            },
+
+        // Set meta tags
+        // See https://github.com/lorisleiva/vuepress-plugin-seo#options for documentation
+        'seo': {
+            title: ($page, $site) => ($page.title ? $page.title + ' | ' : '') + $site.title,
+            description: ($page, $site) => $page.frontmatter.description || $site.description,
+            image: ($page, $site) => $site.themeConfig.domain + '/meta/joris_noordermeer_web_development.jpg',
         },
+
         // Generate a sitemap
         // See https://github.com/ekoeryanto/vuepress-plugin-sitemap#options for documentation
         'sitemap': {
             hostname: 'https://noordermeer.ch',
             changefreq: 'weekly',
-            exclude: [
-                '/404.html',
-            ],
+            exclude: ['/404.html'],
         },
     },
 };
