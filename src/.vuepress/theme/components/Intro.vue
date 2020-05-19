@@ -42,8 +42,12 @@
 </script>
 
 <template>
-    <div class="fixed overflow-hidden inset-0 z-10" :class="{'pointer-events-none': !isDragging}" v-cloak>
-<!--        <div id="debug" class="" />-->
+    <div
+        v-cloak
+        class="fixed overflow-hidden inset-0 z-10"
+        :class="{'pointer-events-none': !isDragging}"
+    >
+        <!--        <div id="debug" class="" />-->
         <span
             ref="joris"
             class="name select-none"
