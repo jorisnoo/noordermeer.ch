@@ -6,7 +6,6 @@
         name: 'Intro',
         data() {
             return {
-                isDragging: false,
                 showWebdev: true,
                 introHasRun: false,
                 initialised: false,
@@ -50,11 +49,7 @@
                         webDevelopment: this.$refs['webDevelopment'],
                     },
                     callbacks: {
-                        startdrag: () => {
-                            this.isDragging = true;
-                            this.clearSelection();
-                        },
-                        enddrag: () => this.isDragging = false,
+                        startdrag: this.clearSelection,
                         removeWebdev: () => this.showWebdev = false,
                         end: () => this.$emit('end'),
                         endOnMobile: () => this.introHasRun = true,
@@ -68,8 +63,8 @@
 
 <template>
     <div
-        class="fixed overflow-hidden inset-0 z-10"
-        :class="{'pointer-events-none': !isDragging, 'opacity-0': !initialised}"
+        class="fixed overflow-hidden inset-0 z-10 pointer-events-none touch-action-none"
+        :class="{'opacity-0': !initialised}"
     >
         <!--        <div id="debug" class="" />-->
         <span
@@ -89,3 +84,9 @@
         >Web Development</span>
     </div>
 </template>
+
+<style scoped>
+    .touch-action-none {
+        touch-action: none;
+    }
+</style>
