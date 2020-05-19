@@ -16,27 +16,16 @@
                     joris: this.$refs['joris'],
                     noordermeer: this.$refs['noordermeer'],
                     webDevelopment: this.$refs['webDevelopment'],
-                    wallLeft: this.$refs['wallLeft'],
-                    wallRight: this.$refs['wallRight'],
-                    wallBottom: this.$refs['wallBottom'],
                 },
                 callbacks: {
                     startdrag: () => {
                         this.isDragging = true;
                         this.clearSelection();
                     },
-                    enddrag: () => {
-                        this.isDragging = false;
-                    },
-                    removeWebdev: () => {
-                        this.showWebdev = false;
-                    },
-                    end: () => {
-                        this.$emit('end');
-                    },
-                    endOnMobile: () => {
-                        this.introHasRun = true;
-                    },
+                    enddrag: () => this.isDragging = false,
+                    removeWebdev: () => this.showWebdev = false,
+                    end: () => this.$emit('end'),
+                    endOnMobile: () => this.introHasRun = true,
                 },
             });
         },
@@ -54,7 +43,7 @@
 
 <template>
     <div class="fixed overflow-hidden inset-0 z-10" :class="{'pointer-events-none': !isDragging}">
-        <div id="debug" class="" />
+<!--        <div id="debug" class="" />-->
         <span
             ref="joris"
             class="name select-none"
