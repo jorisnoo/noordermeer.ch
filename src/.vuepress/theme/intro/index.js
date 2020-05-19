@@ -139,6 +139,7 @@ export default function runIntro(options) {
             blocksHavePassedContentArea = true;
             options.callbacks.end();
             if (!isMobile) {
+                removeTouchEvents();
                 introHasRun = true;
                 options.callbacks.endOnMobile();
             }
@@ -232,11 +233,7 @@ export default function runIntro(options) {
         Runner.stop(runner, engine);
         RenderDom.stop(render);
         runner.enabled = false;
-        if(mouse) {
-            mouse.element.removeEventListener('touchstart', mouse.mousedown);
-            mouse.element.removeEventListener('touchend', mouse.mouseup);
-            mouse.element.removeEventListener('touchmove', mouse.mousemove);
-        }
+        removeTouchEvents();
         // Stop tick event
         Events.off(runner, 'tick', throttle(500, checkBlockPositions));
     }
@@ -245,13 +242,25 @@ export default function runIntro(options) {
         RenderDom.run(render);
         Runner.run(runner, engine);
         runner.enabled = true;
+        addTouchEvents();
+        // Bind tick event
+        Events.on(runner, 'tick', throttle(500, checkBlockPositions));
+    }
+
+    function addTouchEvents() {
         if(mouse) {
             mouse.element.add('touchstart', mouse.mousedown);
             mouse.element.add('touchend', mouse.mouseup);
             mouse.element.add('touchmove', mouse.mousemove);
         }
-        // Bind tick event
-        Events.on(runner, 'tick', throttle(500, checkBlockPositions));
+    }
+
+    function removeTouchEvents() {
+        if (mouse) {
+            mouse.element.removeEventListener('touchstart', mouse.mousedown);
+            mouse.element.removeEventListener('touchend', mouse.mouseup);
+            mouse.element.removeEventListener('touchmove', mouse.mousemove);
+        }
     }
 }
 
