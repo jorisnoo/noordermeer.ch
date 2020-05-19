@@ -63,7 +63,7 @@
                 </transition>
 
                 <div class="sticky bottom-0 hidden pt-12 pb-6 lg:block bg-gradient-b-fade-out">
-                    <span class="name bg-white">&nbsp;</span>
+                    <span class="name bg-white"></span>
                 </div>
             </div>
         </div>
