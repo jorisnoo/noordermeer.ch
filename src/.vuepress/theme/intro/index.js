@@ -125,10 +125,10 @@ export default function runIntro(options) {
         }
 
         // Revert the positions of the others in case the fall down
-        if (render.mapping.worldToView(blocks.joris.position.y) > windowHeight * 3) {
+        if (!isMobile && render.mapping.worldToView(blocks.joris.position.y) > windowHeight * 3) {
             reInsertBlock('joris');
         }
-        if (render.mapping.worldToView(blocks.noordermeer.position.y) > windowHeight * 3) {
+        if (!isMobile && render.mapping.worldToView(blocks.noordermeer.position.y) > windowHeight * 3) {
             reInsertBlock('noordermeer');
         }
 
@@ -230,14 +230,26 @@ export default function runIntro(options) {
 
     function stopEngine() {
         Runner.stop(runner, engine);
+        RenderDom.stop(render);
         runner.enabled = false;
+        if(mouse) {
+            mouse.element.removeEventListener('touchstart', mouse.mousedown);
+            mouse.element.removeEventListener('touchend', mouse.mouseup);
+            mouse.element.removeEventListener('touchmove', mouse.mousemove);
+        }
         // Stop tick event
         Events.off(runner, 'tick', throttle(500, checkBlockPositions));
     }
 
     function startEngine() {
+        RenderDom.run(render);
         Runner.run(runner, engine);
         runner.enabled = true;
+        if(mouse) {
+            mouse.element.add('touchstart', mouse.mousedown);
+            mouse.element.add('touchend', mouse.mouseup);
+            mouse.element.add('touchmove', mouse.mousemove);
+        }
         // Bind tick event
         Events.on(runner, 'tick', throttle(500, checkBlockPositions));
     }
