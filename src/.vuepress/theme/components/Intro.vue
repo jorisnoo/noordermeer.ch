@@ -8,6 +8,7 @@
                 isDragging: false,
                 showWebdev: true,
                 introHasRun: false,
+                initialised: false,
             };
         },
         mounted() {
@@ -28,6 +29,7 @@
                     endOnMobile: () => this.introHasRun = true,
                 },
             });
+            this.initialised = true;
         },
         methods: {
             clearSelection() {
@@ -43,9 +45,8 @@
 
 <template>
     <div
-        v-cloak
         class="fixed overflow-hidden inset-0 z-10"
-        :class="{'pointer-events-none': !isDragging}"
+        :class="{'pointer-events-none': !isDragging, 'opacity-0': !initialised}"
     >
         <!--        <div id="debug" class="" />-->
         <span

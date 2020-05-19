@@ -14,6 +14,7 @@ module.exports = {
         ['link', {rel: 'mask-icon', href: '/meta/safari-pinned-tab.svg', color: '#f9325a'}],
         ['link', {rel: 'msapplication-TileColor', content: '#e6e6e6'}],
         ['link', {rel: 'theme-color', content: '#e6e6e6'}],
+        ['script', {async: true, defer: true, 'data-domain': 'noordermeer.ch', src: 'https://prism.noordermeer.ch/js/index.js'}],
     ],
     markdown: {
         anchor: {permalink: false},
