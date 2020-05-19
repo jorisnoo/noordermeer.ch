@@ -44,7 +44,7 @@ export default function intro(options) {
             },
             noordermeer: {
                 x: isMobile ? windowWidth * 0.6 : document.querySelector('#right-side').offsetLeft - 32 + options.elements.noordermeer.offsetWidth / 2,
-                y: isMobile ? -600 : -700,
+                y: isMobile ? -600 : -800,
                 rotation: -Math.PI / 6,
                 collisionFilter: {category: 0x0002},
             },
