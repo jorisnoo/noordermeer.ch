@@ -2,7 +2,7 @@ module.exports = {
     title: 'Joris Noordermeer — Web Development',
     description: 'Joris Noordermeer specializes in website and application development.',
     themeConfig: {
-        domain: 'https://noordermeer.ch',
+        domain: 'https://www.noordermeer.ch',
         author: 'Joris Noordermeer',
     },
     dest: 'public',
@@ -52,7 +52,7 @@ module.exports = {
         // Generate a sitemap
         // See https://github.com/ekoeryanto/vuepress-plugin-sitemap#options for documentation
         'sitemap': {
-            hostname: 'https://noordermeer.ch',
+            hostname: 'https://www.noordermeer.ch',
             changefreq: 'weekly',
             exclude: ['/404.html'],
         },
