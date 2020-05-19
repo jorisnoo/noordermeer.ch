@@ -17,7 +17,8 @@ export default function intro(options) {
 
     let windowHeight = window.innerHeight;
     let windowWidth = window.innerWidth;
-    let blocksHaveReachedFloor = false;
+    let isMobile = windowWidth < 1024;
+    let showContent, introHasRun = false;
 
     // create engine
     let engine = Engine.create({timing: {timeScale: 0.4}});
@@ -35,10 +36,6 @@ export default function intro(options) {
         joris: {x: 200, y: -600, rotation: Math.PI / 12},
         noordermeer: {x: 600, y: -700, rotation: -Math.PI / 6},
         webDevelopment: {x: windowWidth * 0.5, y: -300, rotation: Math.PI / 6},
-        wallBottom: {
-            x: windowWidth * 0.5,
-            y: windowWidth >= 1024 ? windowHeight - 22 : windowHeight * 3,
-        },
     };
     calculateStartPositions();
 
@@ -67,7 +64,7 @@ export default function intro(options) {
         }),
 
         // Create Walls
-        wallBottom: DomBodies.block(startPositions.wallBottom.x, startPositions.wallBottom.y, {
+        wallBottom: DomBodies.block(windowWidth * 0.5, windowHeight - 22, {
             Dom: {render, element: options.elements.wallBottom}, isStatic: true,
         }),
         wallLeft: DomBodies.block(-1, windowHeight / 2, {
@@ -122,24 +119,36 @@ export default function intro(options) {
             reInsertBlock('noordermeer');
         }
 
-        if (!blocksHaveReachedFloor
+        if (!showContent
             && render.mapping.worldToView(blocks.joris.position.y) > Math.min(500, windowHeight * 0.75)
             && render.mapping.worldToView(blocks.noordermeer.position.y) > Math.min(500, windowHeight * 0.75)
         ) {
-            blocksHaveReachedFloor = true;
+            showContent = true;
             options.callbacks.end();
+            if (!isMobile) {
+                introHasRun = true;
+                options.callbacks.endOnMobile();
+            }
+        }
+
+        if (!introHasRun
+            && isMobile
+            && render.mapping.worldToView(blocks.joris.position.y) > windowHeight * 1.5
+            && render.mapping.worldToView(blocks.noordermeer.position.y) > windowHeight * 1.5
+        ) {
+            introHasRun = true;
+            options.callbacks.endOnMobile();
+            stopEngine();
         }
     }
 
     function resizeCanvas() {
-        if (window.innerWidth < 1024 && runner.enabled) {
+        if (window.innerWidth < 1024 && runner.enabled && introHasRun) {
             stopEngine();
-            reInsertBlock('joris');
-            reInsertBlock('noordermeer');
+            toggleMobileView();
         } else if (window.innerWidth >= 1024 && !runner.enabled) {
             startEngine();
-            reInsertBlock('joris');
-            reInsertBlock('noordermeer');
+            toggleMobileView();
             return;
         }
 
@@ -189,6 +198,7 @@ export default function intro(options) {
     function updateWindowSize() {
         windowHeight = window.innerHeight;
         windowWidth = window.innerWidth;
+        isMobile = windowWidth < 1024;
     }
 
     function resizeWalls() {
@@ -208,18 +218,34 @@ export default function intro(options) {
         });
     }
 
+    function toggleMobileView() {
+        updateWindowSize();
+        reInsertBlock('joris');
+        reInsertBlock('noordermeer');
+        console.log(blocks.wallBottom)
+        // reInsertBlock('wallBottom');
+    }
+
     function reInsertBlock(block) {
         calculateStartPositions();
         DomBody.setPosition(blocks[block], {
             x: render.mapping.viewToWorld(startPositions[block].x),
             y: render.mapping.viewToWorld(startPositions[block].y),
         });
-        DomBody.rotate(blocks[block], startPositions[block].rotation - blocks[block].angle);
+        if (startPositions[block].rotation) {
+            DomBody.rotate(blocks[block], startPositions[block].rotation - blocks[block].angle);
+        }
     }
 
     function calculateStartPositions() {
-        startPositions.joris.x = 32 + options.elements.joris.offsetWidth / 2;
-        startPositions.noordermeer.x = document.querySelector('#right-side').offsetLeft - 32 + options.elements.noordermeer.offsetWidth / 2;
+        startPositions.joris.x = isMobile ? windowWidth * 0.3 : 32 + options.elements.joris.offsetWidth / 2;
+        startPositions.joris.y = isMobile ? -700 : -600;
+        // startPositions.joris.rotation = isMobile ? -Math.PI / 12 : Math.PI / 12;
+        startPositions.noordermeer.x = isMobile ? windowWidth * 0.6 : document.querySelector('#right-side').offsetLeft - 32 + options.elements.noordermeer.offsetWidth / 2;
+        startPositions.noordermeer.y = isMobile ? -600 : -700;
+        // startPositions.noordermeer.rotation = isMobile ? Math.PI / 12 : -Math.PI / 6;
+        // startPositions.wallBottom.y = !isMobile ? windowHeight - 22 : windowHeight * 3;
+        // startPositions.wallBottom.x = windowWidth * 0.5;
     }
 
     function stopEngine() {

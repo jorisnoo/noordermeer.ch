@@ -32,8 +32,10 @@
                         this.showWebdev = false;
                     },
                     end: () => {
-                        this.introHasRun = true;
                         this.$emit('end');
+                    },
+                    endOnMobile: () => {
+                        this.introHasRun = true;
                     },
                 },
             });
@@ -52,12 +54,20 @@
 
 <template>
     <div class="fixed overflow-hidden inset-0 z-10" :class="{'pointer-events-none': !isDragging}">
-        <!--<div id="debug" class="" />-->
+        <div id="debug" class="" />
         <div ref="wallBottom" class="h-1 w-screen" />
         <div ref="wallLeft" class="h-screen w-1" />
         <div ref="wallRight" class="h-screen w-1" />
-        <span ref="joris" class="name select-none hidden lg:inline-block">Joris</span>
-        <span ref="noordermeer" class="name select-none hidden lg:inline-block">Noordermeer</span>
+        <span
+            ref="joris"
+            class="name select-none"
+            :class="[introHasRun ? 'hidden lg:inline-block' : '']"
+        >Joris</span>
+        <span
+            ref="noordermeer"
+            class="name select-none"
+            :class="[introHasRun ? 'hidden lg:inline-block' : '']"
+        >Noordermeer</span>
         <span
             v-if="showWebdev"
             ref="webDevelopment"
