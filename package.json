@@ -8,10 +8,7 @@
         "type": "git",
         "url": "git+https://github.com/jorisnoo/noordermeer.ch.git"
     },
-    "bugs": {
-        "url": "https://github.com/jorisnoo/noordermeer.ch/issues"
-    },
-    "homepage": "https://github.com/jorisnoo/noordermeer.ch#readme",
+    "homepage": "https://noordermeer.ch",
     "scripts": {
         "dev": "vuepress dev src",
         "build": "vuepress build src",

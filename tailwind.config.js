@@ -10,6 +10,7 @@ module.exports = {
             // 'serif': [...defaultTheme.fontFamily.serif],
         },
         colors: {
+            transparent: 'transparent',
             black: '#000000',
             white: '#e6e6e6',
             red: '#f9325a',
@@ -18,6 +19,7 @@ module.exports = {
         },
         linearGradientColors: {
             'fade-out': ['transparent', '#e6e6e6 20%'],
+            'fade-out-dark': ['transparent', '#000000 20%'],
         },
         fontSize: {
             base: ['8vw', 1.111111111],

@@ -57,8 +57,8 @@
                     </div>
                 </transition>
 
-                <div class="sticky bottom-0 hidden pt-12 pb-6 lg:block bg-gradient-b-fade-out">
-                    <span class="name bg-white select-none">&nbsp;</span>
+                <div class="sticky bottom-0 hidden pt-12 pb-6 lg:block content-fade">
+                    <span class="name bg-transparent select-none">&nbsp;</span>
                 </div>
             </div>
         </div>
@@ -74,5 +74,15 @@
 
     .fade-enter, .fade-leave-to {
         @apply opacity-0;
+    }
+
+    .content-fade {
+        @apply bg-gradient-b-fade-out;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .content-fade {
+            @apply bg-gradient-b-fade-out-dark;
+        }
     }
 </style>

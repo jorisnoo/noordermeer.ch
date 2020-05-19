@@ -2,6 +2,12 @@ body {
     @apply bg-white;
 }
 
+@media (prefers-color-scheme: dark) {
+    body {
+        @apply bg-black;
+    }
+}
+
 ::selection {
     @apply bg-red;
 }
