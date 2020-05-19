@@ -18,8 +18,8 @@ module.exports = {
             blue: '#1e50f0',
         },
         linearGradientColors: {
-            'fade-out': ['transparent', '#e6e6e6 20%'],
-            'fade-out-dark': ['transparent', '#000000 20%'],
+            'fade-out': ['rgba(230,230,230,0.001)', '#e6e6e6 20%'],
+            'fade-out-dark': ['rgba(230,230,230,0.001)', '#000000 20%'],
         },
         fontSize: {
             base: ['8vw', 1.111111111],
