@@ -40,7 +40,7 @@ module.exports = {
                 3: '3px',
             },
             lineHeight: {
-                'link-sm': 0.9,
+                'link-sm': 0.85,
                 'link-md': 0.8,
             },
         },
