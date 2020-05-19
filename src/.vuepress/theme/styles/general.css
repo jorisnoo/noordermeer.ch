@@ -32,6 +32,10 @@ body {
     @apply bg-green;
 }
 
+[v-cloak] {
+    @apply hidden;
+}
+
 /* Hide the "outbound" icon added by VuePress to external links */
 .icon.outbound {
     @apply hidden;
