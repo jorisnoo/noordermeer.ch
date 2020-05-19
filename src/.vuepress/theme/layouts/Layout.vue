@@ -20,11 +20,6 @@
                 return this.$frontmatter.page || false;
             },
         },
-        mounted() {
-            // Set a random text selection color
-            let selectionColor = ['#f9325a', '#149646', '#1e50f0'][Math.floor(Math.random() * 3)];
-            document.documentElement.style.setProperty('--selection-color', selectionColor);
-        },
     };
 </script>
 
@@ -56,7 +51,7 @@
                     <div
                         v-else
                         :key="$page.key"
-                        class="container content p-1/3 lg:py-0 lg:px-4"
+                        class="container content p-1/3 lg:py-0 lg:px-4 selection-blue"
                     >
                         <slot><Content /></slot>
                     </div>

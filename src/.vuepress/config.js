@@ -1,6 +1,6 @@
 module.exports = {
     title: 'Joris Noordermeer — Web Development',
-    description: 'Joris Noordermeer is specialized in website and application development.',
+    description: 'Joris Noordermeer specializes in website and application development.',
     dest: 'public',
     head: [
         ['link', {rel: 'apple-touch-icon', sizes: "180x180", href: '/meta/apple-touch-icon.png'}],

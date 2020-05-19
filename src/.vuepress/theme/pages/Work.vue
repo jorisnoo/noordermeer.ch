@@ -10,7 +10,7 @@
 </script>
 
 <template>
-    <ul class="py-1/3 lg:py-0">
+    <ul class="py-1/3 lg:py-0 selection-green">
         <li
             v-for="(project, index) in projects"
             :key="'project'+project.name"
