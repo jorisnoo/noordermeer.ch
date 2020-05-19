@@ -12,7 +12,7 @@
             };
         },
         mounted() {
-            if([this.$site.themeConfig.runIntroOnPages].includes(this.$page.path)) {
+            if(this.$site.themeConfig.runIntroOnPages.includes(this.$page.path)) {
                 // Run the intro on mobile and desktop on these pages
                 this.runIntro();
             } else if (window.innerWidth >= 1024) {
