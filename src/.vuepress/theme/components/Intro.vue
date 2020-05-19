@@ -1,5 +1,5 @@
 <script>
-    import intro from "../intro/intro";
+    import runIntro from "../intro";
 
     export default {
         name: 'Intro',
@@ -11,7 +11,7 @@
             };
         },
         mounted() {
-            intro({
+            runIntro({
                 elements: {
                     joris: this.$refs['joris'],
                     noordermeer: this.$refs['noordermeer'],

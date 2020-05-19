@@ -2,7 +2,7 @@ import Matter from 'matter-js';
 import 'matter-dom-plugin';
 import {throttle, debounce} from 'throttle-debounce';
 
-export default function intro(options) {
+export default function runIntro(options) {
     Matter.use('matter-dom-plugin');
 
     let Engine = Matter.Engine,
