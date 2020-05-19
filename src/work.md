@@ -12,4 +12,9 @@ projects:
     -   name: My Private Banker
         url: https://myprivatebanker.io/
         hidden: true
+    -   name: Neverland Space
+        url: https://neverlandspace.com/
+    -   name: One Day Portray
+        url: https://onedayportray.com/
+        hidden: true
 ---
