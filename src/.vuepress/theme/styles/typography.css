@@ -26,7 +26,7 @@ body {
 .content a {
     /*@apply underline;*/
     /*text-decoration-thickness: 0.1875rem; !* 3px *!*/
-    @apply inline-block leading-link border-b-3;
+    @apply inline-block leading-link-sm border-b-2;
 }
 
 .content a:hover {
@@ -42,6 +42,10 @@ body {
 @screen md {
     body {
         @apply text-md;
+    }
+
+    .content a {
+        @apply border-b-3 leading-link-md;
     }
 }
 

@@ -38,13 +38,13 @@ export default function runIntro(options) {
         blockData = {
             joris: {
                 x: isMobile ? windowWidth * 0.3 : 32 + options.elements.joris.offsetWidth / 2,
-                y: isMobile ? -700 : -600,
+                y: -600,
                 rotation: Math.PI / 12,
                 collisionFilter: {category: 0x0002},
             },
             noordermeer: {
                 x: isMobile ? windowWidth * 0.6 : document.querySelector('#right-side').offsetLeft - 32 + options.elements.noordermeer.offsetWidth / 2,
-                y: isMobile ? -600 : -800,
+                y: isMobile ? -500 : -800,
                 rotation: -Math.PI / 6,
                 collisionFilter: {category: 0x0002},
             },
