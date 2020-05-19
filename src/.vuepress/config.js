@@ -4,6 +4,7 @@ module.exports = {
     themeConfig: {
         domain: 'https://www.noordermeer.ch',
         author: 'Joris Noordermeer',
+        runIntroOnPages: ['/', '/work'],
     },
     dest: 'public',
     head: [

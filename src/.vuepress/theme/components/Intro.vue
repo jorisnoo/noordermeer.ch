@@ -1,5 +1,6 @@
 <script>
-    import runIntro from "../intro";
+    import runIntro from '../intro';
+    import { debounce } from 'throttle-debounce';
 
     export default {
         name: 'Intro',
@@ -12,24 +13,20 @@
             };
         },
         mounted() {
-            runIntro({
-                elements: {
-                    joris: this.$refs['joris'],
-                    noordermeer: this.$refs['noordermeer'],
-                    webDevelopment: this.$refs['webDevelopment'],
-                },
-                callbacks: {
-                    startdrag: () => {
-                        this.isDragging = true;
-                        this.clearSelection();
-                    },
-                    enddrag: () => this.isDragging = false,
-                    removeWebdev: () => this.showWebdev = false,
-                    end: () => this.$emit('end'),
-                    endOnMobile: () => this.introHasRun = true,
-                },
-            });
-            this.initialised = true;
+            if([this.$site.themeConfig.runIntroOnPages].includes(this.$page.path)) {
+                // Run the intro on mobile and desktop on these pages
+                this.runIntro();
+            } else if (window.innerWidth >= 1024) {
+                // Run the intro on desktop, but show content instantly
+                // on all other pages
+                this.runIntro();
+                this.$emit('end');
+            } else {
+                // Do only run intro on other pages if the window
+                // is being resized
+                window.addEventListener('resize', this.checkIfIntroShouldRun);
+                this.$emit('end');
+            }
         },
         methods: {
             clearSelection() {
@@ -38,6 +35,32 @@
                 } else if (document.selection) {
                     document.selection.empty();
                 }
+            },
+            checkIfIntroShouldRun: debounce(200, function() {
+                if(window.innerWidth >= 1024) {
+                    this.runIntro();
+                    window.removeEventListener('resize', this.checkIfIntroShouldRun);
+                }
+            }),
+            runIntro() {
+                runIntro({
+                    elements: {
+                        joris: this.$refs['joris'],
+                        noordermeer: this.$refs['noordermeer'],
+                        webDevelopment: this.$refs['webDevelopment'],
+                    },
+                    callbacks: {
+                        startdrag: () => {
+                            this.isDragging = true;
+                            this.clearSelection();
+                        },
+                        enddrag: () => this.isDragging = false,
+                        removeWebdev: () => this.showWebdev = false,
+                        end: () => this.$emit('end'),
+                        endOnMobile: () => this.introHasRun = true,
+                    },
+                });
+                this.initialised = true;
             },
         },
     };

@@ -171,36 +171,16 @@ export default function runIntro(options) {
         }
 
         // Push up the blocks on resize
-        if (windowHeight > window.innerHeight && windowWidth > window.innerWidth) {
-            DomBody.applyForce(blocks.joris,
-                {x: blocks.joris.position.x, y: blocks.joris.position.y},
-                {x: -0.01, y: -0.03},
-            );
-            DomBody.applyForce(blocks.noordermeer,
-                {x: blocks.noordermeer.position.x, y: blocks.noordermeer.position.y},
-                {x: -0.01, y: -0.09},
-            );
-        } else if (windowHeight > window.innerHeight) {
+        if (windowHeight > window.innerHeight) {
             DomBody.applyForce(blocks.joris,
                 {x: blocks.joris.position.x, y: blocks.joris.position.y},
                 {x: 0, y: -0.03},
             );
             DomBody.applyForce(blocks.noordermeer,
                 {x: blocks.noordermeer.position.x, y: blocks.noordermeer.position.y},
-                {x: 0, y: -0.09},
+                {x: 0, y: -0.07},
             );
-        } else if (windowWidth > window.innerWidth) {
-            DomBody.applyForce(blocks.joris,
-                {x: blocks.joris.position.x, y: blocks.joris.position.y},
-                {x: -0.01, y: -0.005},
-            );
-            DomBody.applyForce(blocks.noordermeer,
-                {x: blocks.noordermeer.position.x, y: blocks.noordermeer.position.y},
-                {x: -0.01, y: -0.01},
-            );
-        }
 
-        if (windowHeight > window.innerHeight || windowWidth > window.innerWidth) {
             setTimeout(resizeWalls, 300);
         } else {
             resizeWalls();
