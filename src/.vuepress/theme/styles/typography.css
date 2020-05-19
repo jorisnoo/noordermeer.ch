@@ -24,8 +24,9 @@ body {
 }
 
 .content a {
-    @apply underline;
-    text-decoration-thickness: 0.1875rem; /* 3px */
+    /*@apply underline;*/
+    /*text-decoration-thickness: 0.1875rem; !* 3px *!*/
+    @apply inline-block leading-link border-b-3;
 }
 
 .content a:hover {

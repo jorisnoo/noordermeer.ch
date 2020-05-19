@@ -36,6 +36,12 @@ module.exports = {
             margin: {
                 '2/9': '0.222222em',
             },
+            borderWidth: {
+                3: '3px',
+            },
+            lineHeight: {
+                link: 0.8,
+            },
         },
     },
     variants: {},
