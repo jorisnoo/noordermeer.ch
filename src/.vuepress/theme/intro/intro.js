@@ -11,6 +11,7 @@ export default function intro(options) {
         Events = Matter.Events,
         RenderDom = Matter.RenderDom,
         DomBodies = Matter.DomBodies,
+        Bodies = Matter.Bodies,
         DomBody = Matter.DomBody,
         DomMouseConstraint = Matter.DomMouseConstraint,
         Mouse = Matter.Mouse;
@@ -55,41 +56,37 @@ export default function intro(options) {
     };
     calculateBlockData();
 
-    const domBody = (name) => {
-        return DomBodies.block(blockData[name].x, blockData[name].y, {
-            Dom: {render, element: options.elements[name]},
+    const domBody = (blockData, element) => {
+        return DomBodies.block(blockData.x, blockData.y, {
+            Dom: {render, element},
             chamfer: {radius: 6},
-            collisionFilter: blockData[name].collisionFilter || {},
+            collisionFilter: blockData.collisionFilter || {},
             frictionAir: 0.1,
         });
     };
 
-    // Create objects
-    let blocks = {
-        joris: domBody('joris'),
-        noordermeer: domBody('noordermeer'),
-        webDevelopment: domBody('webDevelopment'),
-
-        // Create Walls
-        wallBottom: DomBodies.block(windowWidth * 0.5, windowHeight - 22, {
-            Dom: {render, element: options.elements.wallBottom}, isStatic: true,
-        }),
-        wallLeft: DomBodies.block(-1, windowHeight / 2, {
-            Dom: {render, element: options.elements.wallLeft}, isStatic: true,
-        }),
-        wallRight: DomBodies.block(windowWidth, windowHeight / 2, {
-            Dom: {render, element: options.elements.wallRight}, isStatic: true,
-        }),
+    const wallBody = (x, y, width, height) => {
+        return Bodies.rectangle(
+            render.mapping.viewToWorld(x),
+            render.mapping.viewToWorld(y),
+            width === 1 ? 1 : render.mapping.viewToWorld(width),
+            height === 1 ? 1 : render.mapping.viewToWorld(height),
+            {isStatic: true},
+        );
     };
 
-    World.add(world, [
-        blocks.joris,
-        blocks.noordermeer,
-        blocks.webDevelopment,
-        blocks.wallBottom,
-        blocks.wallLeft,
-        blocks.wallRight,
-    ]);
+    let blocks = {
+        // Create objects
+        joris: domBody(blockData.joris, options.elements.joris),
+        noordermeer: domBody(blockData.noordermeer, options.elements.noordermeer),
+        webDevelopment: domBody(blockData.webDevelopment, options.elements.webDevelopment),
+        // Create Walls
+        wallBottom: wallBody(windowWidth * 0.5, windowHeight - 22, windowWidth, 1),
+        wallLeft: wallBody(-1, windowHeight * 0.5, 1, windowHeight),
+        wallRight: wallBody(windowWidth, windowHeight * 0.5, 1, windowHeight),
+    };
+
+    World.add(world, Object.values(blocks));
 
     // Add mouse control
     let mouse = Mouse.create(document.body);
@@ -181,7 +178,7 @@ export default function intro(options) {
             );
             DomBody.applyForce(blocks.noordermeer,
                 {x: blocks.noordermeer.position.x, y: blocks.noordermeer.position.y},
-                {x: 0,y: -0.09},
+                {x: 0, y: -0.09},
             );
         } else if (windowWidth > window.innerWidth) {
             DomBody.applyForce(blocks.joris,
@@ -210,18 +207,18 @@ export default function intro(options) {
     }
 
     function resizeWalls() {
-        DomBody.setPosition(blocks.wallBottom, {
-            x: render.mapping.viewToWorld(window.innerWidth / 2),
-            y: render.mapping.viewToWorld(window.innerHeight - 22),
-        });
-        DomBody.setPosition(blocks.wallRight, {
-            x: render.mapping.viewToWorld(window.innerWidth),
-            y: render.mapping.viewToWorld(window.innerHeight / 2),
-        });
-        DomBody.setPosition(blocks.wallLeft, {
-            x: render.mapping.viewToWorld(0),
-            y: render.mapping.viewToWorld(window.innerHeight / 2),
-        });
+        // DomBody.setPosition(blocks.wallBottom, {
+        //     x: render.mapping.viewToWorld(window.innerWidth / 2),
+        //     y: render.mapping.viewToWorld(window.innerHeight - 22),
+        // });
+        // DomBody.setPosition(blocks.wallRight, {
+        //     x: render.mapping.viewToWorld(window.innerWidth),
+        //     y: render.mapping.viewToWorld(window.innerHeight / 2),
+        // });
+        // DomBody.setPosition(blocks.wallLeft, {
+        //     x: render.mapping.viewToWorld(0),
+        //     y: render.mapping.viewToWorld(window.innerHeight / 2),
+        // });
     }
 
     function toggleMobileView() {
