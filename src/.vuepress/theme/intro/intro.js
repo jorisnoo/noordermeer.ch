@@ -40,18 +40,23 @@ export default function intro(options) {
                 x: isMobile ? windowWidth * 0.3 : 32 + options.elements.joris.offsetWidth / 2,
                 y: isMobile ? -700 : -600,
                 rotation: Math.PI / 12,
+                collisionFilter: {category: 0x0002},
             },
             noordermeer: {
                 x: isMobile ? windowWidth * 0.6 : document.querySelector('#right-side').offsetLeft - 32 + options.elements.noordermeer.offsetWidth / 2,
                 y: isMobile ? -600 : -700,
                 rotation: -Math.PI / 6,
+                collisionFilter: {category: 0x0002},
             },
             webDevelopment: {
                 x: windowWidth * 0.5,
                 y: -300,
                 rotation: Math.PI / 6,
-                collisionFilter: {mask: 0x0002},
+                collisionFilter: {category: 0x0004},
             },
+            wallBottom: {x: windowWidth * 0.5, y: windowHeight - 22, width: windowWidth, height: 1},
+            wallLeft: {x: -1, y: windowHeight * 0.5, width: 1, height: windowHeight},
+            wallRight: {x: windowWidth, y: windowHeight * 0.5, width: 1, height: windowHeight},
         };
     };
     calculateBlockData();
@@ -60,30 +65,34 @@ export default function intro(options) {
         return DomBodies.block(blockData.x, blockData.y, {
             Dom: {render, element},
             chamfer: {radius: 6},
-            collisionFilter: blockData.collisionFilter || {},
+            collisionFilter: blockData.collisionFilter,
             frictionAir: 0.1,
         });
     };
 
-    const wallBody = (x, y, width, height) => {
+    const wallBody = (blockData) => {
         return Bodies.rectangle(
-            render.mapping.viewToWorld(x),
-            render.mapping.viewToWorld(y),
-            width === 1 ? 1 : render.mapping.viewToWorld(width),
-            height === 1 ? 1 : render.mapping.viewToWorld(height),
-            {isStatic: true},
+            render.mapping.viewToWorld(blockData.x),
+            render.mapping.viewToWorld(blockData.y),
+            blockData.width === 1 ? 1 : render.mapping.viewToWorld(blockData.width),
+            blockData.height === 1 ? 1 : render.mapping.viewToWorld(blockData.height),
+            {
+                isStatic: true,
+                // Walls only collide with blocks if on desktop
+                collisionFilter: {mask: isMobile ? 0x0001 : 0x0001 | 0x0002},
+            },
         );
     };
 
     let blocks = {
-        // Create objects
+        // Add objects
         joris: domBody(blockData.joris, options.elements.joris),
         noordermeer: domBody(blockData.noordermeer, options.elements.noordermeer),
         webDevelopment: domBody(blockData.webDevelopment, options.elements.webDevelopment),
-        // Create Walls
-        wallBottom: wallBody(windowWidth * 0.5, windowHeight - 22, windowWidth, 1),
-        wallLeft: wallBody(-1, windowHeight * 0.5, 1, windowHeight),
-        wallRight: wallBody(windowWidth, windowHeight * 0.5, 1, windowHeight),
+        // Add Walls
+        wallBottom: wallBody(blockData.wallBottom),
+        wallLeft: wallBody(blockData.wallLeft),
+        wallRight: wallBody(blockData.wallRight),
     };
 
     World.add(world, Object.values(blocks));
@@ -207,22 +216,24 @@ export default function intro(options) {
     }
 
     function resizeWalls() {
-        // DomBody.setPosition(blocks.wallBottom, {
-        //     x: render.mapping.viewToWorld(window.innerWidth / 2),
-        //     y: render.mapping.viewToWorld(window.innerHeight - 22),
-        // });
-        // DomBody.setPosition(blocks.wallRight, {
-        //     x: render.mapping.viewToWorld(window.innerWidth),
-        //     y: render.mapping.viewToWorld(window.innerHeight / 2),
-        // });
-        // DomBody.setPosition(blocks.wallLeft, {
-        //     x: render.mapping.viewToWorld(0),
-        //     y: render.mapping.viewToWorld(window.innerHeight / 2),
-        // });
+        Matter.Composite.remove(world, [
+            blocks.wallLeft, blocks.wallRight, blocks.wallBottom,
+        ]);
+
+        updateWindowSize();
+        calculateBlockData();
+
+        blocks.wallBottom = wallBody(blockData.wallBottom);
+        blocks.wallLeft = wallBody(blockData.wallLeft);
+        blocks.wallRight = wallBody(blockData.wallRight);
+
+        World.add(world, [
+            blocks.wallLeft, blocks.wallRight, blocks.wallBottom,
+        ]);
     }
 
     function toggleMobileView() {
-        updateWindowSize();
+        resizeWalls();
         reInsertBlock('joris');
         reInsertBlock('noordermeer');
     }
