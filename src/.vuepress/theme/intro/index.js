@@ -16,12 +16,16 @@ export default function runIntro(options) {
         DomMouseConstraint = Matter.DomMouseConstraint,
         Mouse = Matter.Mouse;
 
-    let windowHeight = window.innerHeight;
-    let windowWidth = window.innerWidth;
-    let blocksHavePassedContentArea, webDevLeft, introHasRun = false;
+    let introState = {
+        previousWindowHeight: window.innerHeight,
+        blocksHavePassedContentArea: false,
+        webDevLeft: false,
+    };
 
     // create engine
-    let engine = Engine.create({timing: {timeScale: 0.4}});
+    let engine = Engine.create({timing: {
+        timeScale: 0.4,
+    }});
     let world = engine.world;
 
     const isMobile = () => window.innerWidth < 1024;
@@ -76,141 +80,141 @@ export default function runIntro(options) {
     Events.on(MouseConstraint, 'enddrag', options.callbacks.enddrag);
 
     // Listen to window resize
-    window.addEventListener('resize', debounce(200, resizeCanvas));
+    // window.addEventListener('resize', debounce(200, resizeCanvas));
 
     // check for block positions
     // Events.on(runner, 'tick', throttle(500, checkBlockPositions));
 
 
     // TODO
-    function checkBlockPositions() {
+    // function checkBlockPositions() {
+    //
+    //     // Remove the "Web Development" block once it fell down
+    //     if (!webDevLeft && Math.abs(render.mapping.worldToView(blocks.webDevelopment.position.y)) > windowHeight * 3) {
+    //         Matter.Composite.remove(world, blocks.webDevelopment);
+    //         console.log('webdev left', blocks.webDevelopment.position.y);
+    //         webDevLeft = true;
+    //         // todo: hide dom element
+    //         // options.callbacks.removeWebdev();
+    //     }
+    //
+    //     // Revert the positions of the others in case the fall down
+    //     if (Math.abs(render.mapping.worldToView(blocks.joris.position.y)) > windowHeight * 3) {
+    //         reInsertBlock(blocks.joris, 'joris');
+    //     }
+    //     if (Math.abs(render.mapping.worldToView(blocks.noordermeer.position.y)) > windowHeight * 3) {
+    //         reInsertBlock(blocks.noordermeer, 'noordermeer');
+    //     }
+    //
+    //
+    //     // Todo..
+    //     if (!blocksHavePassedContentArea
+    //         && render.mapping.worldToView(blocks.joris.position.y) > Math.min(500, windowHeight * 0.75)
+    //         && render.mapping.worldToView(blocks.noordermeer.position.y) > Math.min(500, windowHeight * 0.75)
+    //     ) {
+    //         blocksHavePassedContentArea = true;
+    //         options.callbacks.end();
+    //
+    //         if (!isMobile) {
+    //             introHasRun = true;
+    //             options.callbacks.endOnMobile();
+    //         }
+    //         // else {
+    //         //     removeTouchEvents();
+    //         // }
+    //     }
+    //
+    //     if (!introHasRun
+    //         && isMobile
+    //         && render.mapping.worldToView(blocks.joris.position.y) > windowHeight * 1.5
+    //         && render.mapping.worldToView(blocks.noordermeer.position.y) > windowHeight * 1.5
+    //     ) {
+    //         introHasRun = true;
+    //         options.callbacks.endOnMobile();
+    //         // stopEngine();
+    //     }
+    // }
 
-        // Remove the "Web Development" block once it fell down
-        if (!webDevLeft && Math.abs(render.mapping.worldToView(blocks.webDevelopment.position.y)) > windowHeight * 3) {
-            Matter.Composite.remove(world, blocks.webDevelopment);
-            console.log('webdev left', blocks.webDevelopment.position.y);
-            webDevLeft = true;
-            // todo: hide dom element
-            // options.callbacks.removeWebdev();
-        }
+    // function resizeCanvas() {
+    //     // if (window.innerWidth < 1024 && runner.enabled && introHasRun) {
+    //     //     stopEngine();
+    //     //     toggleMobileView();
+    //     // } else if (window.innerWidth >= 1024 && !runner.enabled) {
+    //     //     startEngine();
+    //     //     toggleMobileView();
+    //     //     return;
+    //     // }
+    //
+    //     if (window.innerWidth < 1024) {
+    //         toggleMobileView();
+    //         return;
+    //     }
+    //
+    //     if (windowHeight > window.innerHeight) {
+    //         // Push up the blocks on resize
+    //         DomBody.applyForce(blocks.joris,
+    //             {x: blocks.joris.position.x, y: blocks.joris.position.y},
+    //             {x: 0, y: -0.03},
+    //         );
+    //         DomBody.applyForce(blocks.noordermeer,
+    //             {x: blocks.noordermeer.position.x, y: blocks.noordermeer.position.y},
+    //             {x: 0, y: -0.07},
+    //         );
+    //
+    //         setTimeout(resizeWalls, 300);
+    //     } else {
+    //         resizeWalls();
+    //     }
+    //
+    //     updateWindowSize();
+    //
+    //     engine.world.gravity.y = isMobile ? -1 : 1;
+    // }
 
-        // Revert the positions of the others in case the fall down
-        if (Math.abs(render.mapping.worldToView(blocks.joris.position.y)) > windowHeight * 3) {
-            reInsertBlock(blocks.joris, 'joris');
-        }
-        if (Math.abs(render.mapping.worldToView(blocks.noordermeer.position.y)) > windowHeight * 3) {
-            reInsertBlock(blocks.noordermeer, 'noordermeer');
-        }
+    // function updateWindowSize() {
+    //     windowHeight = window.innerHeight;
+    //     windowWidth = window.innerWidth;
+    //     isMobile = windowWidth < 1024;
+    // }
 
+    // function resizeWalls() {
+    //     Matter.Composite.remove(world, [
+    //         blocks.wallLeft, blocks.wallRight, blocks.wallBottom,
+    //     ]);
+    //
+    //     blockData = calculateBlockData();
+    //
+    //     blocks.wallBottom = wallBody(blockData.wallBottom);
+    //     blocks.wallLeft = wallBody(blockData.wallLeft);
+    //     blocks.wallRight = wallBody(blockData.wallRight);
+    //
+    //     World.add(world, [
+    //         blocks.wallLeft, blocks.wallRight, blocks.wallBottom,
+    //     ]);
+    // }
 
-        // Todo..
-        if (!blocksHavePassedContentArea
-            && render.mapping.worldToView(blocks.joris.position.y) > Math.min(500, windowHeight * 0.75)
-            && render.mapping.worldToView(blocks.noordermeer.position.y) > Math.min(500, windowHeight * 0.75)
-        ) {
-            blocksHavePassedContentArea = true;
-            options.callbacks.end();
+    // function toggleMobileView() {
+    //     updateWindowSize();
+    //     resizeWalls();
+    //     reInsertBlock(blocks.joris, 'joris');
+    //     reInsertBlock(blocks.noordermeer, 'noordermeer');
+    // }
 
-            if (!isMobile) {
-                introHasRun = true;
-                options.callbacks.endOnMobile();
-            }
-            // else {
-            //     removeTouchEvents();
-            // }
-        }
-
-        if (!introHasRun
-            && isMobile
-            && render.mapping.worldToView(blocks.joris.position.y) > windowHeight * 1.5
-            && render.mapping.worldToView(blocks.noordermeer.position.y) > windowHeight * 1.5
-        ) {
-            introHasRun = true;
-            options.callbacks.endOnMobile();
-            // stopEngine();
-        }
-    }
-
-    function resizeCanvas() {
-        // if (window.innerWidth < 1024 && runner.enabled && introHasRun) {
-        //     stopEngine();
-        //     toggleMobileView();
-        // } else if (window.innerWidth >= 1024 && !runner.enabled) {
-        //     startEngine();
-        //     toggleMobileView();
-        //     return;
-        // }
-
-        if (window.innerWidth < 1024) {
-            toggleMobileView();
-            return;
-        }
-
-        if (windowHeight > window.innerHeight) {
-            // Push up the blocks on resize
-            DomBody.applyForce(blocks.joris,
-                {x: blocks.joris.position.x, y: blocks.joris.position.y},
-                {x: 0, y: -0.03},
-            );
-            DomBody.applyForce(blocks.noordermeer,
-                {x: blocks.noordermeer.position.x, y: blocks.noordermeer.position.y},
-                {x: 0, y: -0.07},
-            );
-
-            setTimeout(resizeWalls, 300);
-        } else {
-            resizeWalls();
-        }
-
-        updateWindowSize();
-
-        engine.world.gravity.y = isMobile ? -1 : 1;
-    }
-
-    function updateWindowSize() {
-        windowHeight = window.innerHeight;
-        windowWidth = window.innerWidth;
-        isMobile = windowWidth < 1024;
-    }
-
-    function resizeWalls() {
-        Matter.Composite.remove(world, [
-            blocks.wallLeft, blocks.wallRight, blocks.wallBottom,
-        ]);
-
-        blockData = calculateBlockData();
-
-        blocks.wallBottom = wallBody(blockData.wallBottom);
-        blocks.wallLeft = wallBody(blockData.wallLeft);
-        blocks.wallRight = wallBody(blockData.wallRight);
-
-        World.add(world, [
-            blocks.wallLeft, blocks.wallRight, blocks.wallBottom,
-        ]);
-    }
-
-    function toggleMobileView() {
-        updateWindowSize();
-        resizeWalls();
-        reInsertBlock(blocks.joris, 'joris');
-        reInsertBlock(blocks.noordermeer, 'noordermeer');
-    }
-
-    function reInsertBlock(block, blockKey) {
-        Matter.Composite.remove(world, block);
-        blockData[blockKey].element.style = '';
-        blockData = calculateBlockData();
-        blocks[blockKey] = domBody(blockData[blockKey]);
-        block = blocks[blockKey];
-        World.add(world, block);
-        // DomBody.setPosition(block, {
-        //     x: render.mapping.viewToWorld(blockData.x),
-        //     y: render.mapping.viewToWorld(blockData.y),
-        // });
-        if (blockData[blockKey].rotation) {
-            DomBody.rotate(block, blockData[blockKey].rotation - block.angle);
-        }
-    }
+    // function reInsertBlock(block, blockKey) {
+    //     Matter.Composite.remove(world, block);
+    //     blockData[blockKey].element.style = '';
+    //     blockData = calculateBlockData();
+    //     blocks[blockKey] = domBody(blockData[blockKey]);
+    //     block = blocks[blockKey];
+    //     World.add(world, block);
+    //     // DomBody.setPosition(block, {
+    //     //     x: render.mapping.viewToWorld(blockData.x),
+    //     //     y: render.mapping.viewToWorld(blockData.y),
+    //     // });
+    //     if (blockData[blockKey].rotation) {
+    //         DomBody.rotate(block, blockData[blockKey].rotation - block.angle);
+    //     }
+    // }
 
     // function stopEngine() {
     //     Runner.stop(runner, engine);
