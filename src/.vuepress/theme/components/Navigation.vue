@@ -1,11 +1,6 @@
 <script>
     export default {
         name: 'Navigation',
-        methods: {
-            clicked() {
-                console.log('clicked!')
-            }
-        }
     };
 </script>
 
@@ -23,8 +18,7 @@
             class="round-link hover:bg-green"
             active-class="bg-green"
         >
-
-                Work
+            Work
         </router-link>
     </nav>
 </template>

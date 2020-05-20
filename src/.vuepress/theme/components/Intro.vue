@@ -13,29 +13,8 @@
         },
         mounted() {
             this.runIntro();
-
-            // if(this.$site.themeConfig.runIntroOnPages.includes(this.$page.path)) {
-            //     // Run the intro on mobile and desktop on these pages
-            //     this.runIntro();
-            // } else if (window.innerWidth >= 1024) {
-            //     // Run the intro on desktop, but show content instantly
-            //     // on all other pages
-            //     this.runIntro();
-            //     this.$emit('end');
-            // } else {
-            //     // Do only run intro on other pages if the window
-            //     // is being resized
-            //     window.addEventListener('resize', this.checkIfIntroShouldRun);
-            //     this.$emit('end');
-            // }
         },
         methods: {
-            // checkIfIntroShouldRun: debounce(200, function() {
-            //     if(window.innerWidth >= 1024) {
-            //         this.runIntro();
-            //         window.removeEventListener('resize', this.checkIfIntroShouldRun);
-            //     }
-            // }),
             runIntro() {
                 runIntro({
                     elements: {
@@ -70,7 +49,7 @@
         :class="{'opacity-0': !initialised, 'pointer-events-none': !isDragging }"
     >
         <div id="debug" class="absolute" />
-<!--        {{ // isDragging }}-->
+        <!--        {{ // isDragging }}-->
         <span
             ref="joris"
             class="name select-none pointer-events-auto"
@@ -87,7 +66,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
     .touch-action-none {
         touch-action: none;
     }

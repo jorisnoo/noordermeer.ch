@@ -32,7 +32,7 @@ export function getBlockConfig(elements) {
             collisionFilter: {mask: isMobile ? 0x0001 : 0x0001 | 0x0002 | 0x0004},
         },
         wallTop: {
-            x: windowWidth * 0.5, y: 15, width: windowWidth, height: 1,
+            x: windowWidth * 0.5, y: 14, width: windowWidth, height: 1,
             collisionFilter: {mask: isMobile ? 0x0001 | 0x0002 : 0x0001},
         },
         wallDoubleTop: {

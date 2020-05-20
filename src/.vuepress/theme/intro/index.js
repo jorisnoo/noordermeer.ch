@@ -1,7 +1,6 @@
 import Matter from 'matter-js';
 import 'matter-dom-plugin';
 import {throttle, debounce} from 'throttle-debounce';
-import {decycle} from 'json-decycle';
 import {fixMouseUpTouchEvent} from "./touchmouse";
 import {getBlockConfig, domBodyConstructor, wallBodyConstructor, getDomElementSizes} from "./blocks";
 
@@ -14,7 +13,6 @@ export default function runIntro(options) {
         Events = Matter.Events,
         RenderDom = Matter.RenderDom,
         DomBody = Matter.DomBody,
-        Body = Matter.Body,
         DomMouseConstraint = Matter.DomMouseConstraint,
         Mouse = Matter.Mouse;
 
@@ -28,7 +26,6 @@ export default function runIntro(options) {
         blocks: {},
         walls: {},
         domSizes: getDomElementSizes(options.elements),
-        // isOnMobile: isMobile(),
     };
 
     // create engine
@@ -133,24 +130,24 @@ export default function runIntro(options) {
         introState.domSizes = newDomSizes;
     };
 
-    const resizeWorld = () => {
+    const resizeWorld = debounce(200, () => {
         resizeWalls();
         resizeBlocks();
         setGravity();
-    };
+    });
 
     // Listen to window resize
-    window.addEventListener('resize', debounce(200, resizeWorld));
+    window.addEventListener('resize', resizeWorld);
 
 
     /*
      * Catch fleeing blocks
      */
-    const catchFleeingBlocks = () => {
+    const catchFleeingBlocks = throttle(500, () => {
         ['joris', 'noordermeer', 'webDevelopment'].forEach(block => {
             if (Math.abs(render.mapping.worldToView(introState.blocks[block].position.y)) > window.innerHeight * 3) {
 
-                if(block === 'webDevelopment') {
+                if (block === 'webDevelopment') {
                     // We'll loose "webDevelopment" once its out
                     Matter.Composite.remove(world, introState.blocks[block]);
                 } else {
@@ -164,155 +161,31 @@ export default function runIntro(options) {
                         DomBody.rotate(introState.blocks[block], introState.blockData[block].rotation - introState.blocks[block].angle);
                     }
                 }
-
             }
         });
-    };
+    });
 
-    Events.on(runner, 'tick', throttle(500, catchFleeingBlocks));
+    Events.on(runner, 'tick', catchFleeingBlocks);
 
+    /*
+     * Wait for blocks to reach the middle of the page
+     */
+    const checkIfBlocksHavePassedCenter = throttle(500, () => {
+        if (
+            (isMobile()
+                && render.mapping.worldToView(introState.blocks.joris.position.y) < window.innerHeight * 0.5
+                && render.mapping.worldToView(introState.blocks.noordermeer.position.y) < window.innerHeight * 0.5)
+            ||
+            (!isMobile()
+                && render.mapping.worldToView(introState.blocks.joris.position.y) > window.innerHeight * 0.5
+                && render.mapping.worldToView(introState.blocks.noordermeer.position.y) > window.innerHeight * 0.5)
+        ) {
+            options.callbacks.end();
+            Events.off(runner, 'tick', checkIfBlocksHavePassedCenter);
+        }
+    });
 
-    // TODO
-    // function checkBlockPositions() {
-    //
-    //     // Remove the "Web Development" block once it fell down
-    //     if (!webDevLeft && Math.abs(render.mapping.worldToView(blocks.webDevelopment.position.y)) > windowHeight * 3) {
-    //         Matter.Composite.remove(world, blocks.webDevelopment);
-    //         console.log('webdev left', blocks.webDevelopment.position.y);
-    //         webDevLeft = true;
-    //         // todo: hide dom element
-    //         // options.callbacks.removeWebdev();
-    //     }
-    //
-    //     // Revert the positions of the others in case the fall down
-    //     if (Math.abs(render.mapping.worldToView(blocks.joris.position.y)) > windowHeight * 3) {
-    //         reInsertBlock(blocks.joris, 'joris');
-    //     }
-    //     if (Math.abs(render.mapping.worldToView(blocks.noordermeer.position.y)) > windowHeight * 3) {
-    //         reInsertBlock(blocks.noordermeer, 'noordermeer');
-    //     }
-    //
-    //
-    //     // Todo..
-    //     if (!blocksHavePassedContentArea
-    //         && render.mapping.worldToView(blocks.joris.position.y) > Math.min(500, windowHeight * 0.75)
-    //         && render.mapping.worldToView(blocks.noordermeer.position.y) > Math.min(500, windowHeight * 0.75)
-    //     ) {
-    //         blocksHavePassedContentArea = true;
-    //         options.callbacks.end();
-    //
-    //         if (!isMobile) {
-    //             introHasRun = true;
-    //             options.callbacks.endOnMobile();
-    //         }
-    //         // else {
-    //         //     removeTouchEvents();
-    //         // }
-    //     }
-    //
-    //     if (!introHasRun
-    //         && isMobile
-    //         && render.mapping.worldToView(blocks.joris.position.y) > windowHeight * 1.5
-    //         && render.mapping.worldToView(blocks.noordermeer.position.y) > windowHeight * 1.5
-    //     ) {
-    //         introHasRun = true;
-    //         options.callbacks.endOnMobile();
-    //         // stopEngine();
-    //     }
-    // }
-
-    // function resizeCanvas() {
-    //     // if (window.innerWidth < 1024 && runner.enabled && introHasRun) {
-    //     //     stopEngine();
-    //     //     toggleMobileView();
-    //     // } else if (window.innerWidth >= 1024 && !runner.enabled) {
-    //     //     startEngine();
-    //     //     toggleMobileView();
-    //     //     return;
-    //     // }
-    //
-    //     if (window.innerWidth < 1024) {
-    //         toggleMobileView();
-    //         return;
-    //     }
-    //
-    //     if (windowHeight > window.innerHeight) {
-    //         // Push up the blocks on resize
-    //         DomBody.applyForce(blocks.joris,
-    //             {x: blocks.joris.position.x, y: blocks.joris.position.y},
-    //             {x: 0, y: -0.03},
-    //         );
-    //         DomBody.applyForce(blocks.noordermeer,
-    //             {x: blocks.noordermeer.position.x, y: blocks.noordermeer.position.y},
-    //             {x: 0, y: -0.07},
-    //         );
-    //
-    //         setTimeout(resizeWalls, 300);
-    //     } else {
-    //         resizeWalls();
-    //     }
-    //
-    //     updateWindowSize();
-    // }
-
-
-    // function toggleMobileView() {
-    //     updateWindowSize();
-    //     resizeWalls();
-    //     reInsertBlock(blocks.joris, 'joris');
-    //     reInsertBlock(blocks.noordermeer, 'noordermeer');
-    // }
-
-    // function reInsertBlock(block, blockKey) {
-    //     Matter.Composite.remove(world, block);
-    //     blockData[blockKey].element.style = '';
-    //     blockData = calculateBlockData();
-    //     blocks[blockKey] = domBody(blockData[blockKey]);
-    //     block = blocks[blockKey];
-    //     World.add(world, block);
-    //     // DomBody.setPosition(block, {
-    //     //     x: render.mapping.viewToWorld(blockData.x),
-    //     //     y: render.mapping.viewToWorld(blockData.y),
-    //     // });
-    //     if (blockData[blockKey].rotation) {
-    //         DomBody.rotate(block, blockData[blockKey].rotation - block.angle);
-    //     }
-    // }
-
-    // function stopEngine() {
-    //     Runner.stop(runner, engine);
-    //     RenderDom.stop(render);
-    //     runner.enabled = false;
-    //     removeTouchEvents();
-    //     // Stop tick event
-    //     Events.off(runner, 'tick', throttle(500, checkBlockPositions));
-    // }
-
-    // function startEngine() {
-    //     RenderDom.run(render);
-    //     Runner.run(runner, engine);
-    //     runner.enabled = true;
-    //     addTouchEvents();
-    //     // Bind tick event
-    //     Events.on(runner, 'tick', throttle(500, checkBlockPositions));
-    // }
-
-    // function addTouchEvents() {
-    // if(mouse) {
-    //     mouse.element.add('touchstart', mouse.mousedown);
-    //     mouse.element.add('touchend', mouse.mouseup);
-    //     mouse.element.add('touchmove', mouse.mousemove);
-    // }
-    // }
-
-    // function removeTouchEvents() {
-    // console.log('touch removed 2')
-    // if (mouse) {
-    //     mouse.element.removeEventListener('touchstart', mouse.mousedown);
-    //     mouse.element.removeEventListener('touchend', mouse.mouseup);
-    // mouse.element.removeEventListener('touchmove', mouse.mousemove);
-    // }
-    // }
+    Events.on(runner, 'tick', checkIfBlocksHavePassedCenter);
 }
 
 
