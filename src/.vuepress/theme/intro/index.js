@@ -83,7 +83,7 @@ export default function runIntro(options) {
         return {
             wallBottom: wallBody(blockData.wallBottom),
             wallTop: wallBody(blockData.wallTop),
-            wallDoubleTop: wallBody(blockData.wallDoubleTop),
+            // wallDoubleTop: wallBody(blockData.wallDoubleTop),
             wallLeft: wallBody(blockData.wallLeft),
             wallRight: wallBody(blockData.wallRight),
         };
@@ -142,8 +142,34 @@ export default function runIntro(options) {
     // Listen to window resize
     window.addEventListener('resize', debounce(200, resizeWorld));
 
-    // check for block positions
-    // Events.on(runner, 'tick', throttle(500, checkBlockPositions));
+
+    /*
+     * Catch fleeing blocks
+     */
+    const catchFleeingBlocks = () => {
+        ['joris', 'noordermeer', 'webDevelopment'].forEach(block => {
+            if (Math.abs(render.mapping.worldToView(introState.blocks[block].position.y)) > window.innerHeight * 3) {
+
+                if(block === 'webDevelopment') {
+                    // We'll loose "webDevelopment" once its out
+                    Matter.Composite.remove(world, introState.blocks[block]);
+                } else {
+
+                    introState.blockData = calculateBlockData();
+                    DomBody.setPosition(introState.blocks[block], {
+                        x: render.mapping.viewToWorld(introState.blockData[block].x),
+                        y: render.mapping.viewToWorld(introState.blockData[block].y),
+                    });
+                    if (introState.blockData[block].rotation) {
+                        DomBody.rotate(introState.blocks[block], introState.blockData[block].rotation - introState.blocks[block].angle);
+                    }
+                }
+
+            }
+        });
+    };
+
+    Events.on(runner, 'tick', throttle(500, catchFleeingBlocks));
 
 
     // TODO
