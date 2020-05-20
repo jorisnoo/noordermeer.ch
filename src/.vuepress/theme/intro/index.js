@@ -20,12 +20,17 @@ export default function runIntro(options) {
         previousWindowHeight: window.innerHeight,
         blocksHavePassedContentArea: false,
         webDevLeft: false,
+        blockData: {},
+        blocks: {},
+        walls: {},
     };
 
     // create engine
-    let engine = Engine.create({timing: {
-        timeScale: 0.4,
-    }});
+    let engine = Engine.create({
+        timing: {
+            timeScale: 0.4,
+        },
+    });
     let world = engine.world;
 
     const isMobile = () => window.innerWidth < 1024;
@@ -43,26 +48,37 @@ export default function runIntro(options) {
     /*
      * Blocks
      */
-    const blockData = getBlockConfig(options.elements);
+    const calculateBlockData = () => getBlockConfig(options.elements);
     const domBody = domBodyConstructor(render);
     const wallBody = wallBodyConstructor(render);
 
-    let blocks = {
-        joris: domBody(blockData.joris),
-        noordermeer: domBody(blockData.noordermeer),
-        webDevelopment: domBody(blockData.webDevelopment),
-        wallBottom: wallBody(blockData.wallBottom),
-        wallTop: wallBody(blockData.wallTop),
-        wallLeft: wallBody(blockData.wallLeft),
-        wallRight: wallBody(blockData.wallRight),
+    let blocks = (blockData) => {
+        return {
+            joris: domBody(blockData.joris),
+            noordermeer: domBody(blockData.noordermeer),
+            webDevelopment: domBody(blockData.webDevelopment),
+        };
     };
 
-    World.add(world, Object.values(blocks));
+    let wallBodies = (blockData) => {
+        return {
+            wallBottom: wallBody(blockData.wallBottom),
+            wallTop: wallBody(blockData.wallTop),
+            wallLeft: wallBody(blockData.wallLeft),
+            wallRight: wallBody(blockData.wallRight),
+        };
+    };
+
+    introState.blockData = calculateBlockData();
+    introState.blocks = blocks(introState.blockData);
+    introState.walls = wallBodies(introState.blockData);
+
+    World.add(world, [...Object.values(introState.blocks), ...Object.values(introState.walls)]);
 
     // Rotate bodies on start
-    DomBody.rotate(blocks.joris, blockData.joris.rotation);
-    DomBody.rotate(blocks.noordermeer, blockData.noordermeer.rotation);
-    DomBody.rotate(blocks.webDevelopment, blockData.webDevelopment.rotation);
+    DomBody.rotate(introState.blocks.joris, introState.blockData.joris.rotation);
+    DomBody.rotate(introState.blocks.noordermeer, introState.blockData.noordermeer.rotation);
+    DomBody.rotate(introState.blocks.webDevelopment, introState.blockData.webDevelopment.rotation);
 
     /*
      * Mouse
@@ -79,8 +95,25 @@ export default function runIntro(options) {
     Events.on(MouseConstraint, 'startdrag', options.callbacks.startdrag);
     Events.on(MouseConstraint, 'enddrag', options.callbacks.enddrag);
 
+    /*
+     * Resize Event
+     */
+    const resizeWalls = () => {
+        Matter.Composite.remove(world, Object.values(introState.walls));
+
+        introState.blockData = calculateBlockData();
+        introState.walls = wallBodies(introState.blockData);
+
+        World.add(world, Object.values(introState.walls));
+    };
+
+    const onResizeCanvas = () => {
+        setGravity();
+        resizeWalls();
+    };
+
     // Listen to window resize
-    // window.addEventListener('resize', debounce(200, resizeCanvas));
+    window.addEventListener('resize', debounce(200, onResizeCanvas));
 
     // check for block positions
     // Events.on(runner, 'tick', throttle(500, checkBlockPositions));
@@ -235,20 +268,20 @@ export default function runIntro(options) {
     // }
 
     // function addTouchEvents() {
-        // if(mouse) {
-        //     mouse.element.add('touchstart', mouse.mousedown);
-        //     mouse.element.add('touchend', mouse.mouseup);
-        //     mouse.element.add('touchmove', mouse.mousemove);
-        // }
+    // if(mouse) {
+    //     mouse.element.add('touchstart', mouse.mousedown);
+    //     mouse.element.add('touchend', mouse.mouseup);
+    //     mouse.element.add('touchmove', mouse.mousemove);
+    // }
     // }
 
     // function removeTouchEvents() {
-        // console.log('touch removed 2')
-        // if (mouse) {
-        //     mouse.element.removeEventListener('touchstart', mouse.mousedown);
-        //     mouse.element.removeEventListener('touchend', mouse.mouseup);
-            // mouse.element.removeEventListener('touchmove', mouse.mousemove);
-        // }
+    // console.log('touch removed 2')
+    // if (mouse) {
+    //     mouse.element.removeEventListener('touchstart', mouse.mousedown);
+    //     mouse.element.removeEventListener('touchend', mouse.mouseup);
+    // mouse.element.removeEventListener('touchmove', mouse.mousemove);
+    // }
     // }
 }
 

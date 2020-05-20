@@ -53,7 +53,7 @@
                 this.initialised = true;
             },
             clearSelection() {
-                // this.isDragging = true;
+                this.isDragging = true;
                 if (window.getSelection) {
                     window.getSelection().removeAllRanges();
                 } else if (document.selection) {
@@ -66,10 +66,11 @@
 
 <template>
     <div
-        class="absolute lg:fixed overflow-hidden inset-x-0 top-0 h-screen z-10 intro-container touch-action-none"
+        class="fixed overflow-hidden inset-0 z-10 intro-container touch-action-none"
         :class="{'opacity-0': !initialised, 'pointer-events-none': !isDragging }"
     >
-        <div id="debug" class="" />
+        <div id="debug" class="absolute" />
+<!--        {{ // isDragging }}-->
         <span
             ref="joris"
             class="name select-none pointer-events-auto"
