@@ -83,6 +83,7 @@ export default function runIntro(options) {
         return {
             wallBottom: wallBody(blockData.wallBottom),
             wallTop: wallBody(blockData.wallTop),
+            wallDoubleTop: wallBody(blockData.wallDoubleTop),
             wallLeft: wallBody(blockData.wallLeft),
             wallRight: wallBody(blockData.wallRight),
         };
