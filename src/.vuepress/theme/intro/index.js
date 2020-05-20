@@ -79,7 +79,7 @@ export default function runIntro(options) {
             {
                 isStatic: true,
                 // Walls only collide with blocks if on desktop
-                collisionFilter: {mask: isMobile ? 0x0001 : 0x0001 | 0x0002},
+                collisionFilter: {mask: isMobile ? 0x0001 | 0x0002 : 0x0001 | 0x0002},
             },
         );
     };
@@ -139,9 +139,10 @@ export default function runIntro(options) {
             blocksHavePassedContentArea = true;
             options.callbacks.end();
             if (!isMobile) {
-                removeTouchEvents();
                 introHasRun = true;
                 options.callbacks.endOnMobile();
+            } else {
+                removeTouchEvents();
             }
         }
 
@@ -152,7 +153,7 @@ export default function runIntro(options) {
         ) {
             introHasRun = true;
             options.callbacks.endOnMobile();
-            stopEngine();
+            // stopEngine();
         }
     }
 
@@ -248,19 +249,20 @@ export default function runIntro(options) {
     }
 
     function addTouchEvents() {
-        if(mouse) {
-            mouse.element.add('touchstart', mouse.mousedown);
-            mouse.element.add('touchend', mouse.mouseup);
-            mouse.element.add('touchmove', mouse.mousemove);
-        }
+        // if(mouse) {
+        //     mouse.element.add('touchstart', mouse.mousedown);
+        //     mouse.element.add('touchend', mouse.mouseup);
+        //     mouse.element.add('touchmove', mouse.mousemove);
+        // }
     }
 
     function removeTouchEvents() {
-        if (mouse) {
-            mouse.element.removeEventListener('touchstart', mouse.mousedown);
-            mouse.element.removeEventListener('touchend', mouse.mouseup);
-            mouse.element.removeEventListener('touchmove', mouse.mousemove);
-        }
+        // console.log('touch removed 2')
+        // if (mouse) {
+        //     mouse.element.removeEventListener('touchstart', mouse.mousedown);
+        //     mouse.element.removeEventListener('touchend', mouse.mouseup);
+            // mouse.element.removeEventListener('touchmove', mouse.mousemove);
+        // }
     }
 }
 

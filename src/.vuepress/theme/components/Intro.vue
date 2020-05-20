@@ -63,7 +63,7 @@
 
 <template>
     <div
-        class="fixed overflow-hidden inset-0 pointer-events-none lg:z-10 intro-container"
+        class="fixed overflow-hidden inset-0 z-10 intro-container touch-action-none"
         :class="{'opacity-0': !initialised}"
     >
         <!--        <div id="debug" class="" />-->
@@ -84,3 +84,9 @@
         >Web Development</span>
     </div>
 </template>
+
+<style>
+    .touch-action-none {
+        /*touch-action: none;*/
+    }
+</style>
