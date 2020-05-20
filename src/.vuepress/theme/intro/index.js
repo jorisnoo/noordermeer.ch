@@ -3,7 +3,7 @@ import 'matter-dom-plugin';
 import {throttle, debounce} from 'throttle-debounce';
 import {decycle} from 'json-decycle';
 import {fixMouseUpTouchEvent} from "./touchmouse";
-import {getBlockConfig, domBodyConstructor, wallBodyConstructor} from "./blocks";
+import {getBlockConfig, domBodyConstructor, wallBodyConstructor, getDomElementSizes} from "./blocks";
 
 export default function runIntro(options) {
     Matter.use('matter-dom-plugin');
@@ -14,6 +14,7 @@ export default function runIntro(options) {
         Events = Matter.Events,
         RenderDom = Matter.RenderDom,
         DomBody = Matter.DomBody,
+        Body = Matter.Body,
         DomMouseConstraint = Matter.DomMouseConstraint,
         Mouse = Matter.Mouse;
 
@@ -26,13 +27,14 @@ export default function runIntro(options) {
         blockData: {},
         blocks: {},
         walls: {},
-        isOnMobile: isMobile(),
+        domSizes: getDomElementSizes(options.elements),
+        // isOnMobile: isMobile(),
     };
 
     // create engine
     let engine = Engine.create({
         timing: {
-            timeScale: 0.4,
+            timeScale: 0.5,
         },
     });
     let world = engine.world;
@@ -86,7 +88,7 @@ export default function runIntro(options) {
         };
     };
 
-    const resetWorld = () => {
+    const initWorld = () => {
         Matter.World.clear(engine.world);
         Matter.Engine.clear(engine);
 
@@ -105,7 +107,7 @@ export default function runIntro(options) {
         DomBody.rotate(introState.blocks.noordermeer, introState.blockData.noordermeer.rotation);
         DomBody.rotate(introState.blocks.webDevelopment, introState.blockData.webDevelopment.rotation);
     };
-    resetWorld();
+    initWorld();
 
     /*
      * Resize Event
@@ -117,19 +119,27 @@ export default function runIntro(options) {
         World.add(world, Object.values(introState.walls));
     };
 
-    const onResizeCanvas = () => {
-        if (isMobile() || !isMobile() && introState.isOnMobile) {
-            resetWorld();
-        } else {
-            resizeWalls();
-        }
+    const resizeBlocks = () => {
+        let newDomSizes = getDomElementSizes(options.elements);
 
+        ['joris', 'noordermeer', 'webDevelopment'].forEach(block => {
+            DomBody.scale(introState.blocks[block],
+                newDomSizes[block].width / introState.domSizes[block].width,
+                newDomSizes[block].height / introState.domSizes[block].height,
+            );
+        });
+
+        introState.domSizes = newDomSizes;
+    };
+
+    const resizeWorld = () => {
+        resizeWalls();
+        resizeBlocks();
         setGravity();
-        introState.isOnMobile = isMobile();
     };
 
     // Listen to window resize
-    window.addEventListener('resize', debounce(200, onResizeCanvas));
+    window.addEventListener('resize', debounce(200, resizeWorld));
 
     // check for block positions
     // Events.on(runner, 'tick', throttle(500, checkBlockPositions));

@@ -8,28 +8,28 @@ export function getBlockConfig(elements) {
     return {
         joris: {
             x: isMobile ? windowWidth * 0.3 : 32 + elements.joris.offsetWidth / 2,
-            y: isMobile ? windowHeight + windowHeight * 0.7 : -windowHeight * 0.7,
+            y: isMobile ? windowHeight + windowHeight * 0.7 : -windowHeight * 0.3,
             rotation: Math.PI / 12,
             collisionFilter: {category: 0x0002},
             element: elements.joris,
         },
         noordermeer: {
             x: isMobile ? windowWidth * 0.6 : document.querySelector('#right-side').offsetLeft - 32 + elements.noordermeer.offsetWidth / 2,
-            y: isMobile ? windowHeight + 500 : -windowHeight,
+            y: isMobile ? windowHeight + 500 : -windowHeight * 0.6,
             rotation: -Math.PI / 6,
             collisionFilter: {category: 0x0002},
             element: elements.noordermeer,
         },
         webDevelopment: {
             x: windowWidth * 0.5,
-            y: isMobile ? windowHeight + windowHeight * 0.3 : -windowHeight * 0.3,
+            y: isMobile ? windowHeight + windowHeight * 0.3 : -windowHeight * 1,
             rotation: Math.PI / 6,
-            collisionFilter: {category: isMobile ? 0x0004 : 0x0002}, // 0x0004
+            collisionFilter: {category: 0x0004}, // 0x0004
             element: elements.webDevelopment,
         },
         wallBottom: {
             x: windowWidth * 0.5, y: windowHeight - 22, width: windowWidth, height: 1,
-            collisionFilter: {mask: isMobile ? 0x0001 : 0x0001 | 0x0002},
+            collisionFilter: {mask: isMobile ? 0x0001 : 0x0001 | 0x0002 | 0x0004},
         },
         wallTop: {
             x: windowWidth * 0.5, y: 15, width: windowWidth, height: 1,
@@ -63,4 +63,21 @@ export function domBodyConstructor(render) {
         collisionFilter: blockData.collisionFilter,
         frictionAir: 0.1,
     });
+}
+
+export function getDomElementSizes(elements) {
+    return {
+        joris: {
+            width: elements.joris.offsetWidth,
+            height: elements.joris.offsetHeight,
+        },
+        noordermeer: {
+            width: elements.noordermeer.offsetWidth,
+            height: elements.noordermeer.offsetHeight,
+        },
+        webDevelopment: {
+            width: elements.webDevelopment.offsetWidth,
+            height: elements.webDevelopment.offsetHeight,
+        },
+    };
 }
