@@ -32,7 +32,7 @@ export function getBlockConfig(elements) {
             collisionFilter: {mask: isMobile ? 0x0001 : 0x0001 | 0x0002},
         },
         wallTop: {
-            x: windowWidth * 0.5, y: 22, width: windowWidth, height: 1,
+            x: windowWidth * 0.5, y: 15, width: windowWidth, height: 1,
             collisionFilter: {mask: isMobile ? 0x0001 | 0x0002 : 0x0001},
         },
         wallLeft: {
@@ -57,10 +57,15 @@ export function wallBodyConstructor(render) {
 }
 
 export function domBodyConstructor(render) {
-    return (blockData) => Matter.DomBodies.block(blockData.x, blockData.y, {
-        Dom: {render, element: blockData.element},
-        chamfer: {radius: 6},
-        collisionFilter: blockData.collisionFilter,
-        frictionAir: 0.1,
-    });
+    return (blockData) => {
+
+        // blockData.element.style = '';
+
+        return Matter.DomBodies.block(blockData.x, blockData.y, {
+            Dom: {render, element: blockData.element},
+            chamfer: {radius: 6},
+            collisionFilter: blockData.collisionFilter,
+            frictionAir: 0.1,
+        });
+    };
 }

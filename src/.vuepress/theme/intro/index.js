@@ -72,8 +72,12 @@ export default function runIntro(options) {
     introState.blockData = calculateBlockData();
     introState.blocks = blocks(introState.blockData);
     introState.walls = wallBodies(introState.blockData);
+    console.log(introState.walls, Array.from(introState.walls))
 
-    World.add(world, [...Object.values(introState.blocks), ...Object.values(introState.walls)]);
+    World.add(world, [
+        introState.blocks.joris, introState.blocks.noordermeer,
+        introState.walls.wallBottom, introState.walls.wallTop, introState.walls.wallLeft, introState.walls.wallRight,
+    ]);
 
     // Rotate bodies on start
     DomBody.rotate(introState.blocks.joris, introState.blockData.joris.rotation);
@@ -100,16 +104,41 @@ export default function runIntro(options) {
      */
     const resizeWalls = () => {
         Matter.Composite.remove(world, Object.values(introState.walls));
-
-        introState.blockData = calculateBlockData();
         introState.walls = wallBodies(introState.blockData);
-
         World.add(world, Object.values(introState.walls));
     };
 
+    const resetAllBlocks = () => {
+        Matter.Composite.remove(world, introState.blocks.joris);
+        // introState.blockData.joris.element.style = '';
+        // introState.blockData = calculateBlockData();
+
+        // let joris = domBody(introState.blockData.joris);
+
+        // let blockData = introState.blockData.joris;
+        let joris = Matter.DomBodies.block(200, 600, {
+            Dom: {render, element: options.elements.joris},
+            chamfer: {radius: 6},
+            frictionAir: 0.1,
+        });
+        // introState.blocks = blocks(introState.blockData);
+        World.add(world, joris);
+        // World.add(world, introState.blocks.joris);
+        //     introState.webDevLeft
+        //         ? [introState.blocks.joris, introState.blocks.noordermeer]
+        //         : Object.values(introState.blocks),
+        // );
+    };
+
     const onResizeCanvas = () => {
+        introState.blockData = calculateBlockData();
+
         setGravity();
         resizeWalls();
+
+        if(isMobile()) {
+            resetAllBlocks();
+        }
     };
 
     // Listen to window resize
@@ -200,31 +229,9 @@ export default function runIntro(options) {
     //     }
     //
     //     updateWindowSize();
-    //
-    //     engine.world.gravity.y = isMobile ? -1 : 1;
     // }
 
-    // function updateWindowSize() {
-    //     windowHeight = window.innerHeight;
-    //     windowWidth = window.innerWidth;
-    //     isMobile = windowWidth < 1024;
-    // }
 
-    // function resizeWalls() {
-    //     Matter.Composite.remove(world, [
-    //         blocks.wallLeft, blocks.wallRight, blocks.wallBottom,
-    //     ]);
-    //
-    //     blockData = calculateBlockData();
-    //
-    //     blocks.wallBottom = wallBody(blockData.wallBottom);
-    //     blocks.wallLeft = wallBody(blockData.wallLeft);
-    //     blocks.wallRight = wallBody(blockData.wallRight);
-    //
-    //     World.add(world, [
-    //         blocks.wallLeft, blocks.wallRight, blocks.wallBottom,
-    //     ]);
-    // }
 
     // function toggleMobileView() {
     //     updateWindowSize();
