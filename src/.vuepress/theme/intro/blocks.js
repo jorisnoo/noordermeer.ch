@@ -57,7 +57,7 @@ export function wallBodyConstructor(render) {
 }
 
 export function domBodyConstructor(render) {
-    return (blockData) => {
+    return function(blockData) {
 
         // blockData.element.style = '';
 

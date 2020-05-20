@@ -49,18 +49,38 @@ export default function runIntro(options) {
      * Blocks
      */
     const calculateBlockData = () => getBlockConfig(options.elements);
-    const domBody = domBodyConstructor(render);
-    const wallBody = wallBodyConstructor(render);
 
-    let blocks = (blockData) => {
+    function domBody(blockData) {
+        return Matter.DomBodies.block(blockData.x, blockData.y, {
+            Dom: {render, element: blockData.element},
+            chamfer: {radius: 6},
+            collisionFilter: blockData.collisionFilter,
+            frictionAir: 0.1,
+        });
+    }
+
+    function wallBody(blockData) {
+        return Matter.Bodies.rectangle(
+            render.mapping.viewToWorld(blockData.x),
+            render.mapping.viewToWorld(blockData.y),
+            blockData.width === 1 ? 1 : parseFloat(render.mapping.viewToWorld(blockData.width)),
+            blockData.height === 1 ? 1 : parseFloat(render.mapping.viewToWorld(blockData.height)),
+            {
+                isStatic: true,
+                collisionFilter: blockData.collisionFilter,
+            },
+        );
+    }
+
+    function blocks(blockData) {
         return {
             joris: domBody(blockData.joris),
             noordermeer: domBody(blockData.noordermeer),
-            webDevelopment: domBody(blockData.webDevelopment),
+            // webDevelopment: domBody(blockData.webDevelopment),
         };
     };
 
-    let wallBodies = (blockData) => {
+    function wallBodies(blockData) {
         return {
             wallBottom: wallBody(blockData.wallBottom),
             wallTop: wallBody(blockData.wallTop),
@@ -72,17 +92,22 @@ export default function runIntro(options) {
     introState.blockData = calculateBlockData();
     introState.blocks = blocks(introState.blockData);
     introState.walls = wallBodies(introState.blockData);
-    console.log(introState.walls, Array.from(introState.walls))
 
     World.add(world, [
-        introState.blocks.joris, introState.blocks.noordermeer,
-        introState.walls.wallBottom, introState.walls.wallTop, introState.walls.wallLeft, introState.walls.wallRight,
+        introState.blocks.joris,
+        introState.blocks.noordermeer,
+        //introState.blocks.webDevelopment,
+        // ...Object.values(introState.walls),
+        introState.walls.wallBottom,
+        introState.walls.wallLeft,
+        introState.walls.wallRight,
+        introState.walls.wallTop,
     ]);
 
     // Rotate bodies on start
-    DomBody.rotate(introState.blocks.joris, introState.blockData.joris.rotation);
-    DomBody.rotate(introState.blocks.noordermeer, introState.blockData.noordermeer.rotation);
-    DomBody.rotate(introState.blocks.webDevelopment, introState.blockData.webDevelopment.rotation);
+    // DomBody.rotate(joris, introState.blockData.joris.rotation);
+    // DomBody.rotate(introState.blocks.noordermeer, introState.blockData.noordermeer.rotation);
+    // DomBody.rotate(introState.blocks.webDevelopment, introState.blockData.webDevelopment.rotation);
 
     /*
      * Mouse
@@ -103,26 +128,29 @@ export default function runIntro(options) {
      * Resize Event
      */
     const resizeWalls = () => {
-        Matter.Composite.remove(world, Object.values(introState.walls));
+        // Matter.Composite.remove(world, Object.values(introState.walls));
         introState.walls = wallBodies(introState.blockData);
         World.add(world, Object.values(introState.walls));
     };
 
-    const resetAllBlocks = () => {
-        Matter.Composite.remove(world, introState.blocks.joris);
-        // introState.blockData.joris.element.style = '';
-        // introState.blockData = calculateBlockData();
+    function resetAllBlocks() {
+        // Matter.Composite.remove(world,
+        //     introState.blocks.joris //, introState.blocks.noordermeer, introState.blocks.webDevelopment,
+        // );
+        Matter.Composite.clear(world);
+        resizeWalls();
 
-        // let joris = domBody(introState.blockData.joris);
+        introState.blockData = calculateBlockData();
+        introState.blocks = blocks(introState.blockData);
 
         // let blockData = introState.blockData.joris;
-        let joris = Matter.DomBodies.block(200, 600, {
-            Dom: {render, element: options.elements.joris},
-            chamfer: {radius: 6},
-            frictionAir: 0.1,
-        });
-        // introState.blocks = blocks(introState.blockData);
-        World.add(world, joris);
+        // let joris2 = Matter.DomBodies.block(200, 600, {
+        //     Dom: {render, element: options.elements.joris},
+        //     chamfer: {radius: 6},
+        //     frictionAir: 0.1,
+        // });
+        // // introState.blocks = blocks(introState.blockData);
+        World.add(world, introState.blocks.joris);
         // World.add(world, introState.blocks.joris);
         //     introState.webDevLeft
         //         ? [introState.blocks.joris, introState.blocks.noordermeer]
@@ -130,16 +158,29 @@ export default function runIntro(options) {
         // );
     };
 
-    const onResizeCanvas = () => {
-        introState.blockData = calculateBlockData();
+    // const onResizeCanvas = () => {
+    //     // introState.blockData = calculateBlockData();
+    //
+    //     setGravity();
+    //     // resizeWalls();
+    //
+    //     // if (isMobile()) {
+    //     //     resetAllBlocks();
+    //     // }
+    // };
 
-        setGravity();
-        resizeWalls();
 
-        if(isMobile()) {
-            resetAllBlocks();
-        }
-    };
+    function onResizeCanvas() {
+        resetAllBlocks();
+        // Matter.Composite.remove(world, joris);
+        // let joris2 = Matter.DomBodies.block(200, 600, {
+        //     Dom: {render, element: options.elements.joris},
+        //     chamfer: {radius: 6},
+        //     frictionAir: 0.1,
+        // });
+        // // // introState.blocks = blocks(introState.blockData);
+        // World.add(world, joris2);
+    }
 
     // Listen to window resize
     window.addEventListener('resize', debounce(200, onResizeCanvas));
@@ -230,7 +271,6 @@ export default function runIntro(options) {
     //
     //     updateWindowSize();
     // }
-
 
 
     // function toggleMobileView() {
