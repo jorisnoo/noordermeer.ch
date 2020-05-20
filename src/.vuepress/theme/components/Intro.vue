@@ -48,7 +48,7 @@
         class="fixed overflow-hidden inset-0 z-10 intro-container touch-action-none"
         :class="{'opacity-0': !initialised, 'pointer-events-none': !isDragging }"
     >
-        <div id="debug" class="absolute" />
+        <!--        <div id="debug" class="absolute" />-->
         <!--        {{ // isDragging }}-->
         <span
             ref="joris"
