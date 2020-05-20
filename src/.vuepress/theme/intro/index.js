@@ -40,23 +40,23 @@ export default function runIntro(options) {
         return {
             joris: {
                 x: isMobile ? windowWidth * 0.3 : 32 + options.elements.joris.offsetWidth / 2,
-                y: -600,
+                y: -windowHeight * 0.7,
                 rotation: Math.PI / 12,
                 collisionFilter: {category: 0x0002},
                 element: options.elements.joris,
             },
             noordermeer: {
                 x: isMobile ? windowWidth * 0.6 : document.querySelector('#right-side').offsetLeft - 32 + options.elements.noordermeer.offsetWidth / 2,
-                y: isMobile ? -500 : -800,
+                y: isMobile ? -500 : - windowHeight,
                 rotation: -Math.PI / 6,
                 collisionFilter: {category: 0x0002},
                 element: options.elements.noordermeer,
             },
             webDevelopment: {
                 x: windowWidth * 0.5,
-                y: -300,
+                y: -windowHeight * 0.3,
                 rotation: Math.PI / 6,
-                collisionFilter: {category: 0x0004},
+                collisionFilter: {category: isMobile ? 0x0002 : 0x0002}, // 0x0004
                 element: options.elements.webDevelopment,
             },
             wallBottom: {x: windowWidth * 0.5, y: windowHeight - 22, width: windowWidth, height: 1},
