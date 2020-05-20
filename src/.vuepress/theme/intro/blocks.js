@@ -57,15 +57,10 @@ export function wallBodyConstructor(render) {
 }
 
 export function domBodyConstructor(render) {
-    return function(blockData) {
-
-        // blockData.element.style = '';
-
-        return Matter.DomBodies.block(blockData.x, blockData.y, {
-            Dom: {render, element: blockData.element},
-            chamfer: {radius: 6},
-            collisionFilter: blockData.collisionFilter,
-            frictionAir: 0.1,
-        });
-    };
+    return (blockData) => Matter.DomBodies.block(blockData.x, blockData.y, {
+        Dom: {render, element: blockData.element},
+        chamfer: {radius: 6},
+        collisionFilter: blockData.collisionFilter,
+        frictionAir: 0.1,
+    });
 }
