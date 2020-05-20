@@ -70,16 +70,14 @@
         :class="{'opacity-0': !initialised, 'pointer-events-none': !isDragging }"
     >
 <!--        {{ isDragging }}-->
-        <!--        <div id="debug" class="" />-->
+                <div id="debug" class="" />
         <span
             ref="joris"
             class="name select-none pointer-events-auto"
-            :class="[introHasRun ? 'hidden lg:inline-block' : '']"
         >Joris</span>
         <span
             ref="noordermeer"
             class="name select-none pointer-events-auto"
-            :class="[introHasRun ? 'hidden lg:inline-block' : '']"
         >Noordermeer</span>
         <span
             v-if="showWebdev"
