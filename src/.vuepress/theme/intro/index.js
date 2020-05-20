@@ -99,6 +99,23 @@ export default function runIntro(options) {
 
     // Add mouse control
     let mouse = Mouse.create(document.body);
+
+    mouse.element.removeEventListener('touchend', mouse.mouseup);
+    mouse.mouseup = function(event) {
+        var position = Mouse._getRelativeMousePosition(event, mouse.element, mouse.pixelRatio);
+
+        mouse.button = -1;
+        mouse.absolute.x = position.x;
+        mouse.absolute.y = position.y;
+        mouse.position.x = mouse.absolute.x * mouse.scale.x + mouse.offset.x;
+        mouse.position.y = mouse.absolute.y * mouse.scale.y + mouse.offset.y;
+        mouse.mouseupPosition.x = mouse.position.x;
+        mouse.mouseupPosition.y = mouse.position.y;
+        mouse.sourceEvents.mouseup = event;
+    };
+
+    mouse.element.addEventListener('touchend', mouse.mouseup);
+
     let MouseConstraint = DomMouseConstraint.create(engine, {
         mouse: mouse,
         constraint: {stiffness: 0.003},
@@ -112,6 +129,7 @@ export default function runIntro(options) {
 
     // Bind mouse events
     Events.on(MouseConstraint, 'startdrag', options.callbacks.startdrag);
+    Events.on(MouseConstraint, 'enddrag', options.callbacks.enddrag);
 
     // Listen to window resize
     window.addEventListener('resize', debounce(200, resizeCanvas));

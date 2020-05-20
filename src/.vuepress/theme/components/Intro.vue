@@ -9,6 +9,7 @@
                 showWebdev: true,
                 introHasRun: false,
                 initialised: false,
+                isDragging: false,
             };
         },
         mounted() {
@@ -28,13 +29,6 @@
             }
         },
         methods: {
-            clearSelection() {
-                if (window.getSelection) {
-                    window.getSelection().removeAllRanges();
-                } else if (document.selection) {
-                    document.selection.empty();
-                }
-            },
             checkIfIntroShouldRun: debounce(200, function() {
                 if(window.innerWidth >= 1024) {
                     this.runIntro();
@@ -50,12 +44,21 @@
                     },
                     callbacks: {
                         startdrag: this.clearSelection,
+                        enddrag: () => this.isDragging = false,
                         removeWebdev: () => this.showWebdev = false,
                         end: () => this.$emit('end'),
                         endOnMobile: () => this.introHasRun = true,
                     },
                 });
                 this.initialised = true;
+            },
+            clearSelection() {
+                // this.isDragging = true;
+                if (window.getSelection) {
+                    window.getSelection().removeAllRanges();
+                } else if (document.selection) {
+                    document.selection.empty();
+                }
             },
         },
     };
@@ -64,17 +67,18 @@
 <template>
     <div
         class="fixed overflow-hidden inset-0 z-10 intro-container touch-action-none"
-        :class="{'opacity-0': !initialised}"
+        :class="{'opacity-0': !initialised, 'pointer-events-none': !isDragging }"
     >
+<!--        {{ isDragging }}-->
         <!--        <div id="debug" class="" />-->
         <span
             ref="joris"
-            class="name select-none"
+            class="name select-none pointer-events-auto"
             :class="[introHasRun ? 'hidden lg:inline-block' : '']"
         >Joris</span>
         <span
             ref="noordermeer"
-            class="name select-none"
+            class="name select-none pointer-events-auto"
             :class="[introHasRun ? 'hidden lg:inline-block' : '']"
         >Noordermeer</span>
         <span
@@ -87,6 +91,6 @@
 
 <style>
     .touch-action-none {
-        /*touch-action: none;*/
+        touch-action: none;
     }
 </style>
