@@ -25,7 +25,7 @@ export function getBlockConfig(elements) {
             element: elements.noordermeer,
         },
         webDevelopment: {
-            x: isMobile ? windowWidth * 0.5 : windowWidth * (0.2 + 0.1 * (Math.floor(Math.random() * 6) + 1)),
+            x: isMobile ? windowWidth * 0.5 : windowWidth * (0.3 + 0.1 * (Math.floor(Math.random() * 4) + 1)),
             y: isMobile ? windowHeight + noordermeerWidth * 0.5 : -noordermeerWidth * 1.3,
             rotation: Math.PI / 6,
             collisionFilter: {category: 0x0004}, // 0x0004
