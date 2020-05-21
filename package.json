@@ -14,7 +14,8 @@
         "build": "vuepress build src",
         "generate": "npm run build",
         "lint": "eslint --ext .js,.vue .",
-        "lintfix": "eslint --fix --ext .js,.vue ."
+        "lintfix": "eslint --fix --ext .js,.vue .",
+        "ide-helper": "npx tailwindcss build ./src/.vuepress/theme/styles/styles.css -o tailwind.css"
     },
     "dependencies": {
         "@vuepress/plugin-blog": "^1.9.2",
