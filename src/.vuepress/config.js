@@ -45,7 +45,7 @@ module.exports = {
         // Set meta tags
         // See https://github.com/lorisleiva/vuepress-plugin-seo#options for documentation
         'seo': {
-            title: ($page, $site) => ($page.title ? $page.title + ' | ' : '') + $site.title,
+            title: ($page, $site) => ($page.title && $page.frontmatter.home !== true ? $page.title + ' | ' : '') + $site.title,
             description: ($page, $site) => $page.frontmatter.description || $site.description,
             image: ($page, $site) => $site.themeConfig.domain + '/meta/joris_noordermeer_web_development.jpg',
         },
