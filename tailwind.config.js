@@ -22,12 +22,17 @@ module.exports = {
             'fade-out-dark': ['rgba(230,230,230,0.001)', '#000000 20%'],
         },
         fontSize: {
-            base: ['8vw', 1.111111111],
-            md: ['3.84rem', 1.071428571],
-            lg: ['4.375rem', 1.071428571],
+            base: ['4vw', 1.222222222],
+            'md': ['1.8125rem', 1.103448276],
+
+            xl: ['8vw', 1.111111111],
+            '2xl': ['3.84rem', 1.071428571],
+            '3xl': ['4.375rem', 1.071428571],
         },
         letterSpacing: {
             tight: '-.02em',
+            normal: 0,
+            wide: '0.01em',
         },
         extend: {
             padding: {
@@ -35,6 +40,7 @@ module.exports = {
             },
             margin: {
                 '2/9': '0.222222em',
+                '1/2': '0.5em',
             },
             borderWidth: {
                 3: '3px',

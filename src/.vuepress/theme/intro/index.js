@@ -1,6 +1,8 @@
 import Matter from 'matter-js';
 import 'matter-dom-plugin';
 import {throttle, debounce} from 'throttle-debounce';
+import {fixMouseUpTouchEvent} from "./touchmouse";
+import {getBlockConfig, domBodyConstructor, wallBodyConstructor, getDomElementSizes} from "./blocks";
 
 export default function runIntro(options) {
     Matter.use('matter-dom-plugin');
@@ -10,20 +12,33 @@ export default function runIntro(options) {
         World = Matter.World,
         Events = Matter.Events,
         RenderDom = Matter.RenderDom,
-        DomBodies = Matter.DomBodies,
-        Bodies = Matter.Bodies,
         DomBody = Matter.DomBody,
         DomMouseConstraint = Matter.DomMouseConstraint,
         Mouse = Matter.Mouse;
 
-    let windowHeight = window.innerHeight;
-    let windowWidth = window.innerWidth;
-    let isMobile = windowWidth < 1024;
-    let blocksHavePassedContentArea, introHasRun = false;
+    const isMobile = () => window.innerWidth < 1024;
+
+    let state = {
+        previousWindowHeight: window.innerHeight,
+        wasOnMobile: isMobile(),
+        webDevelopmentBlockIsAround: true,
+        blocksHavePassedContentArea: false,
+        blockData: {},
+        blocks: {},
+        walls: {},
+        domSizes: getDomElementSizes(options.elements),
+    };
 
     // create engine
-    let engine = Engine.create({timing: {timeScale: 0.4}});
+    let engine = Engine.create({
+        timing: {
+            timeScale: 0.5,
+        },
+    });
     let world = engine.world;
+
+    const setGravity = () => engine.world.gravity.y = isMobile() ? -1 : 1;
+    setGravity();
 
     // create renderer
     let render = RenderDom.create({engine});
@@ -31,237 +46,166 @@ export default function runIntro(options) {
 
     // create runner
     let runner = Runner.create();
-    startEngine();
+    Runner.run(runner, engine);
 
-    let blockData = {};
-    const calculateBlockData = () => {
-        blockData = {
-            joris: {
-                x: isMobile ? windowWidth * 0.3 : 32 + options.elements.joris.offsetWidth / 2,
-                y: -600,
-                rotation: Math.PI / 12,
-                collisionFilter: {category: 0x0002},
-            },
-            noordermeer: {
-                x: isMobile ? windowWidth * 0.6 : document.querySelector('#right-side').offsetLeft - 32 + options.elements.noordermeer.offsetWidth / 2,
-                y: isMobile ? -500 : -800,
-                rotation: -Math.PI / 6,
-                collisionFilter: {category: 0x0002},
-            },
-            webDevelopment: {
-                x: windowWidth * 0.5,
-                y: -300,
-                rotation: Math.PI / 6,
-                collisionFilter: {category: 0x0004},
-            },
-            wallBottom: {x: windowWidth * 0.5, y: windowHeight - 22, width: windowWidth, height: 1},
-            wallLeft: {x: -1, y: windowHeight * 0.5, width: 1, height: windowHeight},
-            wallRight: {x: windowWidth, y: windowHeight * 0.5, width: 1, height: windowHeight},
-        };
-    };
-    calculateBlockData();
-
-    const domBody = (blockData, element) => {
-        return DomBodies.block(blockData.x, blockData.y, {
-            Dom: {render, element},
-            chamfer: {radius: 6},
-            collisionFilter: blockData.collisionFilter,
-            frictionAir: 0.1,
-        });
-    };
-
-    const wallBody = (blockData) => {
-        return Bodies.rectangle(
-            render.mapping.viewToWorld(blockData.x),
-            render.mapping.viewToWorld(blockData.y),
-            blockData.width === 1 ? 1 : render.mapping.viewToWorld(blockData.width),
-            blockData.height === 1 ? 1 : render.mapping.viewToWorld(blockData.height),
-            {
-                isStatic: true,
-                // Walls only collide with blocks if on desktop
-                collisionFilter: {mask: isMobile ? 0x0001 : 0x0001 | 0x0002},
-            },
-        );
-    };
-
-    let blocks = {
-        // Add objects
-        joris: domBody(blockData.joris, options.elements.joris),
-        noordermeer: domBody(blockData.noordermeer, options.elements.noordermeer),
-        webDevelopment: domBody(blockData.webDevelopment, options.elements.webDevelopment),
-        // Add Walls
-        wallBottom: wallBody(blockData.wallBottom),
-        wallLeft: wallBody(blockData.wallLeft),
-        wallRight: wallBody(blockData.wallRight),
-    };
-
-    World.add(world, Object.values(blocks));
-
-    // Add mouse control
+    /*
+     * Mouse
+     */
     let mouse = Mouse.create(document.body);
-    let MouseConstraint = DomMouseConstraint.create(engine, {
-        mouse: mouse,
-        constraint: {stiffness: 0.003},
-    });
-    World.add(world, MouseConstraint);
+    fixMouseUpTouchEvent(mouse);
 
-    // Rotate bodies on start
-    DomBody.rotate(blocks.joris, blockData.joris.rotation);
-    DomBody.rotate(blocks.noordermeer, blockData.noordermeer.rotation);
-    DomBody.rotate(blocks.webDevelopment, blockData.webDevelopment.rotation);
+    let MouseConstraint = DomMouseConstraint.create(engine, {
+        mouse, constraint: {stiffness: 0.003},
+    });
 
     // Bind mouse events
     Events.on(MouseConstraint, 'startdrag', options.callbacks.startdrag);
 
-    // Listen to window resize
-    window.addEventListener('resize', debounce(200, resizeCanvas));
+    /*
+     * Blocks
+     */
+    const calculateBlockData = () => getBlockConfig(options.elements);
+    const domBody = domBodyConstructor(render);
+    const wallBody = wallBodyConstructor(render);
 
+    const blocks = (blockData) => {
+        return {
+            joris: domBody(blockData.joris),
+            noordermeer: domBody(blockData.noordermeer),
+            webDevelopment: domBody(blockData.webDevelopment),
+        };
+    };
 
-    function checkBlockPositions() {
-        // Remove the "Web Development" block once it fell down
-        if (render.mapping.worldToView(blocks.webDevelopment.position.y) > windowHeight * 1.5) {
-            Matter.Composite.remove(world, blocks.webDevelopment);
-            options.callbacks.removeWebdev();
-        }
+    const wallBodies = (blockData) => {
+        return {
+            wallBottom: wallBody(blockData.wallBottom),
+            wallTop: wallBody(blockData.wallTop),
+            wallLeft: wallBody(blockData.wallLeft),
+            wallRight: wallBody(blockData.wallRight),
+        };
+    };
 
-        // Revert the positions of the others in case the fall down
-        if (!isMobile && render.mapping.worldToView(blocks.joris.position.y) > windowHeight * 3) {
-            reInsertBlock('joris');
-        }
-        if (!isMobile && render.mapping.worldToView(blocks.noordermeer.position.y) > windowHeight * 3) {
-            reInsertBlock('noordermeer');
-        }
+    const initWorld = () => {
+        Matter.World.clear(engine.world);
+        Matter.Engine.clear(engine);
 
-        if (!blocksHavePassedContentArea
-            && render.mapping.worldToView(blocks.joris.position.y) > Math.min(500, windowHeight * 0.75)
-            && render.mapping.worldToView(blocks.noordermeer.position.y) > Math.min(500, windowHeight * 0.75)
-        ) {
-            blocksHavePassedContentArea = true;
-            options.callbacks.end();
-            if (!isMobile) {
-                removeTouchEvents();
-                introHasRun = true;
-                options.callbacks.endOnMobile();
-            }
-        }
+        state.blockData = calculateBlockData();
+        state.blocks = blocks(state.blockData);
+        state.walls = wallBodies(state.blockData);
 
-        if (!introHasRun
-            && isMobile
-            && render.mapping.worldToView(blocks.joris.position.y) > windowHeight * 1.5
-            && render.mapping.worldToView(blocks.noordermeer.position.y) > windowHeight * 1.5
-        ) {
-            introHasRun = true;
-            options.callbacks.endOnMobile();
-            stopEngine();
-        }
-    }
+        World.add(world, [
+            ...Object.values(state.blocks),
+            ...Object.values(state.walls),
+            MouseConstraint,
+        ]);
 
-    function resizeCanvas() {
-        if (window.innerWidth < 1024 && runner.enabled && introHasRun) {
-            stopEngine();
-            toggleMobileView();
-        } else if (window.innerWidth >= 1024 && !runner.enabled) {
-            startEngine();
-            toggleMobileView();
-            return;
-        }
+        // Rotate bodies on start
+        DomBody.rotate(state.blocks.joris, state.blockData.joris.rotation);
+        DomBody.rotate(state.blocks.noordermeer, state.blockData.noordermeer.rotation);
+        DomBody.rotate(state.blocks.webDevelopment, state.blockData.webDevelopment.rotation);
+    };
+    initWorld();
 
-        if (window.innerWidth < 1024) {
-            return;
-        }
+    /*
+     * Resize Event
+     */
+    const resizeWalls = () => {
+        Matter.Composite.remove(world, Object.values(state.walls));
+        state.blockData = calculateBlockData();
+        state.walls = wallBodies(state.blockData);
+        World.add(world, Object.values(state.walls));
+    };
 
-        // Push up the blocks on resize
-        if (windowHeight > window.innerHeight) {
-            DomBody.applyForce(blocks.joris,
-                {x: blocks.joris.position.x, y: blocks.joris.position.y},
-                {x: 0, y: -0.03},
+    const resizeBlocks = () => {
+        let newDomSizes = getDomElementSizes(options.elements);
+
+        ['joris', 'noordermeer', 'webDevelopment'].forEach(block => {
+            DomBody.scale(state.blocks[block],
+                newDomSizes[block].width / state.domSizes[block].width,
+                newDomSizes[block].height / state.domSizes[block].height,
             );
-            DomBody.applyForce(blocks.noordermeer,
-                {x: blocks.noordermeer.position.x, y: blocks.noordermeer.position.y},
-                {x: 0, y: -0.07},
-            );
+        });
 
+        state.domSizes = newDomSizes;
+    };
+
+    const pushBlocksUp = () => {
+        if (!isMobile() && !state.wasOnMobile && state.previousWindowHeight > window.innerHeight) {
+            ['joris', 'noordermeer', ...state.webDevelopmentBlockIsAround ? ['webDevelopment'] : []].forEach(block => {
+                DomBody.applyForce(state.blocks[block], state.blocks[block].position, {
+                    x: 0, y: -state.blocks[block].mass * 0.1 * Math.max(0.5, Math.random()),
+                });
+            });
+            return true;
+        }
+    };
+
+    const resizeWorld = debounce(200, () => {
+        resizeBlocks();
+        setGravity();
+
+        if(pushBlocksUp()) {
             setTimeout(resizeWalls, 300);
         } else {
             resizeWalls();
         }
 
-        updateWindowSize();
-    }
+        // Update state
+        state.wasOnMobile = isMobile();
+        state.previousWindowHeight = window.innerHeight;
+    });
 
-    function updateWindowSize() {
-        windowHeight = window.innerHeight;
-        windowWidth = window.innerWidth;
-        isMobile = windowWidth < 1024;
-    }
+    // Listen to window resize
+    window.addEventListener('resize', resizeWorld);
 
-    function resizeWalls() {
-        Matter.Composite.remove(world, [
-            blocks.wallLeft, blocks.wallRight, blocks.wallBottom,
-        ]);
 
-        updateWindowSize();
-        calculateBlockData();
+    /*
+     * Catch fleeing blocks
+     */
+    const catchFleeingBlocks = throttle(500, () => {
+        ['joris', 'noordermeer', 'webDevelopment'].forEach(block => {
+            if (Math.abs(render.mapping.worldToView(state.blocks[block].position.y)) > window.innerHeight * 3) {
 
-        blocks.wallBottom = wallBody(blockData.wallBottom);
-        blocks.wallLeft = wallBody(blockData.wallLeft);
-        blocks.wallRight = wallBody(blockData.wallRight);
-
-        World.add(world, [
-            blocks.wallLeft, blocks.wallRight, blocks.wallBottom,
-        ]);
-    }
-
-    function toggleMobileView() {
-        resizeWalls();
-        reInsertBlock('joris');
-        reInsertBlock('noordermeer');
-    }
-
-    function reInsertBlock(block) {
-        calculateBlockData();
-        DomBody.setPosition(blocks[block], {
-            x: render.mapping.viewToWorld(blockData[block].x),
-            y: render.mapping.viewToWorld(blockData[block].y),
+                if (block === 'webDevelopment') {
+                    // We'll loose "webDevelopment" once its out
+                    Matter.Composite.remove(world, state.blocks[block]);
+                    state.webDevelopmentBlockIsAround = false;
+                    options.callbacks.removeWebdev();
+                } else {
+                    state.blockData = calculateBlockData();
+                    DomBody.setPosition(state.blocks[block], {
+                        x: render.mapping.viewToWorld(state.blockData[block].x),
+                        y: render.mapping.viewToWorld(state.blockData[block].y),
+                    });
+                    if (state.blockData[block].rotation) {
+                        DomBody.rotate(state.blocks[block], state.blockData[block].rotation - state.blocks[block].angle);
+                    }
+                }
+            }
         });
-        if (blockData[block].rotation) {
-            DomBody.rotate(blocks[block], blockData[block].rotation - blocks[block].angle);
+    });
+
+    Events.on(runner, 'tick', catchFleeingBlocks);
+
+    /*
+     * Wait for blocks to reach the middle of the page
+     */
+    const checkIfBlocksHavePassedCenter = throttle(500, () => {
+        if (
+            (isMobile()
+                && render.mapping.worldToView(state.blocks.joris.position.y) < window.innerHeight * 0.5
+                && render.mapping.worldToView(state.blocks.noordermeer.position.y) < window.innerHeight * 0.5)
+            ||
+            (!isMobile()
+                && render.mapping.worldToView(state.blocks.joris.position.y) > window.innerHeight * 0.5
+                && render.mapping.worldToView(state.blocks.noordermeer.position.y) > window.innerHeight * 0.5)
+        ) {
+            options.callbacks.end();
+            Events.off(runner, 'tick', checkIfBlocksHavePassedCenter);
         }
-    }
+    });
 
-    function stopEngine() {
-        Runner.stop(runner, engine);
-        RenderDom.stop(render);
-        runner.enabled = false;
-        removeTouchEvents();
-        // Stop tick event
-        Events.off(runner, 'tick', throttle(500, checkBlockPositions));
-    }
-
-    function startEngine() {
-        RenderDom.run(render);
-        Runner.run(runner, engine);
-        runner.enabled = true;
-        addTouchEvents();
-        // Bind tick event
-        Events.on(runner, 'tick', throttle(500, checkBlockPositions));
-    }
-
-    function addTouchEvents() {
-        if(mouse) {
-            mouse.element.add('touchstart', mouse.mousedown);
-            mouse.element.add('touchend', mouse.mouseup);
-            mouse.element.add('touchmove', mouse.mousemove);
-        }
-    }
-
-    function removeTouchEvents() {
-        if (mouse) {
-            mouse.element.removeEventListener('touchstart', mouse.mousedown);
-            mouse.element.removeEventListener('touchend', mouse.mouseup);
-            mouse.element.removeEventListener('touchmove', mouse.mousemove);
-        }
-    }
+    Events.on(runner, 'tick', checkIfBlocksHavePassedCenter);
 }
 
 

@@ -17,4 +17,6 @@ projects:
     -   name: One Day Portray
         url: https://onedayportray.com/
         hidden: true
+    -   name: GDS.FM Player
+        url: http://play.gds.fm/
 ---

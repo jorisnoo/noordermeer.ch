@@ -13,11 +13,15 @@
         data() {
             return {
                 introHasPlayed: false,
+                webDevelopmentBlockHasLeft: false,
             };
         },
         computed: {
             pageComponent() {
                 return this.$frontmatter.page || false;
+            },
+            hideContentDuringIntro() {
+                return this.$site.themeConfig.runIntroOnPages.includes(this.$page.path) && !this.introHasPlayed;
             },
         },
     };
@@ -25,14 +29,16 @@
 
 <template>
     <div>
-        <Intro @end="introHasPlayed = true" />
+        <Intro
+            @end="introHasPlayed = true"
+            @hide-webdev="webDevelopmentBlockHasLeft = true"
+        />
         <div
             class="transition-opacity duration-500 ease-in p-4 lg:flex lg:py-0"
-            :class="{'opacity-0': !introHasPlayed}"
+            :class="{'opacity-0': hideContentDuringIntro}"
         >
-            <div class="relative flex-shrink-0 lg:max-w-sm lg:min-h-screen lg:w-1/4">
-                <span class="name mb-2/9 lg:hidden">Joris</span>
-                <span class="name mb-2/9 lg:hidden">Noordermeer</span>
+            <div id="left-side" class="relative flex-shrink-0 lg:max-w-sm lg:min-h-screen lg:w-1/4">
+                <span class="name mb-2/9 lg:hidden bg-transparent select-none">&nbsp;</span>
                 <Navigation class="lg:sticky lg:top-0 lg:py-6" />
             </div>
             <div
@@ -58,6 +64,7 @@
                 </transition>
 
                 <div class="sticky bottom-0 hidden pt-12 pb-6 lg:block content-fade">
+                    <span v-if="!webDevelopmentBlockHasLeft" class="name pt-2 bg-transparent select-none block">&nbsp;</span>
                     <span class="name bg-transparent select-none">&nbsp;</span>
                 </div>
             </div>

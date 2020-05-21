@@ -1,0 +1,13 @@
+@media (prefers-color-scheme: dark) {
+    body {
+        @apply bg-black text-white;
+    }
+
+    .name {
+        @apply text-black bg-white;
+    }
+
+    .content a:hover {
+        @apply text-white;
+    }
+}
