@@ -5,24 +5,26 @@ export function getBlockConfig(elements) {
     let windowWidth = window.innerWidth;
     let isMobile = windowWidth < 1024;
 
+    let noordermeerWidth = elements.noordermeer.offsetWidth;
+
     return {
         joris: {
             x: isMobile ? windowWidth * 0.3 : 32 + elements.joris.offsetWidth / 2,
-            y: isMobile ? windowHeight + windowHeight * 0.7 : -windowHeight * 0.3,
+            y: isMobile ? windowHeight + windowHeight * 0.7 : - noordermeerWidth * 0.3,
             rotation: Math.PI / 12,
             collisionFilter: {category: 0x0002},
             element: elements.joris,
         },
         noordermeer: {
-            x: isMobile ? windowWidth * 0.6 : document.querySelector('#right-side').offsetLeft - 32 + elements.noordermeer.offsetWidth / 2,
-            y: isMobile ? windowHeight + 500 : -windowHeight * 0.6,
+            x: isMobile ? windowWidth * 0.6 : document.querySelector('#right-side').offsetLeft - 32 + noordermeerWidth / 2,
+            y: isMobile ? windowHeight + 500 : -noordermeerWidth * 0.7,
             rotation: -Math.PI / 6,
             collisionFilter: {category: 0x0002},
             element: elements.noordermeer,
         },
         webDevelopment: {
-            x: windowWidth * 0.5,
-            y: isMobile ? windowHeight + windowHeight * 0.3 : -windowHeight * 1,
+            x: windowWidth * (0.2 + 0.1 * (Math.floor(Math.random() * 6) + 1)),
+            y: isMobile ? windowHeight + windowHeight * 0.3 : -noordermeerWidth * 1.3,
             rotation: Math.PI / 6,
             collisionFilter: {category: 0x0004}, // 0x0004
             element: elements.webDevelopment,
