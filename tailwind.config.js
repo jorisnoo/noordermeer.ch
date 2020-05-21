@@ -31,6 +31,8 @@ module.exports = {
         },
         letterSpacing: {
             tight: '-.02em',
+            normal: 0,
+            wide: '0.01em',
         },
         extend: {
             padding: {
