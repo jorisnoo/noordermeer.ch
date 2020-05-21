@@ -60,6 +60,7 @@
                 </transition>
 
                 <div class="sticky bottom-0 hidden pt-12 pb-6 lg:block content-fade">
+                    <span class="name bg-transparent select-none">&nbsp;</span><br>
                     <span class="name bg-transparent select-none">&nbsp;</span>
                 </div>
             </div>
