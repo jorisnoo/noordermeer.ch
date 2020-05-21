@@ -17,7 +17,7 @@ export function getBlockConfig(elements) {
             element: elements.joris,
         },
         noordermeer: {
-            x: isMobile ? noordermeerWidth * 0.2 + jorisWidth + noordermeerWidth / 2 : document.querySelector('#right-side').offsetLeft - 32 + noordermeerWidth / 2,
+            x: isMobile ? noordermeerWidth * 0.23 + jorisWidth + noordermeerWidth / 2 : document.querySelector('#right-side').offsetLeft - 32 + noordermeerWidth / 2,
             y: isMobile ? windowHeight + noordermeerWidth * 1.4 : -noordermeerWidth * 0.7,
             rotation: -Math.PI / 6,
             collisionFilter: {category: 0x0002},

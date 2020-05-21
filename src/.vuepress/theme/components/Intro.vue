@@ -1,6 +1,5 @@
 <script>
     import runIntro from '../intro';
-    // import { debounce } from 'throttle-debounce';
 
     export default {
         name: 'Intro',
@@ -8,7 +7,6 @@
             return {
                 showWebDevelopment: true,
                 initialised: false,
-                isDragging: false,
             };
         },
         mounted() {
@@ -24,7 +22,6 @@
                     },
                     callbacks: {
                         startdrag: this.clearSelection,
-                        enddrag: () => this.isDragging = false,
                         removeWebdev: () => {
                             this.$emit('hide-webdev');
                             this.showWebDevelopment = false;
@@ -35,7 +32,6 @@
                 this.initialised = true;
             },
             clearSelection() {
-                this.isDragging = true;
                 if (window.getSelection) {
                     window.getSelection().removeAllRanges();
                 } else if (document.selection) {
@@ -48,8 +44,8 @@
 
 <template>
     <div
-        class="absolute top-0 left-0 w-full h-full lg:fixed overflow-hidden lg:inset-0 z-10 intro-container touch-action-none"
-        :class="{'opacity-0': !initialised, 'pointer-events-none': !isDragging }"
+        class="absolute top-0 left-0 w-full h-full lg:fixed overflow-hidden lg:inset-0 z-10 pointer-events-none touch-action-none"
+        :class="{'opacity-0': !initialised }"
     >
         <!--<div id="debug" class="absolute" />-->
         <span

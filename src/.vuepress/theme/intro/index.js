@@ -60,7 +60,6 @@ export default function runIntro(options) {
 
     // Bind mouse events
     Events.on(MouseConstraint, 'startdrag', options.callbacks.startdrag);
-    Events.on(MouseConstraint, 'enddrag', options.callbacks.enddrag);
 
     /*
      * Blocks
