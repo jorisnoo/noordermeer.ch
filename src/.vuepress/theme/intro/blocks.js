@@ -8,7 +8,6 @@ export function getBlockConfig(elements) {
     let jorisWidth = elements.joris.offsetWidth;
     let noordermeerWidth = elements.noordermeer.offsetWidth;
 
-
     return {
         joris: {
             x: isMobile ? 8 + jorisWidth / 2 : 32 + jorisWidth / 2,
@@ -41,11 +40,11 @@ export function getBlockConfig(elements) {
         },
         wallLeft: {
             x: -1, y: windowHeight * 0.5, width: 1, height: windowHeight,
-            collisionFilter: {mask: 0x0001 | 0x0002},
+            collisionFilter: {mask: 0x0001 | 0x0002 /*| 0x0004*/}, // Allow webdevelopment to fall out to the side
         },
         wallRight: {
             x: windowWidth, y: windowHeight * 0.5, width: 1, height: windowHeight,
-            collisionFilter: {mask: 0x0001 | 0x0002},
+            collisionFilter: {mask: 0x0001 | 0x0002 /*| 0x0004*/}, // Allow webdevelopment to fall out to the side
         },
     };
 }

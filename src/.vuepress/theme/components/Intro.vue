@@ -25,7 +25,10 @@
                     callbacks: {
                         startdrag: this.clearSelection,
                         enddrag: () => this.isDragging = false,
-                        removeWebdev: () => this.showWebDevelopment = false,
+                        removeWebdev: () => {
+                            this.$emit('hide-webdev');
+                            this.showWebDevelopment = false;
+                        },
                         end: () => this.$emit('end'),
                     },
                 });

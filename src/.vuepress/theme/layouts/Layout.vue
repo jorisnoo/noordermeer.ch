@@ -13,6 +13,7 @@
         data() {
             return {
                 introHasPlayed: false,
+                webDevelopmentBlockHasLeft: false,
             };
         },
         computed: {
@@ -28,7 +29,10 @@
 
 <template>
     <div>
-        <Intro @end="introHasPlayed = true" />
+        <Intro
+            @end="introHasPlayed = true"
+            @hide-webdev="webDevelopmentBlockHasLeft = true"
+        />
         <div
             class="transition-opacity duration-500 ease-in p-4 lg:flex lg:py-0"
             :class="{'opacity-0': hideContentDuringIntro}"
@@ -60,7 +64,7 @@
                 </transition>
 
                 <div class="sticky bottom-0 hidden pt-12 pb-6 lg:block content-fade">
-                    <span class="name bg-transparent select-none">&nbsp;</span><br>
+                    <span v-if="!webDevelopmentBlockHasLeft" class="name pt-2 bg-transparent select-none block">&nbsp;</span>
                     <span class="name bg-transparent select-none">&nbsp;</span>
                 </div>
             </div>
