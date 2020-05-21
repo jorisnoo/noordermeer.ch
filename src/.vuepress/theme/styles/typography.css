@@ -42,7 +42,7 @@ body {
         @apply text-2xl tracking-normal;
     }
 
-    .content a {
+    .content h2 a {
         @apply border-b-3 leading-link-md;
     }
 

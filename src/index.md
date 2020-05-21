@@ -2,6 +2,4 @@
 
 Zentralstr. 43, 8003 Zurich
 
-[LinkedIn](https://lkdin.com)
-
-
+[LinkedIn](https://www.linkedin.com/in/jorisnoo/)
