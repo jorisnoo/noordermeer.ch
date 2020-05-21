@@ -4,7 +4,7 @@ Digital business card and portfolio for my freelance work.
 
 Design by [Badesaison](https://www.badesaison.ch/) ♡.
 
-The content is stored in `.md` files in the [src](src) directory and assembled to a static website with [VuePress](https://github.com/vuejs/vuepress).
+The content is stored in `.md` files in the [src directory](src) and assembled to a static website with [VuePress](https://github.com/vuejs/vuepress).
 
 ## Build Setup
 
@@ -15,8 +15,8 @@ npm install
 # serve site on localhost:8080
 npm run dev
 
-# build website; generates static files in `public`
-npm run build
+# build website: generates static files in `public`
+npm run generate
 
 # lint (and fix) javascript files
 npm run lint
