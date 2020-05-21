@@ -19,7 +19,7 @@ module.exports = {
         },
         linearGradientColors: {
             'fade-out': ['rgba(230,230,230,0.001)', '#e6e6e6 20%'],
-            'fade-out-dark': ['rgba(230,230,230,0.001)', '#000000 20%'],
+            'fade-out-dark': ['rgba(0,0,0,0.001)', '#000000 20%'],
         },
         fontSize: {
             base: ['4vw', 1.222222222],
