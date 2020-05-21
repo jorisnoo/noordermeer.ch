@@ -35,10 +35,6 @@ export function getBlockConfig(elements) {
             x: windowWidth * 0.5, y: 14, width: windowWidth, height: 1,
             collisionFilter: {mask: isMobile ? 0x0001 | 0x0002 : 0x0001},
         },
-        wallDoubleTop: {
-            x: windowWidth * 0.5, y: -windowWidth * 1.5, width: windowWidth, height: 1,
-            collisionFilter: {mask: 0x0001 | 0x0002 | 0x0004},
-        },
         wallLeft: {
             x: -1, y: windowHeight * 0.5, width: 1, height: windowHeight,
             collisionFilter: {mask: 0x0001 | 0x0002},

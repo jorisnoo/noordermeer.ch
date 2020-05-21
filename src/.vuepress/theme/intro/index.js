@@ -18,10 +18,11 @@ export default function runIntro(options) {
 
     const isMobile = () => window.innerWidth < 1024;
 
-    let introState = {
+    let state = {
         previousWindowHeight: window.innerHeight,
+        wasOnMobile: isMobile(),
+        webDevelopmentBlockIsAround: true,
         blocksHavePassedContentArea: false,
-        webDevLeft: false,
         blockData: {},
         blocks: {},
         walls: {},
@@ -80,7 +81,6 @@ export default function runIntro(options) {
         return {
             wallBottom: wallBody(blockData.wallBottom),
             wallTop: wallBody(blockData.wallTop),
-            // wallDoubleTop: wallBody(blockData.wallDoubleTop),
             wallLeft: wallBody(blockData.wallLeft),
             wallRight: wallBody(blockData.wallRight),
         };
@@ -90,20 +90,20 @@ export default function runIntro(options) {
         Matter.World.clear(engine.world);
         Matter.Engine.clear(engine);
 
-        introState.blockData = calculateBlockData();
-        introState.blocks = blocks(introState.blockData);
-        introState.walls = wallBodies(introState.blockData);
+        state.blockData = calculateBlockData();
+        state.blocks = blocks(state.blockData);
+        state.walls = wallBodies(state.blockData);
 
         World.add(world, [
-            ...Object.values(introState.blocks),
-            ...Object.values(introState.walls),
+            ...Object.values(state.blocks),
+            ...Object.values(state.walls),
             MouseConstraint,
         ]);
 
         // Rotate bodies on start
-        DomBody.rotate(introState.blocks.joris, introState.blockData.joris.rotation);
-        DomBody.rotate(introState.blocks.noordermeer, introState.blockData.noordermeer.rotation);
-        DomBody.rotate(introState.blocks.webDevelopment, introState.blockData.webDevelopment.rotation);
+        DomBody.rotate(state.blocks.joris, state.blockData.joris.rotation);
+        DomBody.rotate(state.blocks.noordermeer, state.blockData.noordermeer.rotation);
+        DomBody.rotate(state.blocks.webDevelopment, state.blockData.webDevelopment.rotation);
     };
     initWorld();
 
@@ -111,29 +111,49 @@ export default function runIntro(options) {
      * Resize Event
      */
     const resizeWalls = () => {
-        Matter.Composite.remove(world, Object.values(introState.walls));
-        introState.blockData = calculateBlockData();
-        introState.walls = wallBodies(introState.blockData);
-        World.add(world, Object.values(introState.walls));
+        Matter.Composite.remove(world, Object.values(state.walls));
+        state.blockData = calculateBlockData();
+        state.walls = wallBodies(state.blockData);
+        World.add(world, Object.values(state.walls));
     };
 
     const resizeBlocks = () => {
         let newDomSizes = getDomElementSizes(options.elements);
 
         ['joris', 'noordermeer', 'webDevelopment'].forEach(block => {
-            DomBody.scale(introState.blocks[block],
-                newDomSizes[block].width / introState.domSizes[block].width,
-                newDomSizes[block].height / introState.domSizes[block].height,
+            DomBody.scale(state.blocks[block],
+                newDomSizes[block].width / state.domSizes[block].width,
+                newDomSizes[block].height / state.domSizes[block].height,
             );
         });
 
-        introState.domSizes = newDomSizes;
+        state.domSizes = newDomSizes;
+    };
+
+    const pushBlocksUp = () => {
+        if (!isMobile() && !state.wasOnMobile && state.previousWindowHeight > window.innerHeight) {
+            ['joris', 'noordermeer', ...state.webDevelopmentBlockIsAround ? ['webDevelopment'] : []].forEach(block => {
+                DomBody.applyForce(state.blocks[block], state.blocks[block].position, {
+                    x: 0, y: -state.blocks[block].mass * 0.1 * Math.max(0.5, Math.random()),
+                });
+            });
+            return true;
+        }
     };
 
     const resizeWorld = debounce(200, () => {
-        resizeWalls();
         resizeBlocks();
         setGravity();
+
+        if(pushBlocksUp()) {
+            setTimeout(resizeWalls, 300);
+        } else {
+            resizeWalls();
+        }
+
+        // Update state
+        state.wasOnMobile = isMobile();
+        state.previousWindowHeight = window.innerHeight;
     });
 
     // Listen to window resize
@@ -145,20 +165,21 @@ export default function runIntro(options) {
      */
     const catchFleeingBlocks = throttle(500, () => {
         ['joris', 'noordermeer', 'webDevelopment'].forEach(block => {
-            if (Math.abs(render.mapping.worldToView(introState.blocks[block].position.y)) > window.innerHeight * 3) {
+            if (Math.abs(render.mapping.worldToView(state.blocks[block].position.y)) > window.innerHeight * 3) {
 
                 if (block === 'webDevelopment') {
                     // We'll loose "webDevelopment" once its out
-                    Matter.Composite.remove(world, introState.blocks[block]);
+                    Matter.Composite.remove(world, state.blocks[block]);
+                    state.webDevelopmentBlockIsAround = false;
+                    options.callbacks.removeWebdev();
                 } else {
-
-                    introState.blockData = calculateBlockData();
-                    DomBody.setPosition(introState.blocks[block], {
-                        x: render.mapping.viewToWorld(introState.blockData[block].x),
-                        y: render.mapping.viewToWorld(introState.blockData[block].y),
+                    state.blockData = calculateBlockData();
+                    DomBody.setPosition(state.blocks[block], {
+                        x: render.mapping.viewToWorld(state.blockData[block].x),
+                        y: render.mapping.viewToWorld(state.blockData[block].y),
                     });
-                    if (introState.blockData[block].rotation) {
-                        DomBody.rotate(introState.blocks[block], introState.blockData[block].rotation - introState.blocks[block].angle);
+                    if (state.blockData[block].rotation) {
+                        DomBody.rotate(state.blocks[block], state.blockData[block].rotation - state.blocks[block].angle);
                     }
                 }
             }
@@ -173,12 +194,12 @@ export default function runIntro(options) {
     const checkIfBlocksHavePassedCenter = throttle(500, () => {
         if (
             (isMobile()
-                && render.mapping.worldToView(introState.blocks.joris.position.y) < window.innerHeight * 0.5
-                && render.mapping.worldToView(introState.blocks.noordermeer.position.y) < window.innerHeight * 0.5)
+                && render.mapping.worldToView(state.blocks.joris.position.y) < window.innerHeight * 0.5
+                && render.mapping.worldToView(state.blocks.noordermeer.position.y) < window.innerHeight * 0.5)
             ||
             (!isMobile()
-                && render.mapping.worldToView(introState.blocks.joris.position.y) > window.innerHeight * 0.5
-                && render.mapping.worldToView(introState.blocks.noordermeer.position.y) > window.innerHeight * 0.5)
+                && render.mapping.worldToView(state.blocks.joris.position.y) > window.innerHeight * 0.5
+                && render.mapping.worldToView(state.blocks.noordermeer.position.y) > window.innerHeight * 0.5)
         ) {
             options.callbacks.end();
             Events.off(runner, 'tick', checkIfBlocksHavePassedCenter);
