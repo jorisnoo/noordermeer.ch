@@ -17,7 +17,7 @@ export function getBlockConfig(elements) {
             element: elements.joris,
         },
         noordermeer: {
-            x: isMobile ? noordermeerWidth * 0.23 + jorisWidth + noordermeerWidth / 2 : document.querySelector('#right-side').offsetLeft - 32 + noordermeerWidth / 2,
+            x: isMobile ? noordermeerWidth * 0.25 + jorisWidth + noordermeerWidth / 2 : document.querySelector('#right-side').offsetLeft - 32 + noordermeerWidth / 2,
             y: isMobile ? windowHeight + noordermeerWidth * 1.4 : -noordermeerWidth * 0.7,
             rotation: -Math.PI / 6,
             collisionFilter: {category: 0x0002},
@@ -25,7 +25,7 @@ export function getBlockConfig(elements) {
         },
         webDevelopment: {
             x: isMobile ? windowWidth * 0.5 : windowWidth * (0.3 + 0.1 * (Math.floor(Math.random() * 4) + 1)),
-            y: isMobile ? windowHeight + noordermeerWidth * 0.5 : -noordermeerWidth * 1.3,
+            y: isMobile ? windowHeight + noordermeerWidth * 0.5 : -noordermeerWidth * 1.4,
             rotation: Math.PI / 6,
             collisionFilter: {category: 0x0004}, // 0x0004
             element: elements.webDevelopment,
