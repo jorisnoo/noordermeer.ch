@@ -5,26 +5,28 @@ export function getBlockConfig(elements) {
     let windowWidth = window.innerWidth;
     let isMobile = windowWidth < 1024;
 
+    let jorisWidth = elements.joris.offsetWidth;
     let noordermeerWidth = elements.noordermeer.offsetWidth;
+
 
     return {
         joris: {
-            x: isMobile ? windowWidth * 0.3 : 32 + elements.joris.offsetWidth / 2,
-            y: isMobile ? windowHeight + windowHeight * 0.7 : - noordermeerWidth * 0.3,
+            x: isMobile ? 8 + jorisWidth / 2 : 32 + jorisWidth / 2,
+            y: isMobile ? windowHeight + noordermeerWidth : - noordermeerWidth * 0.3,
             rotation: Math.PI / 12,
             collisionFilter: {category: 0x0002},
             element: elements.joris,
         },
         noordermeer: {
-            x: isMobile ? windowWidth * 0.6 : document.querySelector('#right-side').offsetLeft - 32 + noordermeerWidth / 2,
-            y: isMobile ? windowHeight + 500 : -noordermeerWidth * 0.7,
+            x: isMobile ? noordermeerWidth * 0.2 + jorisWidth + noordermeerWidth / 2 : document.querySelector('#right-side').offsetLeft - 32 + noordermeerWidth / 2,
+            y: isMobile ? windowHeight + noordermeerWidth * 1.4 : -noordermeerWidth * 0.7,
             rotation: -Math.PI / 6,
             collisionFilter: {category: 0x0002},
             element: elements.noordermeer,
         },
         webDevelopment: {
-            x: windowWidth * (0.2 + 0.1 * (Math.floor(Math.random() * 6) + 1)),
-            y: isMobile ? windowHeight + windowHeight * 0.3 : -noordermeerWidth * 1.3,
+            x: isMobile ? windowWidth * 0.5 : windowWidth * (0.2 + 0.1 * (Math.floor(Math.random() * 6) + 1)),
+            y: isMobile ? windowHeight + noordermeerWidth * 0.5 : -noordermeerWidth * 1.3,
             rotation: Math.PI / 6,
             collisionFilter: {category: 0x0004}, // 0x0004
             element: elements.webDevelopment,
@@ -34,7 +36,7 @@ export function getBlockConfig(elements) {
             collisionFilter: {mask: isMobile ? 0x0001 : 0x0001 | 0x0002 | 0x0004},
         },
         wallTop: {
-            x: windowWidth * 0.5, y: 14, width: windowWidth, height: 1,
+            x: windowWidth * 0.5, y: 13, width: windowWidth, height: 1,
             collisionFilter: {mask: isMobile ? 0x0001 | 0x0002 : 0x0001},
         },
         wallLeft: {

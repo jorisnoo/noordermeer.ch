@@ -45,11 +45,10 @@
 
 <template>
     <div
-        class="fixed overflow-hidden inset-0 z-10 intro-container touch-action-none"
+        class="absolute top-0 left-0 w-full h-full lg:fixed overflow-hidden lg:inset-0 z-10 intro-container touch-action-none"
         :class="{'opacity-0': !initialised, 'pointer-events-none': !isDragging }"
     >
-        <!--        <div id="debug" class="absolute" />-->
-        <!--        {{ // isDragging }}-->
+        <!--<div id="debug" class="absolute" />-->
         <span
             ref="joris"
             class="name select-none pointer-events-auto"
