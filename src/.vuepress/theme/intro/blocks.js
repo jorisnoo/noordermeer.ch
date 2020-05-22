@@ -26,7 +26,7 @@ export function getBlockConfig(elements) {
         webDevelopment: {
             x: isMobile ? windowWidth * 0.5 : Math.min(windowWidth*0.7, document.querySelector('#right-side').offsetLeft + noordermeerWidth * 1.4),
             y: isMobile ? windowHeight + noordermeerWidth * 0.5 : -noordermeerWidth * 1.4,
-            rotation: Math.PI / 6,
+            rotation: Math.PI / 7,
             collisionFilter: {category: 0x0004}, // 0x0004
             element: elements.webDevelopment,
         },
@@ -62,7 +62,7 @@ export function wallBodyConstructor(render) {
 export function domBodyConstructor(render) {
     return (blockData) => Matter.DomBodies.block(blockData.x, blockData.y, {
         Dom: {render, element: blockData.element},
-        chamfer: {radius: 6},
+        chamfer: {radius: 6.5},
         collisionFilter: blockData.collisionFilter,
         frictionAir: 0.1,
     });
