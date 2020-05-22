@@ -22,10 +22,7 @@
                     },
                     callbacks: {
                         startdrag: this.clearSelection,
-                        removeWebdev: () => {
-                            this.$emit('hide-webdev');
-                            this.showWebDevelopment = false;
-                        },
+                        removeWebdev: () => this.showWebDevelopment = false,
                         end: () => this.$emit('end'),
                     },
                 });
