@@ -32,7 +32,7 @@ export default function runIntro(options) {
     // create engine
     let engine = Engine.create({
         timing: {
-            timeScale: 0.7,
+            timeScale: isMobile() ? 0.5 : 0.7,
         },
     });
     let world = engine.world;
