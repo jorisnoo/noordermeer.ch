@@ -1,0 +1,60 @@
+body {
+    @apply font-sans text-base;
+}
+
+.name {
+    @apply text-white text-xl bg-black rounded-full inline-block px-1/3;
+}
+
+.round-link {
+    @apply text-xl rounded-full inline-block px-1/3;
+}
+
+.content blockquote {
+    @apply text-xl;
+}
+
+.content blockquote + p {
+    @apply mt-1/2;
+}
+
+.content a {
+    @apply inline-block leading-link-sm underline;
+}
+
+.content a:hover {
+    @apply text-black;
+}
+
+.content blockquote a {
+    @apply no-underline border-b-2;
+}
+
+
+@screen md {
+    body {
+        @apply text-md tracking-wide;
+    }
+
+    .name, .round-link, .content blockquote {
+        @apply text-2xl tracking-normal;
+    }
+
+    .content a {
+        @apply no-underline border-b-2;
+    }
+
+    .content blockquote a {
+        @apply border-b-3 leading-link-md ;
+    }
+}
+
+@screen lg {
+    .name, .round-link, .content blockquote {
+        @apply text-3xl;
+    }
+
+    .content blockquote {
+        @apply tracking-tight;
+    }
+}

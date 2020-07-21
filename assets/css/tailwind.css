@@ -1,0 +1,10 @@
+@import 'tailwindcss/base';
+@import "./fonts.css";
+@import "./general.css";
+@import "./text-selection.css";
+@import "./dark-mode.css";
+
+@import 'tailwindcss/components';
+/*@import "./typography.css";*/
+
+@import 'tailwindcss/utilities';

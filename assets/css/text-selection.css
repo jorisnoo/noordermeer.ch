@@ -1,0 +1,27 @@
+body {
+    @apply bg-white;
+}
+
+::selection {
+    @apply bg-red;
+}
+
+::-moz-selection {
+    @apply bg-red;
+}
+
+.selection-blue ::selection {
+    @apply bg-blue;
+}
+
+.selection-blue ::-moz-selection {
+    @apply bg-blue;
+}
+
+.selection-green ::selection {
+    @apply bg-green;
+}
+
+.selection-green ::-moz-selection {
+    @apply bg-green;
+}
