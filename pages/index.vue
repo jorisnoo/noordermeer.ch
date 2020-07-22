@@ -4,6 +4,11 @@
             const en = await $content('english').fetch();
             return { en };
         },
+        head () {
+            return {
+                titleTemplate: 'Joris Noordermeer — Web Development',
+            };
+        },
     };
 </script>
 

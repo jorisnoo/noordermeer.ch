@@ -15,25 +15,54 @@ export default {
     ** See https://nuxtjs.org/api/configuration-head
     */
     head: {
-        title: process.env.npm_package_name || '',
-        meta: [
-            { charset: 'utf-8' },
-            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-            { hid: 'description', name: 'description', content: '' },
-        ],
+        titleTemplate: '%s | Joris Noordermeer — Web Development',
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
             { rel: 'apple-touch-icon', sizes: '180x180', href: '/meta/apple-touch-icon.png' },
             { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/meta/favicon-32x32.png' },
             { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/meta/favicon-16x16.png' },
-            { rel: 'manifest', href: '/meta/site.webmanifest' },
             { rel: 'mask-icon', href: '/meta/safari-pinned-tab.svg', color: '#f9325a' },
             { rel: 'msapplication-TileColor', content: '#e6e6e6' },
-            { rel: 'theme-color', content: '#e6e6e6' },
+            // { rel: 'theme-color', content: '#e6e6e6' },
         ],
         script: [
             { async: true, defer: true, 'data-domain': 'noordermeer.ch', src: 'https://prism.noordermeer.ch/js/index.js' },
         ],
+        meta: [
+            { hid: 'twitter:image', name: 'twitter:image', property: 'twitter:image', content: 'https://noordermeer.ch/meta/joris_noordermeer_web_development.jpg' },
+        ],
+    },
+    pwa: {
+        meta: {
+            title: 'Joris Noordermeer — Web Development',
+            name: 'Joris Noordermeer',
+            theme_color: '#e6e6e6',
+            ogTitle: 'Joris Noordermeer — Web Development',
+            ogSiteName: 'Joris Noordermeer — Web Development',
+            ogHost: 'https://noordermeer.ch',
+            ogImage: 'https://noordermeer.ch/meta/joris_noordermeer_web_development.jpg',
+            twitterCard: 'summary_large_image',
+        },
+        manifest: {
+            name: 'Joris Noordermeer',
+            short_name: 'Joris Noordermeer',
+            icons: [
+                {
+                    src: '/meta/android-chrome-192x192.png',
+                    sizes: '192x192',
+                    type: 'image/png',
+                },
+                {
+                    src: '/meta/android-chrome-512x512.png',
+                    sizes: '512x512',
+                    type: 'image/png',
+                },
+            ],
+            theme_color: '#ffffff',
+            background_color: '#ffffff',
+            display: 'standalone',
+            lang: 'en',
+        },
     },
     /*
     ** Global CSS
@@ -55,10 +84,11 @@ export default {
     ** Nuxt.js dev-modules
     */
     buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
-    //     '@nuxtjs/eslint-module',
+        '@nuxtjs/pwa',
+        // Doc: https://github.com/nuxt-community/eslint-module
+        '@nuxtjs/eslint-module',
         // Doc: https://github.com/nuxt-community/stylelint-module
-        // '@nuxtjs/stylelint-module',
+        '@nuxtjs/stylelint-module',
         // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
         '@nuxtjs/tailwindcss',
     ],
@@ -66,7 +96,6 @@ export default {
     ** Nuxt.js modules
     */
     modules: [
-        '@nuxtjs/pwa',
         // Doc: https://github.com/nuxt/content
         '@nuxt/content',
         'nuxt-i18n',

@@ -6,6 +6,11 @@
                 projects,
             };
         },
+        head () {
+            return {
+                title: 'Work',
+            };
+        },
     };
 </script>
 

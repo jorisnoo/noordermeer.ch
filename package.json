@@ -2,6 +2,7 @@
     "name": "noordermeer.ch",
     "private": true,
     "author": "Joris Noordermeer",
+    "description": "Joris Noordermeer is a freelance Web Developer based in Zurich, Switzerland.",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/jorisnoo/noordermeer.ch.git"

@@ -3,7 +3,7 @@ name: Run Eslint
 on:
     push:
         branches:
-            - master
+            - stable
         paths:
             - '**.js'
             - '**.vue'
@@ -16,7 +16,7 @@ jobs:
 
             -   uses: bahmutov/npm-install@v1
 
-            -   run: npm run lintfix
+            -   run: npm run lint
 
             -   uses: stefanzweifel/git-auto-commit-action@v4.1.6
                 with:
