@@ -40,8 +40,8 @@ module.exports = {
                 '1/3': '0.333333em', // For blocks
             },
             margin: {
+                '1/2': '0.5em',
                 // '2/9': '0.222222em',
-                // '1/2': '0.5em', // Before address on index page
             },
             borderWidth: {
                 3: '3px',

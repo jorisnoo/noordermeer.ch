@@ -8,20 +8,13 @@
 </script>
 
 <template>
-    <div class="typo-large px-1/3">
+    <div class="typo-large px-1/3 mt-1/2">
         <nuxt-content
             :document="en"
-            class=""
         />
-        <p class="address typo-base">
+        <p class="typo-base mt-1/2">
             Zentralstr. 43, 8003 Zurich <br>
             <a href="https://www.linkedin.com/in/jorisnoo/" rel="noreferrer noopener nofollow">LinkedIn</a>
         </p>
     </div>
 </template>
-
-<style scoped lang="postcss">
-    .address {
-        margin-top: 0.5em;
-    }
-</style>
