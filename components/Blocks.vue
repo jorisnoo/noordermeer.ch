@@ -7,6 +7,7 @@
             return {
                 showWebDevelopment: true,
                 initialised: false,
+                isDragging: false,
             };
         },
         mounted () {
@@ -21,13 +22,22 @@
                         webDevelopment: this.$refs.webDevelopment,
                     },
                     callbacks: {
-                        startdrag: this.clearSelection,
-                        removeWebdev () {
-                            this.showWebDevelopment = false;
-                        },
+                        startdrag: this.startDrag,
+                        enddrag: this.endDrag,
+                        removeWebdev: this.removeWebdev,
                     },
                 });
                 this.initialised = true;
+            },
+            startDrag () {
+                this.clearSelection();
+                this.isDragging = true;
+            },
+            endDrag () {
+                this.isDragging = false;
+            },
+            removeWebdev () {
+                this.showWebDevelopment = false;
             },
             clearSelection () {
                 if (window.getSelection) {
@@ -44,8 +54,8 @@
     <div>
         <span class="placeholder typo-large name-block">&nbsp;</span>
         <div
-            class="absolute top-0 left-0 w-full h-full lg:fixed overflow-hidden lg:inset-0 z-10 pointer-events-none touch-action-none"
-            :class="{'opacity-0': !initialised }"
+            class="absolute top-0 left-0 w-full h-full lg:fixed overflow-hidden lg:inset-0 z-10 "
+            :class="{'opacity-0': !initialised, 'pointer-events-none': !isDragging, 'touch-action-none': !isDragging }"
         >
             <span
                 ref="joris"
@@ -71,6 +81,7 @@
 
     .placeholder {
         @apply bg-transparent select-none;
+
         margin-bottom: 0.222222em;
     }
 

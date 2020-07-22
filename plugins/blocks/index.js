@@ -62,6 +62,7 @@ export default function runIntro (options) {
 
     // Bind mouse events
     Events.on(MouseConstraint, 'startdrag', options.callbacks.startdrag);
+    Events.on(MouseConstraint, 'enddrag', options.callbacks.enddrag);
 
     /*
      * Blocks
@@ -190,19 +191,18 @@ export default function runIntro (options) {
     /*
      * Wait for blocks to reach the middle of the page
      */
-    const checkIfBlocksHavePassedCenter = throttle(500, () => {
-        if (
-            (isMobile() &&
-                render.mapping.worldToView(state.blocks.joris.position.y) < window.innerHeight * 0.5 &&
-                render.mapping.worldToView(state.blocks.noordermeer.position.y) < window.innerHeight * 0.5) ||
-            (!isMobile() &&
-                render.mapping.worldToView(state.blocks.joris.position.y) > window.innerHeight * 0.5 &&
-                render.mapping.worldToView(state.blocks.noordermeer.position.y) > window.innerHeight * 0.5)
-        ) {
-            options.callbacks.end();
-            Events.off(runner, 'tick', checkIfBlocksHavePassedCenter);
-        }
-    });
-
-    Events.on(runner, 'tick', checkIfBlocksHavePassedCenter);
+    // const checkIfBlocksHavePassedCenter = throttle(500, () => {
+    //     if (
+    //         (isMobile() &&
+    //             render.mapping.worldToView(state.blocks.joris.position.y) < window.innerHeight * 0.5 &&
+    //             render.mapping.worldToView(state.blocks.noordermeer.position.y) < window.innerHeight * 0.5) ||
+    //         (!isMobile() &&
+    //             render.mapping.worldToView(state.blocks.joris.position.y) > window.innerHeight * 0.5 &&
+    //             render.mapping.worldToView(state.blocks.noordermeer.position.y) > window.innerHeight * 0.5)
+    //     ) {
+    //         Events.off(runner, 'tick', checkIfBlocksHavePassedCenter);
+    //     }
+    // });
+    //
+    // Events.on(runner, 'tick', checkIfBlocksHavePassedCenter);
 }
