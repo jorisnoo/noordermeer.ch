@@ -26,7 +26,6 @@ module.exports = {
         fontSize: {
             base: ['4vw', 1.222222222],
             md: ['1.8125rem', 1.103448276],
-
             xl: ['8vw', 1.111111111],
             '2xl': ['3.84rem', 1.071428571],
             '3xl': ['4.375rem', 1.071428571],
@@ -38,11 +37,11 @@ module.exports = {
         },
         extend: {
             padding: {
-                '1/3': '0.333333em',
+                '1/3': '0.333333em', // For blocks
             },
             margin: {
-                '2/9': '0.222222em',
-                '1/2': '0.5em',
+                // '2/9': '0.222222em',
+                // '1/2': '0.5em', // Before address on index page
             },
             borderWidth: {
                 3: '3px',

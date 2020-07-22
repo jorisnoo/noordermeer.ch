@@ -5,6 +5,7 @@
 @import "./dark-mode.css";
 
 @import 'tailwindcss/components';
-/*@import "./typography.css";*/
+@import "./typography.css";
+@import "./blocks.css";
 
 @import 'tailwindcss/utilities';

@@ -56,9 +56,9 @@ export default {
     */
     buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-        '@nuxtjs/eslint-module',
+    //     '@nuxtjs/eslint-module',
         // Doc: https://github.com/nuxt-community/stylelint-module
-        '@nuxtjs/stylelint-module',
+        // '@nuxtjs/stylelint-module',
         // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
         '@nuxtjs/tailwindcss',
     ],
@@ -69,12 +69,34 @@ export default {
         '@nuxtjs/pwa',
         // Doc: https://github.com/nuxt/content
         '@nuxt/content',
+        'nuxt-i18n',
     ],
     /*
     ** Content module configuration
     ** See https://content.nuxtjs.org/configuration
     */
     content: {},
+    /*
+    ** i18n module configuration
+    ** See https://nuxt-community.github.io/nuxt-i18n/options-reference.html
+    */
+    i18n: {
+        locales: ['en', 'de'],
+        defaultLocale: 'en',
+        vueI18n: {
+            fallbackLocale: 'en',
+            messages: {
+                en: {
+                    info: 'Info',
+                    work: 'Work',
+                },
+                de: {
+                    info: 'Info',
+                    work: 'Projekte',
+                },
+            },
+        },
+    },
     /*
     ** Build configuration
     ** See https://nuxtjs.org/api/configuration-build/
