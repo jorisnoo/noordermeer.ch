@@ -6,11 +6,11 @@
     @apply text-xl;
 }
 
-.typo-base a {
+.prose-base a {
     @apply inline-block leading-link-sm underline;
 }
 
-.typo-large a {
+.prose-large a {
     @apply inline-block leading-link-sm border-b-2;
 }
 
@@ -23,11 +23,11 @@
         @apply text-2xl tracking-normal;
     }
 
-    .typo-base a {
+    .prose-base a {
         @apply no-underline border-b-2;
     }
 
-    .typo-large a {
+    .prose-large a {
         @apply border-b-3 leading-link-md ;
     }
 }
