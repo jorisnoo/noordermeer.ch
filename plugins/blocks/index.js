@@ -32,12 +32,14 @@ export default function runIntro (options) {
     // create engine
     const engine = Engine.create({
         timing: {
-            timeScale: isMobile() ? 0.5 : 0.5,
+            timeScale: isMobile() ? 0.4 : 0.5,
         },
     });
     const world = engine.world;
 
-    const setGravity = () => engine.world.gravity.y = isMobile() ? -1 : 1;
+    const setGravity = function () {
+        engine.world.gravity.y = isMobile() ? -1 : 1;
+    };
     setGravity();
 
     // create renderer

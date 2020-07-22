@@ -22,7 +22,9 @@
                     },
                     callbacks: {
                         startdrag: this.clearSelection,
-                        removeWebdev: () => this.showWebDevelopment = false,
+                        removeWebdev () {
+                            this.showWebDevelopment = false;
+                        },
                     },
                 });
                 this.initialised = true;
@@ -39,29 +41,42 @@
 </script>
 
 <template>
-    <div
-        class="absolute top-0 left-0 w-full h-full lg:fixed overflow-hidden lg:inset-0 z-10 pointer-events-none touch-action-none"
-        :class="{'opacity-0': !initialised }"
-    >
-                <div id="debug" class="absolute" />
-        <span
-            ref="joris"
-            class="typo-large name-block select-none pointer-events-auto"
-        >Joris</span>
-        <span
-            ref="noordermeer"
-            class="typo-large name-block select-none pointer-events-auto"
-        >Noordermeer</span>
-        <span
-            v-show="showWebDevelopment"
-            ref="webDevelopment"
-            class="typo-large name-block select-none"
-        >Web Development</span>
+    <div>
+        <span class="placeholder typo-large name-block">&nbsp;</span>
+        <div
+            class="absolute top-0 left-0 w-full h-full lg:fixed overflow-hidden lg:inset-0 z-10 pointer-events-none touch-action-none"
+            :class="{'opacity-0': !initialised }"
+        >
+            <span
+                ref="joris"
+                class="typo-large name-block select-none pointer-events-auto"
+            >Joris</span>
+            <span
+                ref="noordermeer"
+                class="typo-large name-block select-none pointer-events-auto"
+            >Noordermeer</span>
+            <span
+                v-show="showWebDevelopment"
+                ref="webDevelopment"
+                class="typo-large name-block select-none"
+            >Web Development</span>
+        </div>
     </div>
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
     .touch-action-none {
         touch-action: none;
+    }
+
+    .placeholder {
+        @apply bg-transparent select-none;
+        margin-bottom: 0.222222em;
+    }
+
+    @screen lg {
+        .placeholder {
+            @apply hidden;
+        }
     }
 </style>

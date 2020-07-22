@@ -6,12 +6,12 @@
     @apply text-xl;
 }
 
-.prose-large {
-    hyphens: auto;
-}
-
 .prose-base a {
     @apply inline-block leading-link-sm underline;
+}
+
+.prose-large {
+    /*hyphens: auto;*/
 }
 
 .prose-large a {

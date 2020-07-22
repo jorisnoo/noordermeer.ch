@@ -17,7 +17,7 @@ export function getBlockConfig (elements) {
             element: elements.joris,
         },
         noordermeer: {
-            x: isMobile ? noordermeerWidth * 0.25 + jorisWidth + noordermeerWidth / 2 : windowWidth * 0.3 - 32 + noordermeerWidth / 2,
+            x: isMobile ? noordermeerWidth * 0.22 + jorisWidth + noordermeerWidth / 2 : windowWidth * 0.3 - 32 + noordermeerWidth / 2,
             y: isMobile ? windowHeight + noordermeerWidth * 1.4 : -noordermeerWidth * 0.7,
             rotation: -Math.PI / 6,
             collisionFilter: { category: 0x0002 },
@@ -72,9 +72,11 @@ export function wallBodyConstructor (render) {
 }
 
 export function domBodyConstructor (render) {
+    const windowWidth = window.innerWidth;
+    const isMobile = windowWidth < 1024;
     return blockData => Matter.DomBodies.block(blockData.x, blockData.y, {
         Dom: { render, element: blockData.element },
-        chamfer: { radius: 6.5 },
+        chamfer: { radius: isMobile ? 0 : 6.5 },
         collisionFilter: blockData.collisionFilter,
         frictionAir: 0.1,
     });

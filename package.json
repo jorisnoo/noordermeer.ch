@@ -20,7 +20,7 @@
     "dependencies": {
         "@nuxt/content": "^1.3.2",
         "@nuxtjs/pwa": "^3.0.0-beta.20",
-        "matter-dom-plugin": "github:jorisnoo/matter-dom-plugin#master",
+        "matter-dom-plugin": "github:jorisnoo/matter-dom-plugin#stable",
         "matter-js": "^0.14.2",
         "nuxt": "^2.13.0",
         "nuxt-i18n": "^6.13.1",
