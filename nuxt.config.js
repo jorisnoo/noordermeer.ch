@@ -23,7 +23,6 @@ export default {
             { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/meta/favicon-16x16.png' },
             { rel: 'mask-icon', href: '/meta/safari-pinned-tab.svg', color: '#f9325a' },
             { rel: 'msapplication-TileColor', content: '#e6e6e6' },
-            // { rel: 'theme-color', content: '#e6e6e6' },
         ],
         script: [
             { async: true, defer: true, 'data-domain': 'noordermeer.ch', src: 'https://prism.noordermeer.ch/js/index.js' },
@@ -46,18 +45,6 @@ export default {
         manifest: {
             name: 'Joris Noordermeer',
             short_name: 'Joris Noordermeer',
-            icons: [
-                {
-                    src: '/meta/android-chrome-192x192.png',
-                    sizes: '192x192',
-                    type: 'image/png',
-                },
-                {
-                    src: '/meta/android-chrome-512x512.png',
-                    sizes: '512x512',
-                    type: 'image/png',
-                },
-            ],
             theme_color: '#ffffff',
             background_color: '#ffffff',
             display: 'standalone',
@@ -86,9 +73,9 @@ export default {
     buildModules: [
         '@nuxtjs/pwa',
         // Doc: https://github.com/nuxt-community/eslint-module
-        '@nuxtjs/eslint-module',
+        // '@nuxtjs/eslint-module',
         // Doc: https://github.com/nuxt-community/stylelint-module
-        '@nuxtjs/stylelint-module',
+        // '@nuxtjs/stylelint-module',
         // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
         '@nuxtjs/tailwindcss',
     ],
