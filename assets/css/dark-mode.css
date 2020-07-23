@@ -3,11 +3,7 @@
         @apply bg-black text-white;
     }
 
-    .name {
+    .name-block {
         @apply text-black bg-white;
-    }
-
-    .content a:hover {
-        @apply text-white;
     }
 }
