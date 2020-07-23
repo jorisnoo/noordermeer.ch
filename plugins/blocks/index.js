@@ -1,8 +1,8 @@
 import Matter from 'matter-js';
 import 'matter-dom-plugin';
 import { throttle, debounce } from 'throttle-debounce';
-import { fixMouseUpTouchEvent } from './touchmouse';
-import { getBlockConfig, domBodyConstructor, wallBodyConstructor, getDomElementSizes } from './blocks';
+import { fixMouseUpTouchEvent, changeRelativeMousePosition } from './mouse-fixes.js';
+import { getBlockConfig, domBodyConstructor, wallBodyConstructor, getDomElementSizes } from './block-positions.js';
 
 export default function runIntro (options) {
     Matter.use('matter-dom-plugin');
@@ -53,7 +53,8 @@ export default function runIntro (options) {
     /*
      * Mouse
      */
-    const mouse = Mouse.create(document.body);
+    const AdjustedMouse = changeRelativeMousePosition(Mouse);
+    const mouse = AdjustedMouse.create(document.body);
     fixMouseUpTouchEvent(mouse);
 
     const MouseConstraint = DomMouseConstraint.create(engine, {

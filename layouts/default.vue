@@ -4,7 +4,7 @@
 
 <template>
     <div class="min-h-screen">
-        <div class="p-4 lg:py-6 lg:container ">
+        <div class="relative p-4 lg:py-6 xl:container ">
             <Blocks />
             <Navigation />
             <Nuxt />

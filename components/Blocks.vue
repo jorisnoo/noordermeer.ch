@@ -54,7 +54,7 @@
     <div>
         <span class="placeholder typo-large name-block">&nbsp;</span>
         <div
-            class="absolute top-0 left-0 w-full h-full lg:fixed overflow-hidden lg:inset-0 z-10 "
+            class="absolute inset-0 overflow-hidden z-10 lg:fixed"
             :class="{'opacity-0': !initialised, 'pointer-events-none': !isDragging, 'touch-action-none': !isDragging }"
         >
             <span

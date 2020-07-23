@@ -18,6 +18,20 @@
     @apply inline-block leading-link-sm border-b-2;
 }
 
+.prose-large p,
+.prose-large ul {
+    margin-bottom: 0.5em;
+}
+
+.prose-large :last-child {
+    margin-bottom: 0;
+}
+
+.prose-large li:before {
+    content: '—';
+    margin-right: 0.2em;
+}
+
 @screen md {
     .typo-base {
         @apply text-md tracking-wide;
