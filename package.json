@@ -35,8 +35,10 @@
         "@nuxtjs/stylelint-module": "^4.0.0",
         "@nuxtjs/tailwindcss": "^2.0.0",
         "babel-eslint": "^10.1.0",
+        "conventional-changelog-eslint": "^3.0.8",
         "eslint": "^7.2.0",
         "eslint-plugin-nuxt": "^1.0.0",
+        "semantic-release": "^17.1.1",
         "stylelint": "^13.6.1",
         "stylelint-config-standard": "^20.0.0"
     }
