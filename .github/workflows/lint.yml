@@ -18,7 +18,7 @@ jobs:
 
       - run: npm run lint
 
-      - uses: stefanzweifel/git-auto-commit-action@v4.1.6
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Chore: Lint JavaScript and Vue files"
 
