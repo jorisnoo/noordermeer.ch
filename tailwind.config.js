@@ -1,13 +1,15 @@
+/*
+** TailwindCSS Configuration File
+**
+** Docs: https://tailwindcss.com/docs/configuration
+** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
+*/
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-    purge: [
-        './src/.vuepress/theme/**/*.vue',
-    ],
     theme: {
         fontFamily: {
-            'sans': ['"DM Sans"', ...defaultTheme.fontFamily.sans],
-            // 'serif': [...defaultTheme.fontFamily.serif],
+            sans: ['"DM Sans"', ...defaultTheme.fontFamily.sans],
         },
         colors: {
             transparent: 'transparent',
@@ -23,8 +25,7 @@ module.exports = {
         },
         fontSize: {
             base: ['4vw', 1.222222222],
-            'md': ['1.8125rem', 1.103448276],
-
+            md: ['1.8125rem', 1.103448276],
             xl: ['8vw', 1.111111111],
             '2xl': ['3.84rem', 1.071428571],
             '3xl': ['4.375rem', 1.071428571],
@@ -36,11 +37,11 @@ module.exports = {
         },
         extend: {
             padding: {
-                '1/3': '0.333333em',
+                '1/3': '0.333333em', // For blocks
             },
             margin: {
-                '2/9': '0.222222em',
                 '1/2': '0.5em',
+                // '2/9': '0.222222em',
             },
             borderWidth: {
                 3: '3px',
@@ -55,4 +56,15 @@ module.exports = {
     plugins: [
         require('tailwindcss-gradients'),
     ],
+    purge: {
+        // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
+        enabled: process.env.NODE_ENV === 'production',
+        content: [
+            'components/**/*.vue',
+            'layouts/**/*.vue',
+            'pages/**/*.vue',
+            'plugins/**/*.js',
+            'nuxt.config.js',
+        ],
+    },
 };

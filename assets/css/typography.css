@@ -1,0 +1,57 @@
+.typo-base {
+    @apply text-base;
+}
+
+.typo-large {
+    @apply text-xl;
+}
+
+.prose-base a {
+    @apply inline-block leading-link-sm underline;
+}
+
+.prose-large {
+    /*hyphens: auto;*/
+}
+
+.prose-large a {
+    @apply inline-block leading-link-sm border-b-2;
+}
+
+.prose-large p,
+.prose-large ul {
+    margin-bottom: 0.5em;
+}
+
+.prose-large :last-child {
+    margin-bottom: 0;
+}
+
+.prose-large li:before {
+    content: '—';
+    margin-right: 0.2em;
+}
+
+@screen md {
+    .typo-base {
+        @apply text-md tracking-wide;
+    }
+
+    .typo-large {
+        @apply text-2xl tracking-normal;
+    }
+
+    .prose-base a {
+        @apply no-underline border-b-2;
+    }
+
+    .prose-large a {
+        @apply border-b-3 leading-link-md ;
+    }
+}
+
+@screen lg {
+    .typo-large {
+        @apply text-3xl tracking-tight;
+    }
+}

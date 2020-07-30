@@ -1,33 +1,39 @@
 module.exports = {
     root: true,
     env: {
-        es6: true,
         browser: true,
         node: true,
     },
     parserOptions: {
-        sourceType: 'module',
-        ecmaVersion: 2019,
+        parser: 'babel-eslint',
     },
     extends: [
-        'eslint:recommended',
-        'plugin:vue/recommended',
+        '@nuxtjs',
+        'plugin:nuxt/recommended',
+    ],
+    plugins: [
     ],
     rules: {
-        'semi': ['error', 'always'],
-        'indent': ['error', 4, {SwitchCase: 1}],
-        'no-console': 'warn',
-        'comma-dangle': ['error','always-multiline'],
-        'vue/comma-dangle': ['error','always-multiline'],
-        'vue/script-indent': ['error',4, {baseIndent: 1, switchCase: 1}],
-        'vue/html-indent': ['error',4],
-        'vue/max-attributes-per-line': ['error', {singleline: 2}],
-        'vue/match-component-file-name': ['error', {extensions: ['vue']}],
+        'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+        indent: ['warn', 4, { SwitchCase: 1 }],
+        semi: ['error', 'always'],
+        quotes: ['error', 'single', { avoidEscape: true }],
+        'comma-dangle': ['error', 'always-multiline'],
+        'vue/comma-dangle': ['error', 'always-multiline'],
+        'vue/script-indent': ['warn', 4, { baseIndent: 1, switchCase: 1 }],
+        'vue/html-indent': ['warn', 4],
+        'vue/max-attributes-per-line': ['error', { singleline: 2 }],
+        'vue/match-component-file-name': ['error', {
+            extensions: ['vue'],
+        }],
     },
     overrides: [
         {
             files: ['*.vue'],
-            rules: {indent: 'off'},
+            rules: {
+                indent: 'off',
+            },
         },
     ],
 };

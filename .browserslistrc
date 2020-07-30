@@ -1,5 +1,5 @@
-# Supported Browsers
-# See https://github.com/browserslist/browserslist for documentation
+# Browsers that are supported
 
-last 2 versions
-> 1%
+defaults
+not IE 11
+not IE_Mob 11

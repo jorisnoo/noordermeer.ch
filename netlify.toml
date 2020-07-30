@@ -1,15 +1,10 @@
 [build]
-    publish = "public"
+    publish = "dist"
     command = "npm run generate"
 
 [[headers]]
     for = "/*"
     [headers.values]
-#        Content-Security-Policy = '''
-#        default-src 'self' https://plausible.io;
-#        script-src 'self' https://plausible.io 'unsafe-eval';
-#        font-src 'self' data:'''
-#        Feature-Policy = "sync-xhr 'self'"
         Referrer-Policy = "strict-origin-when-cross-origin"
         X-Content-Type-Options = "nosniff"
         X-Frame-Options = "DENY"
