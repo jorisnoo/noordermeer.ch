@@ -24,13 +24,8 @@
             to="/"
             class="typo-large round-link hover:bg-red"
         >
-            En
+            Deutsch
         </nuxt-link>
-        <nuxt-link
-            to="/"
-            class="typo-large round-link hover:bg-blue"
-        >
-            De
-        </nuxt-link>
+
     </nav>
 </template>
