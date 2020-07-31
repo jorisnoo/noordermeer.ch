@@ -24,11 +24,11 @@ module.exports = {
             'fade-out-dark': ['rgba(0,0,0,0.001)', '#000000 20%'],
         },
         fontSize: {
-            base: ['4vw', 1.222222222],
-            md: ['1.8125rem', 1.103448276],
-            xl: ['8vw', 1.111111111],
-            '2xl': ['3.84rem', 1.071428571],
-            '3xl': ['4.375rem', 1.071428571],
+            // base: ['4vw', 1.222222222],
+            // md: ['1.8125rem', 1.103448276],
+            'large-sm': ['8vw', 1.111111111],
+            // 'large-md': ['3.84rem', 1],
+            'large-md': ['3.75rem', 1],
         },
         letterSpacing: {
             tight: '-.02em',
@@ -56,6 +56,9 @@ module.exports = {
     plugins: [
         require('tailwindcss-gradients'),
     ],
+    corePlugins: {
+        container: false,
+    },
     purge: {
         // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
         enabled: process.env.NODE_ENV === 'production',

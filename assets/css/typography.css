@@ -1,17 +1,17 @@
-.typo-base {
-    @apply text-base;
-}
+/*.typo-base {*/
+/*    @apply text-base;*/
+/*}*/
 
 .typo-large {
-    @apply text-xl;
+    @apply text-large-sm;
 }
 
-.prose-base a {
-    @apply inline-block leading-link-sm underline;
-}
+/*.prose-base a {*/
+/*    @apply inline-block leading-link-sm underline;*/
+/*}*/
 
 .prose-large {
-    /*hyphens: auto;*/
+    hyphens: auto;
 }
 
 .prose-large a {
@@ -33,12 +33,12 @@
 }
 
 @screen md {
-    .typo-base {
-        @apply text-md tracking-wide;
-    }
+    /*.typo-base {*/
+    /*    @apply text-md tracking-wide;*/
+    /*}*/
 
     .typo-large {
-        @apply text-2xl tracking-normal;
+        @apply text-large-md tracking-normal;
     }
 
     .prose-base a {
@@ -50,8 +50,3 @@
     }
 }
 
-@screen lg {
-    .typo-large {
-        @apply text-3xl tracking-tight;
-    }
-}

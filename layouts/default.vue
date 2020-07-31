@@ -3,10 +3,16 @@
 </script>
 
 <template>
-    <div class="min-h-screen relative p-4 lg:py-6 xl:container ">
+    <div class="wrapper min-h-screen relative p-4 lg:py-6">
         <Blocks />
         <Navigation />
         <Nuxt />
         <BottomPlaceholder />
     </div>
 </template>
+
+<style lang="postcss">
+    .wrapper {
+        max-width: 1320px;
+    }
+</style>

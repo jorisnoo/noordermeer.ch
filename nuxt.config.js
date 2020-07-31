@@ -15,6 +15,9 @@ export default {
     ** See https://nuxtjs.org/api/configuration-head
     */
     head: {
+        htmlAttrs: {
+            lang: 'de',
+        },
         titleTemplate: '%s | Joris Noordermeer — Web Development',
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

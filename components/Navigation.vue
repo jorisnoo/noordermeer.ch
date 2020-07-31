@@ -20,5 +20,24 @@
         >
             Work
         </nuxt-link>
+        <nuxt-link
+            to="/contact"
+            class="typo-large round-link hover:bg-red"
+            active-class="bg-red"
+        >
+            Contact
+        </nuxt-link>
+        <nuxt-link
+            to="/"
+            class="typo-large round-link hover:bg-blue"
+        >
+            En
+        </nuxt-link>
+        <nuxt-link
+            to="/"
+            class="typo-large round-link hover:bg-green"
+        >
+            De
+        </nuxt-link>
     </nav>
 </template>
