@@ -21,21 +21,14 @@
             Work
         </nuxt-link>
         <nuxt-link
-            to="/contact"
-            class="typo-large round-link hover:bg-red"
-            active-class="bg-red"
-        >
-            Contact
-        </nuxt-link>
-        <nuxt-link
             to="/"
-            class="typo-large round-link hover:bg-blue"
+            class="typo-large round-link hover:bg-red"
         >
             En
         </nuxt-link>
         <nuxt-link
             to="/"
-            class="typo-large round-link hover:bg-green"
+            class="typo-large round-link hover:bg-blue"
         >
             De
         </nuxt-link>
