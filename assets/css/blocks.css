@@ -12,4 +12,8 @@
     .name-block, .round-link {
         @apply tracking-normal;
     }
+
+    .name-block {
+        @apply text-blocks;
+    }
 }

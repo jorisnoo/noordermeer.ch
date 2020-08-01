@@ -32,13 +32,13 @@
         <div class="flex">
             <nuxt-link
                 to="/"
-                class="typo-large round-link hover:bg-red"
+                class="typo-large round-link hover:bg-blue"
             >
                 En
             </nuxt-link>
             <nuxt-link
                 to="/"
-                class="typo-large round-link hover:bg-red"
+                class="typo-large round-link hover:bg-green"
             >
                 De
             </nuxt-link>

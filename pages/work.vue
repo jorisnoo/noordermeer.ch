@@ -15,7 +15,7 @@
 </script>
 
 <template>
-    <ul class="typo-large mt-1/2 selection-green">
+    <ul class="selection-green">
         <li
             v-for="(project, index) in projects"
             :key="'project'+project.name"

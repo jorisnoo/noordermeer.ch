@@ -3,7 +3,7 @@
 /*}*/
 
 .typo-large {
-    @apply text-large-sm;
+    @apply text-large;
 }
 
 /*.prose-base a {*/
@@ -22,7 +22,7 @@
 .prose-large ul,
 .prose-large li
 {
-    margin-bottom: 0.5em;
+    @apply mb-1/2;
 }
 
 .prose-large li {
@@ -33,6 +33,12 @@
     content: '—';
     margin-right: 0.2em;
     margin-left: -1em;
+}
+
+@screen sm {
+    .typo-large {
+        @apply text-large-sm;
+    }
 }
 
 @screen md {

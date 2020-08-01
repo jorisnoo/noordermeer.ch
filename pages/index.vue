@@ -13,14 +13,14 @@
 </script>
 
 <template>
-    <div class="typo-large px-1/3 mt-1/2 selection-blue">
+    <div class="px-1/3 selection-blue">
         <nuxt-content
             :document="en"
             class="prose-large"
         />
-<!--        <p class="typo-base prose-base mt-1/2">-->
-<!--            Zentralstr. 43, 8003 Zurich <br>-->
-<!--            <a href="https://www.linkedin.com/in/jorisnoo/" rel="noreferrer noopener nofollow">LinkedIn</a>-->
-<!--        </p>-->
+        <!--        <p class="typo-base prose-base mt-1/2">-->
+        <!--            Zentralstr. 43, 8003 Zurich <br>-->
+        <!--            <a href="https://www.linkedin.com/in/jorisnoo/" rel="noreferrer noopener nofollow">LinkedIn</a>-->
+        <!--        </p>-->
     </div>
 </template>

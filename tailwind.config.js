@@ -26,9 +26,11 @@ module.exports = {
         fontSize: {
             // base: ['4vw', 1.222222222],
             // md: ['1.8125rem', 1.103448276],
-            'large-sm': ['8vw', 1.111111111],
             // 'large-md': ['3.84rem', 1],
-            'large-md': ['3.75rem', 1],
+            large: ['8vw', 1.111111111],
+            'large-sm': ['6vw', 1.111111111],
+            'large-md': ['3rem', 1.071428571],
+            blocks: ['4.375rem', 1.071428571],
         },
         letterSpacing: {
             tight: '-.02em',

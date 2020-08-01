@@ -57,6 +57,7 @@
             class="absolute inset-0 overflow-hidden z-10 lg:fixed"
             :class="{'opacity-0': !initialised, 'pointer-events-none': !isDragging, 'touch-action-none': !isDragging }"
         >
+            <!--            <div id="debug"></div>-->
             <span
                 ref="joris"
                 class="typo-large name-block select-none pointer-events-auto"
@@ -82,7 +83,7 @@
     .placeholder {
         @apply bg-transparent select-none;
 
-        margin-bottom: 0.222222em;
+        margin-bottom: 0.1em;
     }
 
     @screen lg {
