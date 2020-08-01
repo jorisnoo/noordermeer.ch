@@ -9,7 +9,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
     theme: {
         fontFamily: {
-            sans: ['"DM Sans"', ...defaultTheme.fontFamily.sans],
+            sans: ['"DM Sans"', '"Noto Sans JP"', ...defaultTheme.fontFamily.sans],
         },
         colors: {
             transparent: 'transparent',
@@ -36,12 +36,14 @@ module.exports = {
             wide: '0.01em',
         },
         extend: {
+            screens: {
+                navigation: '1200px',
+            },
             padding: {
                 '1/3': '0.333333em', // For blocks
             },
             margin: {
                 '1/2': '0.5em',
-                // '2/9': '0.222222em',
             },
             borderWidth: {
                 3: '3px',

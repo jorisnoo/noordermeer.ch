@@ -13,6 +13,6 @@
 
 <style lang="postcss">
     .wrapper {
-        max-width: 1320px;
+        max-width: 1600px;
     }
 </style>

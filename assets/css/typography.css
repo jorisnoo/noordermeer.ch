@@ -19,17 +19,20 @@
 }
 
 .prose-large p,
-.prose-large ul {
+.prose-large ul,
+.prose-large li
+{
     margin-bottom: 0.5em;
 }
 
-.prose-large :last-child {
-    margin-bottom: 0;
+.prose-large li {
+    margin-left: 1em;
 }
 
 .prose-large li:before {
     content: '—';
     margin-right: 0.2em;
+    margin-left: -1em;
 }
 
 @screen md {
