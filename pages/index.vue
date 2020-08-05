@@ -20,7 +20,11 @@
         />
         <p class="typo-base prose-base mt-1/2">
             Zentralstr. 43, 8003 Zurich <br>
-            <a href="https://www.linkedin.com/in/jorisnoo/" rel="noreferrer noopener nofollow">LinkedIn</a>
+            <a
+                href="https://www.linkedin.com/in/jorisnoo/"
+                rel="noreferrer noopener nofollow"
+                target="_blank"
+            >LinkedIn</a>
         </p>
     </div>
 </template>
