@@ -1,0 +1,10 @@
+.fade-transition,
+.page-enter-active,
+.page-leave-active {
+    @apply transition-opacity ease-in-out duration-700;
+}
+
+.page-enter,
+.page-leave-active {
+    @apply opacity-0;
+}
