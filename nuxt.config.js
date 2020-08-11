@@ -116,6 +116,10 @@ export default {
             },
         },
     },
+    pageTransition: {
+        name: 'page',
+        mode: 'out-in',
+    },
     /*
     ** Build configuration
     ** See https://nuxtjs.org/api/configuration-build/
