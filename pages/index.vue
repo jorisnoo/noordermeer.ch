@@ -18,9 +18,5 @@
             :document="en"
             class="prose-large"
         />
-        <!--        <p class="typo-base prose-base mt-1/2">-->
-        <!--            Zentralstr. 43, 8003 Zurich <br>-->
-        <!--            <a href="https://www.linkedin.com/in/jorisnoo/" rel="noreferrer noopener nofollow">LinkedIn</a>-->
-        <!--        </p>-->
     </div>
 </template>

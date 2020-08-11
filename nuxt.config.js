@@ -16,7 +16,7 @@ export default {
     */
     head: {
         htmlAttrs: {
-            lang: 'de',
+            lang: 'en',
         },
         titleTemplate: '%s | Joris Noordermeer — Web Development',
         link: [
@@ -88,7 +88,7 @@ export default {
     modules: [
         // Doc: https://github.com/nuxt/content
         '@nuxt/content',
-        'nuxt-i18n',
+        // 'nuxt-i18n',
     ],
     /*
     ** Content module configuration
@@ -100,7 +100,7 @@ export default {
     ** See https://nuxt-community.github.io/nuxt-i18n/options-reference.html
     */
     i18n: {
-        locales: ['en', 'de'],
+        locales: ['en'],
         defaultLocale: 'en',
         vueI18n: {
             fallbackLocale: 'en',
@@ -109,10 +109,10 @@ export default {
                     info: 'Info',
                     work: 'Work',
                 },
-                de: {
-                    info: 'Info',
-                    work: 'Projekte',
-                },
+                // de: {
+                //     info: 'Info',
+                //     work: 'Projekte',
+                // },
             },
         },
     },
