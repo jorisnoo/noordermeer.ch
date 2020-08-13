@@ -10,10 +10,6 @@
 /*    @apply inline-block leading-link-sm underline;*/
 /*}*/
 
-.prose-large {
-    hyphens: auto;
-}
-
 .prose-large a {
     @apply inline-block leading-link-sm border-b-2;
 }

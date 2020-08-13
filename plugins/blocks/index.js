@@ -57,6 +57,10 @@ export default function runIntro (options) {
     const mouse = AdjustedMouse.create(document.body);
     fixMouseUpTouchEvent(mouse);
 
+    // Remove scroll listeners
+    mouse.element.removeEventListener('mousewheel', mouse.mousewheel);
+    mouse.element.removeEventListener('DOMMouseScroll', mouse.mousewheel);
+
     const MouseConstraint = DomMouseConstraint.create(engine, {
         mouse, constraint: { stiffness: 0.003 },
     });
