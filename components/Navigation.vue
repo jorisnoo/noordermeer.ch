@@ -12,21 +12,21 @@
                 class="typo-large round-link hover:bg-blue"
                 exact-active-class="bg-blue"
             >
-                Info
+                <span :class="[ $i18n.locale ]">{{ $t('info') }}</span>
             </nuxt-link>
             <nuxt-link
                 :to="localePath('work')"
                 class="typo-large round-link hover:bg-green"
                 active-class="bg-green"
             >
-                Work
+                <span :class="[ $i18n.locale ]">{{ $t('work') }}</span>
             </nuxt-link>
             <nuxt-link
                 :to="localePath('contact')"
                 class="typo-large round-link hover:bg-red"
                 active-class="bg-red"
             >
-                Contact
+                <span :class="[ $i18n.locale ]">{{ $t('contact') }}</span>
             </nuxt-link>
         </div>
         <div class="flex">
@@ -54,7 +54,7 @@
 
 <!--TODO -->
 <style scoped>
-    .jp {
+    .jp{
         font-size: 0.9em;
         line-height: 1.111111111;
     }

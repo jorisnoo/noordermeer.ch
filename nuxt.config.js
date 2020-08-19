@@ -109,11 +109,18 @@ export default {
                 en: {
                     info: 'Info',
                     work: 'Work',
+                    contact: 'Contact',
                 },
-                // de: {
-                //     info: 'Info',
-                //     work: 'Projekte',
-                // },
+                de: {
+                    info: 'Info',
+                    work: 'Projekte',
+                    contact: 'Kontakt',
+                },
+                jp: {
+                    info: 'インフォ',
+                    work: '作品',
+                    contact: '連絡',
+                },
             },
         },
     },

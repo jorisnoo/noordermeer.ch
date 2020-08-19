@@ -1,5 +1,12 @@
 <script>
     export default {
+        nuxtI18n: {
+            paths: {
+                en: '/contact',
+                de: '/kontakt',
+                jp: '/連絡',
+            },
+        },
         head () {
             return {
                 title: 'Contact',

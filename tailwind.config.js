@@ -24,12 +24,13 @@ module.exports = {
             'fade-out-dark': ['rgba(0,0,0,0.001)', '#000000 20%'],
         },
         fontSize: {
-            // base: ['4vw', 1.222222222],
-            // md: ['1.8125rem', 1.103448276],
-            // 'large-md': ['3.84rem', 1],
+            base: ['4vw', 1.222222222],
+            'base-md': ['1.8125rem', 1.103448276],
+
             large: ['8vw', 1.111111111],
             'large-sm': ['6vw', 1.111111111],
             'large-md': ['3rem', 1.071428571],
+
             blocks: ['4.375rem', 1.071428571],
         },
         letterSpacing: {

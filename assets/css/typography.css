@@ -1,14 +1,14 @@
-/*.typo-base {*/
-/*    @apply text-base;*/
-/*}*/
+.typo-base {
+    @apply text-base;
+}
 
 .typo-large {
     @apply text-large;
 }
 
-/*.prose-base a {*/
-/*    @apply inline-block leading-link-sm underline;*/
-/*}*/
+.prose-base a {
+    @apply inline-block leading-link-sm underline;
+}
 
 .prose-large a {
     @apply inline-block leading-link-sm border-b-2;
@@ -38,9 +38,9 @@
 }
 
 @screen md {
-    /*.typo-base {*/
-    /*    @apply text-md tracking-wide;*/
-    /*}*/
+    .typo-base {
+        @apply text-base-md tracking-wide;
+    }
 
     .typo-large {
         @apply text-large-md tracking-normal;

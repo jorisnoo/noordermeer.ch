@@ -1,7 +1,7 @@
 .fade-transition,
 .page-enter-active,
 .page-leave-active {
-    @apply transition-opacity ease-in-out duration-700;
+    @apply transition-opacity ease-in-out duration-300;
 }
 
 .page-enter,
