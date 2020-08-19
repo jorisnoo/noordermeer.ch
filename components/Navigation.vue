@@ -8,21 +8,21 @@
     <nav class="navigation:flex justify-between">
         <div class="flex">
             <nuxt-link
-                to="/"
+                :to="localePath('/')"
                 class="typo-large round-link hover:bg-blue"
                 exact-active-class="bg-blue"
             >
                 Info
             </nuxt-link>
             <nuxt-link
-                to="/work"
+                :to="localePath('work')"
                 class="typo-large round-link hover:bg-green"
                 active-class="bg-green"
             >
                 Work
             </nuxt-link>
             <nuxt-link
-                to="/contact"
+                :to="localePath('contact')"
                 class="typo-large round-link hover:bg-red"
                 active-class="bg-red"
             >
@@ -31,20 +31,20 @@
         </div>
         <div class="flex">
             <nuxt-link
-                to="/"
-                class="typo-large round-link hover:bg-blue"
+                :to="switchLocalePath('en')"
+                class="typo-large round-link hover:bg-green"
             >
                 En
             </nuxt-link>
             <nuxt-link
-                to="/"
-                class="typo-large round-link hover:bg-green"
+                :to="switchLocalePath('de')"
+                class="typo-large round-link hover:bg-red"
             >
                 De
             </nuxt-link>
             <nuxt-link
-                to="/"
-                class="typo-large round-link hover:bg-red"
+                :to="switchLocalePath('jp')"
+                class="typo-large round-link hover:bg-blue"
             >
                 <span class="jp">日本語</span>
             </nuxt-link>
@@ -52,6 +52,7 @@
     </nav>
 </template>
 
+<!--TODO -->
 <style scoped>
     .jp {
         font-size: 0.9em;

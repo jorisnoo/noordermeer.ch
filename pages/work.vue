@@ -1,9 +1,12 @@
 <script>
     export default {
         async asyncData ({ $content }) {
-            const projects = await $content('projects').sortBy('date', 'desc').fetch();
             return {
-                projects,
+                projects: {
+                    en: await $content('en/projects').sortBy('date', 'desc').fetch(),
+                    de: await $content('de/projects').sortBy('date', 'desc').fetch(),
+                    jp: await $content('jp/projects').sortBy('date', 'desc').fetch(),
+                },
             };
         },
         head () {
@@ -17,7 +20,7 @@
 <template>
     <ul class="selection-green">
         <li
-            v-for="(project, index) in projects"
+            v-for="(project, index) in projects[$i18n.locale]"
             :key="'project'+project.name"
         >
             <a
