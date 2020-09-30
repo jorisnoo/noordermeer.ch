@@ -6,12 +6,33 @@
     @apply text-large;
 }
 
-.prose-base a {
-    @apply inline-block leading-link-sm underline;
+.prose a {
+    @apply inline-block leading-link-sm
 }
 
-.prose-large a {
-    @apply inline-block leading-link-sm border-b-2;
+.prose a:after {
+    display: inline-block;
+    content: "\2198";
+}
+
+.prose a[href*="//"]:not([href*="noordermeer.ch"]):after,
+.prose a[href*="mailto:"]:after {
+    content: "\2197";
+}
+
+.prose-base a:hover {
+    @apply underline;
+}
+
+.prose-large a:hover {
+    @apply border-b-2;
+}
+
+.prose code {
+    @apply font-sans;
+    /*font-family: "JetBrains Mono";*/
+    /*font-size: 0.8;*/
+    /*letter-spacing: 0;*/
 }
 
 .prose-large p,
@@ -46,11 +67,11 @@
         @apply text-large-md tracking-normal;
     }
 
-    .prose-base a {
+    .prose-base a:hover {
         @apply no-underline border-b-2;
     }
 
-    .prose-large a {
+    .prose-large a:hover {
         @apply border-b-3 leading-link-md ;
     }
 }

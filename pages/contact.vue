@@ -17,7 +17,7 @@
 
 <template>
     <div class="px-1/3 selection-red">
-        <div class="prose-large">
+        <div class="prose prose-large">
             <p>
                 noordermeer gmbh<br>
                 Zentralstr. 43<br>

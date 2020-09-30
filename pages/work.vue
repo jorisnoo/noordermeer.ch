@@ -40,7 +40,7 @@
                 :key="'project'+project.name"
             >
                 <h2
-                    class="round-link"
+                    class="round-link cursor-pointer"
                     :class="{
                         'hover:bg-green': index%3 === 0,
                         'hover:bg-red': index%3 === 1,
@@ -51,11 +51,11 @@
                     }"
                     @click="openProject = (openProject === index) ? -1 : index"
                 >
-                    {{ project.name }}
+                    {{ project.title }}
                 </h2>
                 <slide-up-down :active="openProject === index" :duration="200">
-                    <div class="projectDescription px-1/3">
-                        <nuxt-content class="typo-base prose-base" :document="project" />
+                    <div class="projectDescription px-1/3 pb-4">
+                        <nuxt-content class="typo-base prose prose-base" :document="project" />
                     </div>
                 </slide-up-down>
             </li>

@@ -30,7 +30,7 @@
         <nuxt-content
             :document="body"
             :key="'info'+$i18n.locale"
-            class="prose-large"
+            class="prose prose-large"
             :class="[ $i18n.locale ]"
         />
     </div>
