@@ -60,23 +60,23 @@
             <!--            <div id="debug"></div>-->
             <span
                 ref="joris"
-                class="block typo-large name-block"
+                class="typo-large name-block"
             >Joris</span>
             <span
                 ref="noordermeer"
-                class="block typo-large name-block"
+                class="typo-large name-block"
             >Noordermeer</span>
             <span
                 v-show="showWebDevelopment"
                 ref="webDevelopment"
-                class="block typo-large name-block"
+                class="typo-large name-block"
             >Web Development</span>
         </div>
     </div>
 </template>
 
 <style lang="postcss" scoped>
-    .block {
+    .name-block {
         @apply select-none pointer-events-auto cursor-pointer;
     }
 
