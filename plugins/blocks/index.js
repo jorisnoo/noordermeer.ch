@@ -32,7 +32,7 @@ export default function runIntro (options) {
     // create engine
     const engine = Engine.create({
         timing: {
-            timeScale: isMobile() ? 0.4 : 0.5,
+            timeScale: isMobile() ? 0.4 : 0.4,
         },
     });
     const world = engine.world;
@@ -192,6 +192,17 @@ export default function runIntro (options) {
     });
 
     Events.on(runner, 'tick', catchFleeingBlocks);
+
+    // setTimeout(() => {
+    //     ['joris', 'noordermeer', 'webDevelopment'].forEach((block) => {
+    //
+    //         const pos = state.blocks[block].position;
+    //         // pos.x += 0.2;
+    //         DomBody.applyForce(state.blocks[block], pos, {
+    //             x: 0, y: -state.blocks[block].mass * 0.01,
+    //         });
+    //     });
+    // }, 5000);
 
     /*
      * Wait for blocks to reach the middle of the page

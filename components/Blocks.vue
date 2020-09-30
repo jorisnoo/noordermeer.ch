@@ -60,22 +60,26 @@
             <!--            <div id="debug"></div>-->
             <span
                 ref="joris"
-                class="typo-large name-block select-none pointer-events-auto"
+                class="block typo-large name-block"
             >Joris</span>
             <span
                 ref="noordermeer"
-                class="typo-large name-block select-none pointer-events-auto"
+                class="block typo-large name-block"
             >Noordermeer</span>
             <span
                 v-show="showWebDevelopment"
                 ref="webDevelopment"
-                class="typo-large name-block select-none"
+                class="block typo-large name-block"
             >Web Development</span>
         </div>
     </div>
 </template>
 
 <style lang="postcss" scoped>
+    .block {
+        @apply select-none pointer-events-auto cursor-pointer;
+    }
+
     .touch-action-none {
         touch-action: none;
     }
