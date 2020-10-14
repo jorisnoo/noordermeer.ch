@@ -25,10 +25,7 @@
                 Switzerland
             </p>
             <p>
-                <a href="mailto:contact@noordermeer.ch">
-                    <span class="hidden md:inline">contact@noordermeer.ch</span>
-                    <span class="md:hidden">E-Mail</span>
-                </a>
+                <a href="mailto:contact@noordermeer.ch"><span class="hidden md:inline">contact@noordermeer.ch</span><span class="md:hidden">E-Mail</span></a>
             </p>
             <p>
                 <a

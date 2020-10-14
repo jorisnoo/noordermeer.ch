@@ -10,6 +10,7 @@ module.exports = {
     theme: {
         fontFamily: {
             sans: ['"DM Sans"', '"Noto Sans JP"', ...defaultTheme.fontFamily.sans],
+            mono: ['"DM Mono"', ...defaultTheme.fontFamily.mono],
         },
         colors: {
             transparent: 'transparent',

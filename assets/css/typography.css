@@ -29,10 +29,7 @@
 }
 
 .prose code {
-    @apply font-sans;
-    /*font-family: "JetBrains Mono";*/
-    /*font-size: 0.8;*/
-    /*letter-spacing: 0;*/
+    @apply font-mono;
 }
 
 .prose-large p,
