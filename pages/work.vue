@@ -58,7 +58,7 @@
                     {{ project.title }}
                 </h2>
                 <slide-up-down :active="openProject === index" :duration="200">
-                    <div class="projectDescription px-1/3 pb-4">
+                    <div class="projectDescription px-1/3 pb-4 pt-2">
                         <nuxt-content class="typo-base prose prose-base" :document="project" />
                     </div>
                 </slide-up-down>

@@ -33,21 +33,9 @@
     background-color: #d6d6d6;
 }
 
-.prose-large p,
-.prose-large ul,
-.prose-large li
+.prose-large p
 {
     @apply mb-1/2;
-}
-
-.prose-large li {
-    margin-left: 1em;
-}
-
-.prose-large li:before {
-    content: '—';
-    margin-right: 0.2em;
-    margin-left: -1em;
 }
 
 @screen sm {

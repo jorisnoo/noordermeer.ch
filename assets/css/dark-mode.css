@@ -6,4 +6,8 @@
     .name-block {
         @apply text-black bg-white;
     }
+
+    .prose code {
+        background-color: #282828;
+    }
 }
