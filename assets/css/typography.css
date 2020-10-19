@@ -7,7 +7,8 @@
 }
 
 .prose a {
-    @apply inline-block leading-link-sm
+    @apply inline-block leading-link-sm;
+    white-space: nowrap;
 }
 
 .prose a:after {
