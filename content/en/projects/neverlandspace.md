@@ -1,10 +1,14 @@
 ---
 name: Neverland Space
+title: Digital Online Art
 url: https://neverlandspace.com
 date: 2014-05
+disabled: true
 ---
-Slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. 
+2013 besuchte ich mein langjähriger Freund und späterer Kollege Ruben Feurer, der damals in London arbeitete. Zu dritt, namentlich zusammen mit Yves Sinka, streiften wir durch die Galerien und Museen vor Ort – und hatten die Idee, digitale Kunst im virtuellen Raum zugänglich zu machen: Wir starteten das Online-Projekt [Neverland Space](https://neverlandspace.com), aus dem 2014 die Zürcher Digitalagentur [Y7K](https://y7k.com) entstand.
 
-"What's happened to me?" he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.
+Neverland Space zeigt verschiedene Künstler in indiviuellen Ausstellungen. Alle Werke basieren auf spezifischen Programmiertechniken, das Spektrum reicht vom einfachen GIF und subtil bewegten Visual bis zu interaktiven Animationen und Aktionen, die im Neverland Space eine adäquate Bühne finden.
 
-[Visit Website](https://aaronwegmann.ch)
+Das Frontend, die sichtbare Oberfläche von Neverland Space, wird mit dem JavaScript Framework `Three.js` dargestellt. Das Organisieren und Bearbeiten der Inhalte, das Kuratieren der digitalen Ausstellungen, erfolgt im auf dem PHP Framework `Laravel` aufgebauten Backend.
+
+[Website besuchen](https://neverlandspace.com)
