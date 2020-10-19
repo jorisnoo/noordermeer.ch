@@ -29,7 +29,8 @@
 }
 
 .prose code {
-    @apply font-mono;
+    @apply font-mono px-1 -mx-1;
+    background-color: #d6d6d6;
 }
 
 .prose-large p,

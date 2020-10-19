@@ -4,9 +4,16 @@
             paths: {
                 en: '/contact',
                 de: '/kontakt',
-                jp: '/連絡',
+                // jp: '/連絡',
             },
         },
+        data () {
+            return {
+                zurich: this.$t('zurich'),
+                switzerland: this.$t('switzerland'),
+            };
+        },
+        created () {},
         head () {
             return {
                 title: 'Contact',
@@ -21,8 +28,8 @@
             <p>
                 noordermeer gmbh<br>
                 Zentralstr. 43<br>
-                8003 Zurich<br>
-                Switzerland
+                8003 {{ zurich }}<br>
+                {{ switzerland }}
             </p>
             <p>
                 <a href="mailto:contact@noordermeer.ch"><span class="hidden md:inline">contact@noordermeer.ch</span><span class="md:hidden">E-Mail</span></a>

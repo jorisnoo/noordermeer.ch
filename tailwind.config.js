@@ -9,7 +9,11 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
     theme: {
         fontFamily: {
-            sans: ['"DM Sans"', '"Noto Sans JP"', ...defaultTheme.fontFamily.sans],
+            sans: [
+                '"DM Sans"',
+                // '"Noto Sans JP"',
+                ...defaultTheme.fontFamily.sans,
+            ],
             mono: ['"DM Mono"', ...defaultTheme.fontFamily.mono],
         },
         colors: {
@@ -64,6 +68,10 @@ module.exports = {
     ],
     corePlugins: {
         container: false,
+    },
+    future: {
+        removeDeprecatedGapUtilities: true,
+        purgeLayersByDefault: true,
     },
     purge: {
         // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css

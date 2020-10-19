@@ -4,22 +4,26 @@
             paths: {
                 en: '/work',
                 de: '/projekte',
-                jp: '/作品',
+                // jp: '/作品',
             },
         },
         async asyncData ({ $content }) {
             return {
                 projects: {
-                    en: await $content('en/projects').sortBy('date', 'desc').fetch(),
-                    de: await $content('de/projects').sortBy('date', 'desc').fetch(),
-                    jp: await $content('jp/projects').sortBy('date', 'desc').fetch(),
+                    en: await $content('en/projects').where({ disabled: { $ne: true } }).sortBy('date', 'desc').fetch(),
+                    de: await $content('de/projects').where({ disabled: { $ne: true } }).sortBy('date', 'desc').fetch(),
+                    // jp: await $content('jp/projects').where({ disabled: { $ne: true } }).sortBy('date', 'desc').fetch(),
                 },
             };
         },
         data () {
             return {
                 openProject: -1,
+                projectsInCurrentLocale: this.projects ? this.projects[this.$i18n.locale] : null,
             };
+        },
+        created () {
+            this.projectsInCurrentLocale = this.projects[this.$i18n.locale];
         },
         head () {
             return {
@@ -36,7 +40,7 @@
         </h1>
         <ul class="selection-green">
             <li
-                v-for="(project, index) in projects[$i18n.locale]"
+                v-for="(project, index) in projectsInCurrentLocale"
                 :key="'project'+project.name"
             >
                 <h2

@@ -42,20 +42,20 @@
             >
                 De
             </nuxt-link>
-            <nuxt-link
-                :to="switchLocalePath('jp')"
-                class="typo-large round-link hover:bg-blue"
-            >
-                <span class="jp">日本語</span>
-            </nuxt-link>
+<!--            <nuxt-link-->
+<!--                :to="switchLocalePath('jp')"-->
+<!--                class="typo-large round-link hover:bg-blue"-->
+<!--            >-->
+<!--                <span class="jp">日本語</span>-->
+<!--            </nuxt-link>-->
         </div>
     </nav>
 </template>
 
 <!--TODO -->
-<style scoped>
-    .jp{
-        font-size: 0.9em;
-        line-height: 1.111111111;
-    }
-</style>
+<!--<style scoped>-->
+<!--    //.jp {-->
+<!--    //    font-size: 0.9em;-->
+<!--    //    line-height: 1.111111111;-->
+<!--    //}-->
+<!--</style>-->

@@ -10,9 +10,6 @@ export default {
     ** See https://nuxtjs.org/api/configuration-head
     */
     head: {
-        htmlAttrs: {
-            lang: 'en',
-        },
         titleTemplate: '%s | Joris Noordermeer — Web Development',
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -52,8 +49,7 @@ export default {
     /*
     ** Global CSS
     */
-    css: [
-    ],
+    css: [],
     /*
     ** Plugins to load before mounting the App
     ** https://nuxtjs.org/guide/plugins
@@ -96,7 +92,11 @@ export default {
     ** See https://nuxt-community.github.io/nuxt-i18n/options-reference.html
     */
     i18n: {
-        locales: ['en', 'de', 'jp'],
+        locales: [
+            'en',
+            'de',
+            // 'jp',
+        ],
         defaultLocale: 'en',
         vueI18n: {
             fallbackLocale: 'en',
@@ -125,6 +125,9 @@ export default {
             },
         },
     },
+    /*
+    ** Page transition
+    */
     pageTransition: {
         name: 'page',
         mode: 'out-in',
@@ -133,6 +136,5 @@ export default {
     ** Build configuration
     ** See https://nuxtjs.org/api/configuration-build/
     */
-    build: {
-    },
+    build: {},
 };
