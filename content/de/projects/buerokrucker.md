@@ -1,7 +1,7 @@
 ---
 name: "Büro Krucker"
 title: 'Corporate Design & Headless Architecture'
-url: https://letsmuseeum.com
+url: https://buerokrucker.netlify.app
 date: 2020-09
 ---
 Der vom Designstudio [Badesaison](https://badesaison.ch) gestaltete Webauftritt für das Architekturbüro [Krucker](https://buerokrucker.netlify.app) ist eine klassische Corporate Website. Sie reflektiert das Unternehmensprofil und gibt dem User einen Eindruck davon, wie Krucker denkt und handelt.

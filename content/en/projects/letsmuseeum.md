@@ -1,12 +1,11 @@
 ---
 name: "#letsmuseeum"
-title: 'Dynamische Schnittstelle, leistungsfähiges Tool'
+title: 'Dynamic interface, powerful tool'
 url: https://letsmuseeum.com
 date: 2015-05
-disabled: true
 ---
-\#letsmuseeum bietet Führungen, Touren und Workshops an. In Museen, Städten, Firmen und in verschiedenen Sprachen. Der von Y7K brutalistisch gestaltete Webauftritt ist die zentrale Schnittstelle zwischen aussen und innen — zwischen Publikum, Auftraggebern und der Organisation, die mit [letsmuseeum.com](https://letsmuseeum.com) über ein umfassendes und dynamisches Arbeitsinstrument verfügt.
+\#letsmuseeum offers guided tours and workshops: in museums, cities, companies and in different languages. Y7K's brutalist designed web presence is the central interface between the outside and the inside - between the audience, clients and the organization, which has a comprehensive and dynamic working tool with [letsmuseeum.com](https://letsmuseeum.com). 
 
-Entsprechend komplex und herausfordernd war die Entwicklung des Backends: Events akquirieren und formulieren, Angebote aufnehmen und kommunizieren, Tickets verkaufen und Zahlungen abwickeln, Teilnehmer und Stornierungen erfassen, Guides zuordnen, Reminders verschicken. Alles konsequent integriert, smart verknüpft und weitestmöglich automatisiert. #letsmuseum funktioniert.
+The development of the backend was accordingly complex and challenging: Acquiring and formulating events, taking up and communicating offers, selling tickets and handling payments, recording participants and cancellations, assigning guides, sending reminders. Everything was consistently integrated, smartly linked and automated as far as possible. #letsmuseum works.
 
-[Website besuchen](https://letsmuseeum.com)
+[Visit website](https://letsmuseeum.com)

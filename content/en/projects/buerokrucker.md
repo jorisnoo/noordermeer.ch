@@ -1,14 +1,13 @@
 ---
 name: "Büro Krucker"
 title: 'Corporate Design & Headless Architecture'
-url: https://letsmuseeum.com
+url: https://buerokrucker.netlify.app
 date: 2020-09
-disabled: true
 ---
-Der vom Designstudio [Badesaison](https://badesaison) gestaltete Webauftritt für das [Architekturbüro Krucker](https://buerokrucker.ch) ist eine klassische Corporate Website. Sie reflektiert das Unternehmensprofil und gibt dem User einen Eindruck davon, wie Krucker denkt und handelt.
+The web presence for the architectural office [Krucker](https://buerokrucker.netlify.app) designed by the design studio [Badesaison](https://badesaison.ch) is a classic corporate website. It reflects the company profile and gives the user an impression of how Krucker thinks and acts.
 
-An der Oberfläche präsentieren sich die Inhalte streng strukturiert, im lebendigen Wechselspiel unterschiedlicher Elemente — Weissraum, Bild, Text — und immer flexibel angepasst an die reale Situation, die Grösse des Browserfensters. Der einfachen Orientierung dienen die Filterkriterien, welche die Gesamtheit der Inhalte aufgliedern. Dabei werden die Themenseiten nicht neu aufgebaut, sondern neu dargestellt durch animierte Übergänge. Das sieht elegant aus und geschieht völlig fliessend.
+On the surface, the content is presented in a strictly structured manner, in a lively interplay of different elements - white space, images, text - always adapted to the real situation; the size of the browser window. The filter criteria, which break down the entire content, serve for easy orientation. The topic pages are not rebuilt but are displayed in a new way by animated transitions. This looks elegant and is done completely fluidly.
 
-Das Management der Daten erfolgt im benutzerfreundlichen `Craft CMS`, das für die Website der Krucker Architekten nach dem `Headless`-Prinzip eingesetzt wird: Die Datenhaltung und -verwaltung im Backend ist abgetrennt vom Frontend, das die Daten über eine API bezieht und präsentiert. Eine Headless-Architektur macht einen Webauftritt flexibler nutzbar und einfacher veränderbar. Sowohl im Backend wie auch im Frontend ist spürbarer Performancegewinn möglich.
+The management of the data is done in the user-friendly `Craft CMS`, which is used for the website of Krucker Architects according to the `headless` principle: data storage and management in the back end is separated from the front end, which obtains and presents the data via an API. A headless architecture makes a web presence more flexible to use and easier to change. Both in the backend and in the frontend a noticeable performance gain is possible.
 
-[Website besuchen](https://buerokrucker.ch)
+[Visit website](https://buerokrucker.netlify.app)

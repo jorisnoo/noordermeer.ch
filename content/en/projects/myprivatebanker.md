@@ -3,12 +3,11 @@ name: My Private Banker
 title: Progressive Web App
 url: https://myprivatebanker.io
 date: 2020-03
-disabled: true
 ---
-My Private Banker ist ein innert kürzester Zeit entwickelter [Prototyp](https://myprivatebanker.io/) für eine Mobile App, die im Kontext professioneller Finanzberatung individuelle Anlagemodelle berechnet. Dies präzise abgestimmt auf die eingegebenen Vermögens- und Einkommensverhältnisse und — im Experten-Modus — auf die persönliche Risikobereitschaft des Users.
+My Private Banker is a prototype for a mobile app developed within a very short timescale. It calculates individual investment models in the context of professional financial advice. This is precisely tailored to the entered asset and income situation and - in expert mode - to the user's personal risk tolerance.
 
-My Private Banker ist eine Progressive Web App, quasi die Symbiose einer mobilen Website und einer mobilen Applikation. Sie vereinigt die Vorteile der beiden Systeme: Eine Progressive Web App läuft im Browser, muss also nicht für verschiedene Betriebssysteme entwickelt und vom User installiert werden, funktioniert jedoch auch offline und bietet die Möglichkeit, auf Funktionen des Smartphones zuzugreifen.
+My Private Banker is a Progressive Web App, quasi the symbiosis of a mobile website and a mobile application. It combines the advantages of both systems: A `Progressive Web App` runs in the browser, thus it does not have to be developed for different operating systems and installed by the user, but it also works offline and offers the possibility to access smartphone functions.
 
-Die Demo-Version zeigt, wie My Private Banker ganz einfach per URL aufgerufen werden kann — und mit hoher Performance Resultate liefert.
+The demo version shows how My Private Banker can be accessed simply by URL - and delivers results with high performance.
 
-[Zum Prototyp](https://myprivatebanker.io/)
+[Visit prototype](https://myprivatebanker.io/)

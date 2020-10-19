@@ -3,12 +3,11 @@ name: Neverland Space
 title: Digital Online Art
 url: https://neverlandspace.com
 date: 2014-05
-disabled: true
 ---
-2013 besuchte ich mein langjähriger Freund und späterer Kollege Ruben Feurer, der damals in London arbeitete. Zu dritt, namentlich zusammen mit Yves Sinka, streiften wir durch die Galerien und Museen vor Ort – und hatten die Idee, digitale Kunst im virtuellen Raum zugänglich zu machen: Wir starteten das Online-Projekt [Neverland Space](https://neverlandspace.com), aus dem 2014 die Zürcher Digitalagentur [Y7K](https://y7k.com) entstand.
+In 2013 I visited my long-time friend and later colleague Ruben Feurer, who was working in London at the time. Together with Yves Sinka, we roamed the local galleries and museums - and came up with the idea of making digital art accessible in a virtual space: We started the online project [Neverland Space](https://neverlandspace.com), which in 2014 led to the founding of the digital agency [Y7K](https://y7k.com) in Zurich.
 
-Neverland Space zeigt verschiedene Künstler in indiviuellen Ausstellungen. Alle Werke basieren auf spezifischen Programmiertechniken, das Spektrum reicht vom einfachen GIF und subtil bewegten Visual bis zu interaktiven Animationen und Aktionen, die im Neverland Space eine adäquate Bühne finden.
+Neverland Space shows various artists in individual exhibitions. All works are based on specific programming techniques, the spectrum ranges from the simple GIF and subtly moving visuals to interactive animations and actions that find an adequate stage in Neverland Space.
 
-Das Frontend, die sichtbare Oberfläche von Neverland Space, wird mit dem JavaScript Framework `Three.js` dargestellt. Das Organisieren und Bearbeiten der Inhalte, das Kuratieren der digitalen Ausstellungen, erfolgt im auf dem PHP Framework `Laravel` aufgebauten Backend.
+The frontend, the visible surface of Neverland Space, is rendered with the JavaScript framework `Three.js`. The organisation and editing of the content, the curating of the digital exhibitions, takes place in the backend, which is built on the PHP framework `Laravel`.
 
-[Website besuchen](https://neverlandspace.com)
+[Visit website](https://neverlandspace.com)
