@@ -40,6 +40,10 @@
 }
 
 @screen sm {
+    .typo-base {
+        @apply text-base-sm;
+    }
+
     .typo-large {
         @apply text-large-sm;
     }
