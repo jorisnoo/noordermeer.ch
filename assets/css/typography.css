@@ -3,55 +3,74 @@
 }
 
 .typo-large {
-    @apply text-xl;
+    @apply text-large;
 }
 
-.prose-base a {
-    @apply inline-block leading-link-sm underline;
+.prose a {
+    @apply inline-block leading-link-sm
 }
 
-.prose-large {
-    /*hyphens: auto;*/
+.prose a:after {
+    display: inline-block;
+    content: "\2198";
 }
 
-.prose-large a {
-    @apply inline-block leading-link-sm border-b-2;
+.prose a[href*="//"]:not([href*="noordermeer.ch"]):after,
+.prose a[href*="mailto:"]:after {
+    content: "\2197";
+}
+
+.prose-base a:hover {
+    @apply underline;
+}
+
+.prose-large a:hover {
+    @apply border-b-2;
+}
+
+.prose code {
+    @apply font-mono px-1 -mx-1;
+    background-color: #d6d6d6;
 }
 
 .prose-large p,
-.prose-large ul {
-    margin-bottom: 0.5em;
+.prose-large ul,
+.prose-large li
+{
+    @apply mb-1/2;
 }
 
-.prose-large :last-child {
-    margin-bottom: 0;
+.prose-large li {
+    margin-left: 1em;
 }
 
 .prose-large li:before {
     content: '—';
     margin-right: 0.2em;
+    margin-left: -1em;
+}
+
+@screen sm {
+    .typo-large {
+        @apply text-large-sm;
+    }
 }
 
 @screen md {
     .typo-base {
-        @apply text-md tracking-wide;
+        @apply text-base-md tracking-wide;
     }
 
     .typo-large {
-        @apply text-2xl tracking-normal;
+        @apply text-large-md tracking-normal;
     }
 
-    .prose-base a {
+    .prose-base a:hover {
         @apply no-underline border-b-2;
     }
 
-    .prose-large a {
+    .prose-large a:hover {
         @apply border-b-3 leading-link-md ;
     }
 }
 
-@screen lg {
-    .typo-large {
-        @apply text-3xl tracking-tight;
-    }
-}

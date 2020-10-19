@@ -57,24 +57,29 @@
             class="absolute inset-0 overflow-hidden z-10 lg:fixed"
             :class="{'opacity-0': !initialised, 'pointer-events-none': !isDragging, 'touch-action-none': !isDragging }"
         >
+            <!--            <div id="debug"></div>-->
             <span
                 ref="joris"
-                class="typo-large name-block select-none pointer-events-auto"
+                class="typo-large name-block"
             >Joris</span>
             <span
                 ref="noordermeer"
-                class="typo-large name-block select-none pointer-events-auto"
+                class="typo-large name-block"
             >Noordermeer</span>
             <span
                 v-show="showWebDevelopment"
                 ref="webDevelopment"
-                class="typo-large name-block select-none"
+                class="typo-large name-block"
             >Web Development</span>
         </div>
     </div>
 </template>
 
 <style lang="postcss" scoped>
+    .name-block {
+        @apply select-none pointer-events-auto cursor-pointer;
+    }
+
     .touch-action-none {
         touch-action: none;
     }
@@ -82,7 +87,7 @@
     .placeholder {
         @apply bg-transparent select-none;
 
-        margin-bottom: 0.222222em;
+        margin-bottom: 0.1em;
     }
 
     @screen lg {

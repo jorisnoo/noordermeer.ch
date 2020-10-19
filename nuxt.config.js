@@ -1,11 +1,6 @@
 
 export default {
     /*
-    ** Nuxt rendering mode
-    ** See https://nuxtjs.org/api/configuration-mode
-    */
-    mode: 'universal',
-    /*
     ** Nuxt target
     ** See https://nuxtjs.org/api/configuration-target
     */
@@ -54,13 +49,13 @@ export default {
     /*
     ** Global CSS
     */
-    css: [
-    ],
+    css: [],
     /*
     ** Plugins to load before mounting the App
     ** https://nuxtjs.org/guide/plugins
     */
     plugins: [
+        { src: './plugins/slide-up-down.js', mode: 'client' },
     ],
     /*
     ** Auto import components
@@ -85,7 +80,7 @@ export default {
     modules: [
         // Doc: https://github.com/nuxt/content
         '@nuxt/content',
-        // 'nuxt-i18n',
+        'nuxt-i18n',
     ],
     /*
     ** Content module configuration
@@ -97,7 +92,11 @@ export default {
     ** See https://nuxt-community.github.io/nuxt-i18n/options-reference.html
     */
     i18n: {
-        locales: ['en'],
+        locales: [
+            'en',
+            'de',
+            // 'jp',
+        ],
         defaultLocale: 'en',
         vueI18n: {
             fallbackLocale: 'en',
@@ -105,14 +104,30 @@ export default {
                 en: {
                     info: 'Info',
                     work: 'Work',
+                    contact: 'Contact',
+                    zurich: 'Zurich',
+                    switzerland: 'Switzerland',
                 },
-                // de: {
-                //     info: 'Info',
-                //     work: 'Projekte',
-                // },
+                de: {
+                    info: 'Info',
+                    work: 'Projekte',
+                    contact: 'Kontakt',
+                    zurich: 'Zürich',
+                    switzerland: 'Schweiz',
+                },
+                jp: {
+                    info: 'インフォ',
+                    work: '作品',
+                    contact: '連絡',
+                    zurich: 'Zurich',
+                    switzerland: 'Switzerland',
+                },
             },
         },
     },
+    /*
+    ** Page transition
+    */
     pageTransition: {
         name: 'page',
         mode: 'out-in',
@@ -121,6 +136,5 @@ export default {
     ** Build configuration
     ** See https://nuxtjs.org/api/configuration-build/
     */
-    build: {
-    },
+    build: {},
 };

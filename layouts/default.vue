@@ -8,15 +8,30 @@
         mounted () {
             this.init = true;
         },
+        head () {
+            return {
+                htmlAttrs: {
+                    lang: this.$i18n.locale,
+                },
+            };
+        },
     };
 </script>
 
 <template>
-    <div class="wrapper min-h-screen relative p-4 lg:py-6 xl:container delay-500 transition-opacity ease-out duration-1000" :class="{ 'opacity-0': !init }">
+    <div
+        class="min-h-screen relative p-4 lg:py-6 delay-500 transition-opacity ease-out duration-1000"
+        :class="{ 'opacity-0': !init }"
+    >
         <Blocks />
         <Navigation />
-        <Nuxt />
+        <Nuxt class="content typo-large mt-1/2"/>
         <BottomPlaceholder />
     </div>
 </template>
 
+<style>
+    .content {
+        max-width: 1500px;
+    }
+</style>

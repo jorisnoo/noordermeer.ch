@@ -12,21 +12,21 @@ export function getBlockConfig (elements) {
     return {
         joris: {
             x: isMobile ? 8 + jorisWidth / 2 : 32 + jorisWidth / 2,
-            y: isMobile ? windowHeight + noordermeerWidth : yOffset - noordermeerWidth * 0.3,
+            y: isMobile ? -yOffset + windowHeight + noordermeerWidth : yOffset - noordermeerWidth * 0.3,
             rotation: Math.PI / 12,
             collisionFilter: { category: 0x0002 },
             element: elements.joris,
         },
         noordermeer: {
             x: isMobile ? noordermeerWidth * 0.25 + jorisWidth + noordermeerWidth / 2 : windowWidth * 0.3 - 32 + noordermeerWidth / 2,
-            y: isMobile ? windowHeight + noordermeerWidth * 1.4 : yOffset - noordermeerWidth * 0.7,
+            y: isMobile ? -yOffset + windowHeight + noordermeerWidth * 1.4 : yOffset - noordermeerWidth * 0.7,
             rotation: -Math.PI / 6,
             collisionFilter: { category: 0x0002 },
             element: elements.noordermeer,
         },
         webDevelopment: {
             x: isMobile ? windowWidth * 0.5 : Math.min(windowWidth * 0.7, windowWidth * 0.3 + noordermeerWidth * 1.4),
-            y: isMobile ? windowHeight + noordermeerWidth * 0.5 : yOffset - noordermeerWidth * 1.4,
+            y: isMobile ? -yOffset + windowHeight + noordermeerWidth * 0.5 : yOffset - noordermeerWidth * 1.4,
             rotation: Math.PI / 7,
             collisionFilter: { category: 0x0004 }, // 0x0004
             element: elements.webDevelopment,

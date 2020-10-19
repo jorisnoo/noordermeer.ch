@@ -1,8 +1,21 @@
 <script>
     export default {
         async asyncData ({ $content }) {
-            const en = await $content('english').fetch();
-            return { en };
+            return {
+                info: {
+                    en: await $content('en/index').fetch(),
+                    de: await $content('de/index').fetch(),
+                    // jp: await $content('jp/index').fetch(),
+                },
+            };
+        },
+        data () {
+            return {
+                body: this.info ? this.info[this.$i18n.locale] : null,
+            };
+        },
+        created () {
+            this.body = this.info[this.$i18n.locale];
         },
         head () {
             return {
@@ -13,18 +26,12 @@
 </script>
 
 <template>
-    <div class="typo-large px-1/3 mt-1/2 selection-blue">
+    <div class="px-1/3 selection-blue">
         <nuxt-content
-            :document="en"
-            class="prose-large"
+            :document="body"
+            :key="'info'+$i18n.locale"
+            class="prose prose-large"
+            :class="[ $i18n.locale ]"
         />
-        <p class="typo-base prose-base mt-1/2">
-            Zentralstr. 43, 8003 Zurich <br>
-            <a
-                href="https://www.linkedin.com/in/jorisnoo/"
-                rel="noreferrer noopener nofollow"
-                target="_blank"
-            >LinkedIn</a>
-        </p>
     </div>
 </template>
