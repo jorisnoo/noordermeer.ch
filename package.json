@@ -24,7 +24,7 @@
         "@nuxtjs/pwa": "^3.2.2",
         "matter-dom-plugin": "github:jorisnoo/matter-dom-plugin#main",
         "matter-js": "^0.14.2",
-        "nuxt": "^2.14.6",
+        "nuxt": "^2.14.7",
         "nuxt-i18n": "^6.15.3",
         "tailwindcss-gradients": "^3.0.0",
         "throttle-debounce": "^2.3.0",
