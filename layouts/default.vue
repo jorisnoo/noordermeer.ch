@@ -25,7 +25,7 @@
     >
         <Blocks />
         <Navigation />
-        <Nuxt class="content typo-large mt-1/2"/>
+        <Nuxt class="content typo-large mt-1/2" />
         <BottomPlaceholder />
     </div>
 </template>
