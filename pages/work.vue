@@ -3,8 +3,8 @@
         key: 'work',
         nuxtI18n: {
             paths: {
-                en: '/work/:slug',
-                de: '/projekte/:slug',
+                en: '/work',
+                de: '/projekte',
                 // jp: '/作品',
             },
         },
@@ -32,7 +32,9 @@
         watch: {
             openProject (openProject) {
                 if (openProject > -1) {
-                    this.$refs.headers[this.openProject].scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+                    setTimeout(() => {
+                        this.$refs.headers[this.openProject].scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+                    }, 301);
                 }
             },
         },
@@ -69,11 +71,11 @@
                         'bg-blue': index%3 === 2 && openProject === index,
                     }"
                 >
-                    <nuxt-link :to="localePath((openProject === index) ? { name: 'work' } : { params: { slug: project.slug } })">
+                    <nuxt-link :to="localePath({ params: { slug: (openProject === index) ? null : project.slug } })">
                         {{ project.title }}
                     </nuxt-link>
                 </h2>
-                <slide-up-down :active="openProject === index" :duration="400">
+                <slide-up-down :active="openProject === index" :duration="300">
                     <div class="projectDescription px-1/3 pb-4 pt-2">
                         <nuxt-content class="typo-base prose prose-base" :document="project" />
                     </div>
