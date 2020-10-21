@@ -57,7 +57,7 @@
             class="absolute inset-0 overflow-hidden z-10 lg:fixed"
             :class="{'opacity-0': !initialised, 'pointer-events-none': !isDragging, 'touch-action-none': !isDragging }"
         >
-<!--                        <div id="debug"></div>-->
+<!--            <div id="debug"></div>-->
             <span
                 ref="joris"
                 class="typo-large name-block"
