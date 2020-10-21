@@ -16,7 +16,7 @@
         created () {},
         head () {
             return {
-                title: 'Contact',
+                title: this.$t('contact'),
             };
         },
     };
@@ -24,6 +24,9 @@
 
 <template>
     <div class="px-1/3 selection-red">
+        <h1 class="sr-only">
+            {{ $t('contact') }}
+        </h1>
         <div class="prose prose-large">
             <p>
                 noordermeer gmbh<br>
@@ -33,8 +36,6 @@
             </p>
             <p>
                 <a href="mailto:contact@noordermeer.ch">contact@noordermeer.ch</a>
-<!--                    <span class="md:hidden">E-Mail</span>-->
-
             </p>
             <p>
                 <a

@@ -119,10 +119,15 @@ export default {
                     info: 'インフォ',
                     work: '作品',
                     contact: '連絡',
-                    zurich: 'Zurich',
-                    switzerland: 'Switzerland',
+                    zurich: 'チューリッヒ',
+                    switzerland: 'スイス',
                 },
             },
+        },
+        detectBrowserLanguage: {
+            useCookie: true,
+            cookieKey: 'i18n_redirected',
+            onlyOnRoot: true,
         },
     },
     /*

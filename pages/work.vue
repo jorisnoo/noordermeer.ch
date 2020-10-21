@@ -27,7 +27,7 @@
         },
         head () {
             return {
-                title: 'Work',
+                title: this.$t('work'),
             };
         },
     };
@@ -36,7 +36,7 @@
 <template>
     <div>
         <h1 class="sr-only">
-<!--            {{ $t('Projects') }}-->
+            {{ $t('work') }}
         </h1>
         <ul class="selection-green">
             <li
@@ -57,7 +57,7 @@
                 >
                     {{ project.title }}
                 </h2>
-                <slide-up-down :active="openProject === index" :duration="200">
+                <slide-up-down :active="openProject === index" :duration="400">
                     <div class="projectDescription px-1/3 pb-4 pt-2">
                         <nuxt-content class="typo-base prose prose-base" :document="project" />
                     </div>

@@ -33,12 +33,14 @@
             <nuxt-link
                 :to="switchLocalePath('en')"
                 class="typo-large round-link hover:bg-green"
+                :class="{ 'bg-green': $i18n.locale === 'en' }"
             >
                 En
             </nuxt-link>
             <nuxt-link
                 :to="switchLocalePath('de')"
                 class="typo-large round-link hover:bg-red"
+                :class="{ 'bg-red': $i18n.locale === 'de' }"
             >
                 De
             </nuxt-link>
