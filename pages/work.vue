@@ -1,9 +1,10 @@
 <script>
     export default {
+        key: 'work',
         nuxtI18n: {
             paths: {
-                en: '/work',
-                de: '/projekte',
+                en: '/work/:slug',
+                de: '/projekte/:slug',
                 // jp: '/作品',
             },
         },
@@ -22,8 +23,21 @@
                 projectsInCurrentLocale: this.projects ? this.projects[this.$i18n.locale] : null,
             };
         },
+        watch: {
+            '$route.params.slug' () {
+                this.updateOpenProjectAccordingToRoute();
+            },
+        },
         created () {
             this.projectsInCurrentLocale = this.projects[this.$i18n.locale];
+            if (this.$route.params.slug) {
+                this.updateOpenProjectAccordingToRoute();
+            }
+        },
+        methods: {
+            updateOpenProjectAccordingToRoute () {
+                this.openProject = Object.values(this.projectsInCurrentLocale).findIndex(entry => entry.slug === this.$route.params.slug);
+            },
         },
         head () {
             return {
@@ -53,9 +67,10 @@
                         'bg-red': index%3 === 1 && openProject === index,
                         'bg-blue': index%3 === 2 && openProject === index,
                     }"
-                    @click="openProject = (openProject === index) ? -1 : index"
                 >
-                    {{ project.title }}
+                    <nuxt-link :to="localePath((openProject === index) ? { name: 'work' } : { params: { slug: project.slug } })">
+                        {{ project.title }}
+                    </nuxt-link>
                 </h2>
                 <slide-up-down :active="openProject === index" :duration="400">
                     <div class="projectDescription px-1/3 pb-4 pt-2">
