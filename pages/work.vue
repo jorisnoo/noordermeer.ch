@@ -19,25 +19,25 @@
         },
         data () {
             return {
-                openProject: -1,
                 projectsInCurrentLocale: this.projects ? this.projects[this.$i18n.locale] : null,
             };
         },
+        computed: {
+            openProject () {
+                return this.projectsInCurrentLocale
+                    ? Object.values(this.projectsInCurrentLocale).findIndex(entry => entry.slug === this.$route.params.slug)
+                    : -1;
+            },
+        },
         watch: {
-            '$route.params.slug' () {
-                this.updateOpenProjectAccordingToRoute();
+            openProject (openProject) {
+                if (openProject > -1) {
+                    this.$refs.headers[this.openProject].scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+                }
             },
         },
         created () {
             this.projectsInCurrentLocale = this.projects[this.$i18n.locale];
-            if (this.$route.params.slug) {
-                this.updateOpenProjectAccordingToRoute();
-            }
-        },
-        methods: {
-            updateOpenProjectAccordingToRoute () {
-                this.openProject = Object.values(this.projectsInCurrentLocale).findIndex(entry => entry.slug === this.$route.params.slug);
-            },
         },
         head () {
             return {
@@ -58,6 +58,7 @@
                 :key="'project'+project.name"
             >
                 <h2
+                    :ref="'headers'"
                     class="round-link cursor-pointer"
                     :class="{
                         'hover:bg-green': index%3 === 0,
