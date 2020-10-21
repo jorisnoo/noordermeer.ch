@@ -47,6 +47,7 @@ module.exports = {
                 '1/3': '0.333333em', // For blocks
             },
             margin: {
+                '1/3': '0.333333em',
                 '1/2': '0.5em',
             },
             borderWidth: {

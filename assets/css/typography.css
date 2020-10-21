@@ -30,7 +30,7 @@
 }
 
 .prose code {
-    @apply font-mono px-1 -mx-1;
+    @apply font-mono px-2 -mx-2 rounded-full inline-block;
     background-color: #d6d6d6;
 }
 
