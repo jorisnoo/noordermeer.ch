@@ -86,7 +86,14 @@ export default {
     ** Content module configuration
     ** See https://content.nuxtjs.org/configuration
     */
-    content: {},
+    content: {
+        markdown: {
+            // https://github.com/remarkjs/remark-external-links#options
+            remarkExternalLinks: {
+                rel: ['nofollow', 'noopener'],
+            },
+        },
+    },
     /*
     ** i18n module configuration
     ** See https://nuxt-community.github.io/nuxt-i18n/options-reference.html
