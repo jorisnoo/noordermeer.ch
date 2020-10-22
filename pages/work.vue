@@ -54,6 +54,10 @@
         },
         created () {
             this.projectsInCurrentLocale = this.projects[this.$i18n.locale];
+
+            if (this.currentSlug && this.openProjectIndex === -1) {
+                this.$router.replace(this.localePath({ params: { slug: null } }));
+            }
         },
         head () {
             return {

@@ -45,7 +45,6 @@ export default {
             display: 'standalone',
             lang: 'en',
         },
-        workbox: false,
     },
     /*
     ** Global CSS
