@@ -1,11 +1,14 @@
 [build]
-    publish = "dist"
-    command = "npm run generate"
+  publish = "dist"
+  command = "npm run generate"
 
 [[headers]]
-    for = "/*"
-    [headers.values]
-        Referrer-Policy = "strict-origin-when-cross-origin"
-        X-Content-Type-Options = "nosniff"
-        X-Frame-Options = "DENY"
-        X-XSS-Protection = "1; mode=block"
+  for = "/*"
+  [headers.values]
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
