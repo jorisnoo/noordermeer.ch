@@ -95,6 +95,9 @@
                         <nuxt-content class="typo-base prose prose-base" :document="project" />
                     </div>
                 </slide-up-down>
+                <div class="projectDescription px-1/3 pb-4 pt-2" slot="placeholder">
+                    <nuxt-content class="typo-base prose prose-base" :document="project" />
+                </div>
             </client-only>
         </article>
     </div>
