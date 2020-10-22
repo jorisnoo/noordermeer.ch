@@ -85,15 +85,17 @@
                     'bg-blue': index%3 === 2 && openProjectIndex === index,
                 }"
             >
-                <nuxt-link :to="localePath({ params: { slug: (openProjectIndex === index) ? null : project.slug } })">
+                <nuxt-link :to="localePath({ params: { slug: (openProjectIndex === index) ? null : projects[$i18n.locale][index].slug } })">
                     {{ project.title }}
                 </nuxt-link>
             </h2>
-            <slide-up-down :active="openProjectIndex === index" :duration="500">
-                <div class="projectDescription px-1/3 pb-4 pt-2">
-                    <nuxt-content class="typo-base prose prose-base" :document="project" />
-                </div>
-            </slide-up-down>
+            <client-only>
+                <slide-up-down :active="openProjectIndex === index" :duration="500">
+                    <div class="projectDescription px-1/3 pb-4 pt-2">
+                        <nuxt-content class="typo-base prose prose-base" :document="project" />
+                    </div>
+                </slide-up-down>
+            </client-only>
         </article>
     </div>
 </template>
