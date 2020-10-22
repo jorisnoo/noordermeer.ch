@@ -1,5 +1,5 @@
 ---
-name: SBB online game
+name: SBB Online Game
 title: Dynamic Rulebook
 url: https://gewinnen.sbb.ch
 date: 2020-06

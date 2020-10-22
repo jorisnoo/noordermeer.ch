@@ -26,27 +26,33 @@
             currentSlug () {
                 return this.$route.params.slug || null;
             },
-            openProject () {
+            openProjectIndex () {
                 return this.projectsInCurrentLocale && this.currentSlug
                     ? Object.values(this.projectsInCurrentLocale).findIndex(entry => entry.slug === this.currentSlug)
                     : -1;
             },
+            currentProject () {
+                return this.openProjectIndex > -1 && this.projectsInCurrentLocale
+                    ? this.projectsInCurrentLocale[this.openProjectIndex]
+                    : null;
+            },
         },
-        // watch: {
-        // openProject (openProject) {
-        //     if (openProject > -1) {
-        //         setTimeout(() => {
-        //             this.$refs.headers[this.openProject].scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-        //         }, 301);
-        //     }
-        // },
-        // },
+        watch: {
+            openProjectIndex (index) {
+                if (index > -1 && this.projects) {
+                    this.$store.dispatch('i18n/setRouteParams', {
+                        de: { slug: this.projects.de[index].slug },
+                        en: { slug: this.projects.en[index].slug },
+                    });
+                }
+            },
+        },
         created () {
             this.projectsInCurrentLocale = this.projects[this.$i18n.locale];
         },
         head () {
             return {
-                title: this.$t('work'),
+                title: this.currentProject ? this.currentProject.name : this.$t('work'),
             };
         },
     };
@@ -62,22 +68,21 @@
             :key="'project'+project.name"
         >
             <h2
-                :ref="'headers'"
                 class="round-link cursor-pointer"
                 :class="{
                     'hover:bg-green': index%3 === 0,
                     'hover:bg-red': index%3 === 1,
                     'hover:bg-blue': index%3 === 2,
-                    'bg-green': index%3 === 0 && openProject === index,
-                    'bg-red': index%3 === 1 && openProject === index,
-                    'bg-blue': index%3 === 2 && openProject === index,
+                    'bg-green': index%3 === 0 && openProjectIndex === index,
+                    'bg-red': index%3 === 1 && openProjectIndex === index,
+                    'bg-blue': index%3 === 2 && openProjectIndex === index,
                 }"
             >
-                <nuxt-link :to="localePath({ params: { slug: (openProject === index) ? null : project.slug } })">
+                <nuxt-link :to="localePath({ params: { slug: (openProjectIndex === index) ? null : project.slug } })">
                     {{ project.title }}
                 </nuxt-link>
             </h2>
-            <slide-up-down :active="openProject === index" :duration="500">
+            <slide-up-down :active="openProjectIndex === index" :duration="500">
                 <div class="projectDescription px-1/3 pb-4 pt-2">
                     <nuxt-content class="typo-base prose prose-base" :document="project" />
                 </div>
