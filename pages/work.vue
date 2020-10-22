@@ -76,6 +76,7 @@
             v-for="(project, index) in projectsInCurrentLocale"
             :key="'project-'+project.slug"
             :aria-labelledby="project.slug"
+            :aria-role="openProjectIndex === index ? 'main' : 'article'"
         >
             <h2
                 :id="project.slug"
@@ -99,8 +100,12 @@
                         <nuxt-content class="typo-base prose prose-base" :document="project" />
                     </div>
                 </slide-up-down>
-                <div class="projectDescription px-1/3 pb-4 pt-2" slot="placeholder">
-                    <nuxt-content class="typo-base prose prose-base" :document="project" />
+                <div
+                    v-if="openProjectIndex === index"
+                    aria-expanded="true"
+                    slot="placeholder"
+                >
+                    <nuxt-content :document="project" />
                 </div>
             </client-only>
         </article>
