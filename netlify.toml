@@ -12,6 +12,10 @@
 
 [[plugins]]
   package = "@netlify/plugin-sitemap"
+  [plugins.inputs]
+    exclude = [
+      '/200'
+    ]
 
 [[plugins]]
   package = "netlify-plugin-checklinks"
