@@ -70,9 +70,11 @@
         </h1>
         <article
             v-for="(project, index) in projectsInCurrentLocale"
-            :key="'project'+project.name"
+            :key="'project-'+project.slug"
+            :aria-labelledby="project.slug"
         >
             <h2
+                :id="project.slug"
                 class="round-link cursor-pointer"
                 :class="{
                     'hover:bg-green': index%3 === 0,
