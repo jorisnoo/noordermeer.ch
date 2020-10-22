@@ -23,9 +23,12 @@
             };
         },
         computed: {
+            currentSlug () {
+                return this.$route.params.slug || null;
+            },
             openProject () {
-                return this.projectsInCurrentLocale
-                    ? Object.values(this.projectsInCurrentLocale).findIndex(entry => entry.slug === this.$route.params.slug)
+                return this.projectsInCurrentLocale && this.currentSlug
+                    ? Object.values(this.projectsInCurrentLocale).findIndex(entry => entry.slug === this.currentSlug)
                     : -1;
             },
         },
