@@ -44,6 +44,11 @@
                         de: { slug: this.projects.de[index].slug },
                         en: { slug: this.projects.en[index].slug },
                     });
+                } else {
+                    this.$store.dispatch('i18n/setRouteParams', {
+                        de: { slug: null },
+                        en: { slug: null },
+                    });
                 }
             },
         },
