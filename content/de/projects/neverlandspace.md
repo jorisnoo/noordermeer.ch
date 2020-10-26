@@ -1,6 +1,6 @@
 ---
 name: Neverland Space
-title: Digital Online Art
+title: 'Digital Online Art'
 url: https://neverlandspace.com
 date: 2014-05
 ---

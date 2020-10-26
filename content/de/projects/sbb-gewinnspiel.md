@@ -1,6 +1,6 @@
 ---
-name: SBB Gewinnspiel
-title: Dynamisches Regelwerk
+name: 'SBB Gewinnspiel'
+title: 'Dynamisches Regelwerk'
 url: https://gewinnen.sbb.ch
 date: 2020-06
 ---

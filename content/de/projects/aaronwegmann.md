@@ -1,6 +1,6 @@
 ---
-name: Aaron Wegmann
-title: Each play a new clip
+name: 'Aaron Wegmann'
+title: 'Each play a new clip'
 url: https://aaronwegmann.ch
 date: 2020-04
 ---
