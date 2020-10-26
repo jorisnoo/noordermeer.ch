@@ -6,7 +6,7 @@
 
 <template>
     <nav class="navigation:flex justify-between">
-        <div class="flex">
+        <div class="flex flex-wrap">
             <nuxt-link
                 :to="localePath('/')"
                 class="typo-large round-link hover:bg-blue"
