@@ -137,6 +137,7 @@ export default {
             cookieKey: 'i18n_redirected',
             onlyOnRoot: true,
         },
+        seo: true,
     },
     /*
     ** Page transition
