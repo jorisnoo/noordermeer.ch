@@ -4,7 +4,7 @@
             paths: {
                 en: '/contact',
                 de: '/kontakt',
-                jp: '/お仕事のご依頼',
+                jp: '/contact',
             },
         },
         data () {

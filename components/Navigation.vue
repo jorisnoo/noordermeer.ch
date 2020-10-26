@@ -47,6 +47,7 @@
             <nuxt-link
                 :to="switchLocalePath('jp')"
                 class="typo-large round-link hover:bg-blue"
+                :class="{ 'bg-blue': $i18n.locale === 'jp' }"
             >
                 <span class="jp">日本語</span>
             </nuxt-link>

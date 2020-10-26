@@ -5,7 +5,7 @@
             paths: {
                 en: '/work',
                 de: '/projekte',
-                jp: '/制作実績',
+                jp: '/work',
             },
         },
         async asyncData ({ $content }) {
