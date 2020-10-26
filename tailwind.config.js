@@ -11,7 +11,7 @@ module.exports = {
         fontFamily: {
             sans: [
                 '"DM Sans"',
-                // '"Noto Sans JP"',
+                '"Noto Sans JP"',
                 ...defaultTheme.fontFamily.sans,
             ],
             mono: ['"DM Mono"', ...defaultTheme.fontFamily.mono],

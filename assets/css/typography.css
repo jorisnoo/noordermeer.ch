@@ -39,6 +39,11 @@
     @apply mb-1/2;
 }
 
+.prose.jp p {
+    font-size: 0.9em;
+    line-height: 1.25;
+}
+
 @screen sm {
     .typo-base {
         @apply text-base-sm;

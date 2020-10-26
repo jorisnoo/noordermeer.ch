@@ -54,10 +54,8 @@
     </nav>
 </template>
 
-<!--TODO -->
-<!--<style scoped>-->
-<!--    //.jp {-->
-<!--    //    font-size: 0.9em;-->
-<!--    //    line-height: 1.111111111;-->
-<!--    //}-->
-<!--</style>-->
+<style scoped>
+    .jp {
+        font-size: 0.9em;
+    }
+</style>
