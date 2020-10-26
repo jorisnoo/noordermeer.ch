@@ -101,9 +101,9 @@ export default {
     */
     i18n: {
         locales: [
-            'en',
-            'de',
-            'jp',
+            { code: 'en', iso: 'en', isCatchallLocale: true },
+            { code: 'de', iso: 'de' },
+            { code: 'ja', iso: 'ja' },
         ],
         defaultLocale: 'en',
         vueI18n: {
