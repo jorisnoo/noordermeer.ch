@@ -4,13 +4,14 @@
             paths: {
                 en: '/contact',
                 de: '/kontakt',
-                // jp: '/連絡',
+                jp: '/お仕事のご依頼',
             },
         },
         data () {
             return {
                 zurich: this.$t('zurich'),
                 switzerland: this.$t('switzerland'),
+                locale: this.$i18n.locale,
             };
         },
         created () {},
@@ -31,11 +32,13 @@
             <p>
                 noordermeer gmbh<br>
                 Zentralstr. 43<br>
-                8003 {{ zurich }}<br>
-                {{ switzerland }}
+                8003 <span :class="[ locale ]">{{ zurich }}</span><br>
+                <span :class="[ locale ]">{{ switzerland }}</span>
             </p>
             <p>
-                <a href="mailto:contact@noordermeer.ch">contact@noordermeer.ch</a>
+                <a href="mailto:contact@noordermeer.ch">
+                    contact@noordermeer.ch
+                </a>
             </p>
             <p>
                 <a
@@ -47,3 +50,9 @@
         </div>
     </div>
 </template>
+
+<style scoped>
+    .jp {
+        font-size: 0.9em;
+    }
+</style>

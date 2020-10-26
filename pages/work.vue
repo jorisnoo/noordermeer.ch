@@ -5,7 +5,7 @@
             paths: {
                 en: '/work',
                 de: '/projekte',
-                // jp: '/作品',
+                jp: '/制作実績',
             },
         },
         async asyncData ({ $content }) {
@@ -13,13 +13,14 @@
                 projects: {
                     en: await $content('en/projects').where({ disabled: { $ne: true } }).sortBy('date', 'desc').fetch(),
                     de: await $content('de/projects').where({ disabled: { $ne: true } }).sortBy('date', 'desc').fetch(),
-                    // jp: await $content('jp/projects').where({ disabled: { $ne: true } }).sortBy('date', 'desc').fetch(),
+                    jp: await $content('jp/projects').where({ disabled: { $ne: true } }).sortBy('date', 'desc').fetch(),
                 },
             };
         },
         data () {
             return {
                 projectsInCurrentLocale: this.projects ? this.projects[this.$i18n.locale] : null,
+                locale: this.$i18n.locale,
             };
         },
         computed: {
@@ -74,7 +75,7 @@
         </h1>
         <article
             v-for="(project, index) in projectsInCurrentLocale"
-            :key="'project-'+project.slug"
+            :key="'project-'+project.slug+locale"
             :aria-labelledby="project.slug"
             :aria-role="openProjectIndex === index ? 'main' : 'article'"
         >
@@ -97,7 +98,11 @@
             <client-only>
                 <slide-up-down :active="openProjectIndex === index" :duration="500">
                     <div class="projectDescription px-1/3 pb-4 pt-2">
-                        <nuxt-content class="typo-base prose prose-base" :document="project" />
+                        <nuxt-content
+                            :class="[ locale ]"
+                            class="typo-base prose prose-base"
+                            :document="project"
+                        />
                     </div>
                 </slide-up-down>
                 <div

@@ -30,8 +30,9 @@
 }
 
 .prose code {
-    @apply font-mono px-2 -mx-2 rounded-full inline-block;
+    @apply font-mono px-2 -mx-2 rounded-full inline-block relative;
     background-color: #d6d6d6;
+    z-index: -1;
 }
 
 .prose-large p

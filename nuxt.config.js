@@ -90,6 +90,7 @@ export default {
         markdown: {
             // https://github.com/remarkjs/remark-external-links#options
             remarkExternalLinks: {
+                target: false,
                 rel: ['nofollow', 'noopener'],
             },
         },
@@ -102,7 +103,7 @@ export default {
         locales: [
             'en',
             'de',
-            // 'jp',
+            'jp',
         ],
         defaultLocale: 'en',
         vueI18n: {
@@ -123,9 +124,9 @@ export default {
                     switzerland: 'Schweiz',
                 },
                 jp: {
-                    info: 'インフォ',
-                    work: '作品',
-                    contact: '連絡',
+                    info: 'プロフィール',
+                    work: '制作実績',
+                    contact: 'お仕事のご依頼',
                     zurich: 'チューリッヒ',
                     switzerland: 'スイス',
                 },
