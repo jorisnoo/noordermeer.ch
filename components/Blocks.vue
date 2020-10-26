@@ -55,7 +55,7 @@
         <span class="placeholder typo-large name-block">&nbsp;</span>
         <div
             class="absolute inset-0 overflow-hidden z-10 lg:fixed"
-            :class="{'opacity-0': !initialised, 'pointer-events-none': !isDragging, 'touch-action-none': !isDragging }"
+            :class="{'opacity-0': !initialised, 'pointer-events-none touch-action-none': !isDragging }"
         >
             <!--            <div id="debug"></div>-->
             <span
