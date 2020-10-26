@@ -5,7 +5,7 @@
                 info: {
                     en: await $content('en/index').fetch(),
                     de: await $content('de/index').fetch(),
-                    jp: await $content('jp/index').fetch(),
+                    ja: await $content('ja/index').fetch(),
                 },
             };
         },

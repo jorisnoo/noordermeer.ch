@@ -5,7 +5,7 @@
             paths: {
                 en: '/work',
                 de: '/projekte',
-                jp: '/work',
+                ja: '/work',
             },
         },
         async asyncData ({ $content }) {
@@ -13,7 +13,7 @@
                 projects: {
                     en: await $content('en/projects').where({ disabled: { $ne: true } }).sortBy('date', 'desc').fetch(),
                     de: await $content('de/projects').where({ disabled: { $ne: true } }).sortBy('date', 'desc').fetch(),
-                    jp: await $content('jp/projects').where({ disabled: { $ne: true } }).sortBy('date', 'desc').fetch(),
+                    ja: await $content('ja/projects').where({ disabled: { $ne: true } }).sortBy('date', 'desc').fetch(),
                 },
             };
         },

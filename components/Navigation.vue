@@ -45,18 +45,18 @@
                 De
             </nuxt-link>
             <nuxt-link
-                :to="switchLocalePath('jp')"
+                :to="switchLocalePath('ja')"
                 class="typo-large round-link hover:bg-blue"
-                :class="{ 'bg-blue': $i18n.locale === 'jp' }"
+                :class="{ 'bg-blue': $i18n.locale === 'ja' }"
             >
-                <span class="jp">日本語</span>
+                <span class="ja">日本語</span>
             </nuxt-link>
         </div>
     </nav>
 </template>
 
 <style scoped>
-    .jp {
+    .ja {
         font-size: 0.9em;
     }
 </style>

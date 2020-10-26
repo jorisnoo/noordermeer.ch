@@ -123,7 +123,7 @@ export default {
                     zurich: 'Zürich',
                     switzerland: 'Schweiz',
                 },
-                jp: {
+                ja: {
                     info: 'プロフィール',
                     work: '制作実績',
                     contact: 'お仕事のご依頼',

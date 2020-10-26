@@ -4,7 +4,7 @@
             paths: {
                 en: '/contact',
                 de: '/kontakt',
-                jp: '/contact',
+                ja: '/contact',
             },
         },
         data () {
@@ -52,7 +52,7 @@
 </template>
 
 <style scoped>
-    .jp {
+    .ja {
         font-size: 0.9em;
     }
 </style>
