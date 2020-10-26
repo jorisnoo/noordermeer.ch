@@ -101,7 +101,7 @@ export default {
     */
     i18n: {
         locales: [
-            { code: 'en', iso: 'en', isCatchallLocale: true },
+            { code: 'en', iso: 'en' },
             { code: 'de', iso: 'de' },
             { code: 'ja', iso: 'ja' },
         ],
@@ -138,6 +138,7 @@ export default {
             onlyOnRoot: true,
         },
         seo: true,
+        baseUrl: 'https://noordermeer.ch',
     },
     /*
     ** Page transition
