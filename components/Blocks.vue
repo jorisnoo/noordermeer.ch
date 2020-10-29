@@ -111,8 +111,8 @@
     }
 
     .profile-image {
-        width: 1.2em;
-        height: 1.2em;
+        width: 1.1111em;
+        height: 1.1111em;
         background: url("../assets/profile.jpg") no-repeat;
         background-size: cover;
     }
