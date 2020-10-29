@@ -32,7 +32,7 @@ export default function runIntro (options) {
     // create engine
     const engine = Engine.create({
         timing: {
-            timeScale: isMobile() ? 0.4 : 0.4,
+            timeScale: isMobile() ? 0.3 : 0.4,
         },
     });
     const world = engine.world;
@@ -81,6 +81,7 @@ export default function runIntro (options) {
             joris: domBody(blockData.joris),
             noordermeer: domBody(blockData.noordermeer),
             webDevelopment: domBody(blockData.webDevelopment),
+            profile: domBody(blockData.profile),
         };
     };
 
@@ -111,6 +112,9 @@ export default function runIntro (options) {
         DomBody.rotate(state.blocks.joris, state.blockData.joris.rotation);
         DomBody.rotate(state.blocks.noordermeer, state.blockData.noordermeer.rotation);
         DomBody.rotate(state.blocks.webDevelopment, state.blockData.webDevelopment.rotation);
+
+        // Freeze image
+        Matter.Body.setStatic(state.blocks.profile, true);
     };
     initWorld();
 
@@ -127,7 +131,7 @@ export default function runIntro (options) {
     const resizeBlocks = () => {
         const newDomSizes = getDomElementSizes(options.elements);
 
-        ['joris', 'noordermeer', 'webDevelopment'].forEach((block) => {
+        ['joris', 'noordermeer', 'webDevelopment', 'profile'].forEach((block) => {
             DomBody.scale(state.blocks[block],
                 newDomSizes[block].width / state.domSizes[block].width,
                 newDomSizes[block].height / state.domSizes[block].height,
@@ -139,7 +143,7 @@ export default function runIntro (options) {
 
     const pushBlocksUp = () => {
         if (!isMobile() && !state.wasOnMobile && state.previousWindowHeight > window.innerHeight) {
-            ['joris', 'noordermeer', ...state.webDevelopmentBlockIsAround ? ['webDevelopment'] : []].forEach((block) => {
+            ['joris', 'noordermeer', 'profile', ...state.webDevelopmentBlockIsAround ? ['webDevelopment'] : []].forEach((block) => {
                 DomBody.applyForce(state.blocks[block], state.blocks[block].position, {
                     x: 0, y: -state.blocks[block].mass * 0.1 * Math.max(0.5, Math.random()),
                 });
@@ -169,8 +173,8 @@ export default function runIntro (options) {
     /*
      * Catch fleeing blocks
      */
-    const catchFleeingBlocks = throttle(500, () => {
-        ['joris', 'noordermeer', 'webDevelopment'].forEach((block) => {
+    const catchFleeingBlocks = throttle(1000, () => {
+        ['joris', 'noordermeer', 'webDevelopment', 'profile'].forEach((block) => {
             if (Math.abs(render.mapping.worldToView(state.blocks[block].position.y)) > window.innerHeight * 3) {
                 if (block === 'webDevelopment') {
                     // We'll loose "webDevelopment" once its out
@@ -191,7 +195,17 @@ export default function runIntro (options) {
         });
     });
 
-    Events.on(runner, 'tick', catchFleeingBlocks);
+    setTimeout(() => {
+        Events.on(runner, 'tick', catchFleeingBlocks);
+    }, 5000);
+
+    const throwInProfile = () => {
+        Matter.Body.setStatic(state.blocks.profile, false);
+    };
+
+    return {
+        throwInProfile,
+    };
 
     // setTimeout(() => {
     //     ['joris', 'noordermeer', 'webDevelopment'].forEach((block) => {

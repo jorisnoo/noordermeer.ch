@@ -1,7 +1,3 @@
-<script>
-    export default {};
-</script>
-
 <template>
     <div class="sticky bottom-0 hidden pt-12 pb-6 lg:block content-fade">
         <span class="typo-large name-block bg-transparent select-none">&nbsp;</span>

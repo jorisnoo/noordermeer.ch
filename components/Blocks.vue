@@ -2,24 +2,31 @@
     import runIntro from '../plugins/blocks';
 
     export default {
-        name: 'Blocks',
         data () {
             return {
                 showWebDevelopment: true,
                 initialised: false,
                 isDragging: false,
+                throwInProfile: null,
+                profileTimer: null,
             };
+        },
+        watch: {
+            $route () {
+                this.checkForContactRoute();
+            },
         },
         mounted () {
             this.runIntro();
         },
         methods: {
             runIntro () {
-                runIntro({
+                const { throwInProfile } = runIntro({
                     elements: {
                         joris: this.$refs.joris,
                         noordermeer: this.$refs.noordermeer,
                         webDevelopment: this.$refs.webDevelopment,
+                        profile: this.$refs.profile,
                     },
                     callbacks: {
                         startdrag: this.startDrag,
@@ -27,7 +34,9 @@
                         removeWebdev: this.removeWebdev,
                     },
                 });
+                this.throwInProfile = throwInProfile;
                 this.initialised = true;
+                this.profileTimer = setTimeout(this.checkForContactRoute, 2000);
             },
             startDrag () {
                 this.clearSelection();
@@ -46,6 +55,13 @@
                     document.selection.empty();
                 }
             },
+            checkForContactRoute () {
+                if (this.getRouteBaseName() === 'contact') {
+                    this.profileTimer = setTimeout(this.throwInProfile, 2000);
+                } else {
+                    clearTimeout(this.profileTimer);
+                }
+            },
         },
     };
 </script>
@@ -57,7 +73,7 @@
             class="absolute inset-0 overflow-hidden z-10 lg:fixed"
             :class="{'opacity-0': !initialised, 'pointer-events-none touch-action-none': !isDragging }"
         >
-            <!--            <div id="debug"></div>-->
+            <!--                        <div id="debug"></div>-->
             <span
                 ref="joris"
                 class="typo-large name-block"
@@ -71,6 +87,10 @@
                 ref="webDevelopment"
                 class="typo-large name-block"
             >Web Development</span>
+            <div
+                ref="profile"
+                class="typo-large name-block profile-image"
+            />
         </div>
     </div>
 </template>
@@ -88,6 +108,13 @@
         @apply bg-transparent select-none;
 
         margin-bottom: 0.1em;
+    }
+
+    .profile-image {
+        width: 1.2em;
+        height: 1.2em;
+        background: url("../assets/profile.jpg") no-repeat;
+        background-size: cover;
     }
 
     @screen lg {
