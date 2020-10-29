@@ -1,9 +1,3 @@
-<script>
-    export default {
-        name: 'Navigation',
-    };
-</script>
-
 <template>
     <nav class="navigation:flex justify-between">
         <div class="flex flex-wrap">

@@ -14,7 +14,6 @@
                 locale: this.$i18n.locale,
             };
         },
-        created () {},
         head () {
             return {
                 title: this.$t('contact'),

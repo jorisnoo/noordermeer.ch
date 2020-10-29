@@ -31,6 +31,13 @@ export function getBlockConfig (elements) {
             collisionFilter: { category: 0x0004 }, // 0x0004
             element: elements.webDevelopment,
         },
+        profile: {
+            x: isMobile ? windowWidth * 0.8 : Math.min(windowWidth * 0.6, windowWidth * 0.3 + noordermeerWidth * 1.2),
+            y: isMobile ? -yOffset + windowHeight + noordermeerWidth * 1.6 : yOffset - noordermeerWidth * 1.8,
+            rotation: 0,
+            collisionFilter: { category: 0x0002 }, // 0x0004
+            element: elements.profile,
+        },
         wallBottom: {
             x: windowWidth * 0.5,
             y: windowHeight - 22,
@@ -96,6 +103,10 @@ export function getDomElementSizes (elements) {
         webDevelopment: {
             width: elements.webDevelopment.offsetWidth,
             height: elements.webDevelopment.offsetHeight,
+        },
+        profile: {
+            width: elements.profile.offsetWidth,
+            height: elements.profile.offsetHeight,
         },
     };
 }
