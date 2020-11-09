@@ -27,7 +27,7 @@
         "nuxt": "^2.14.7",
         "nuxt-i18n": "^6.15.4",
         "tailwindcss-gradients": "^3.0.0",
-        "throttle-debounce": "^3.0.0",
+        "throttle-debounce": "^3.0.1",
         "vue-slide-up-down": "^2.0.1"
     },
     "devDependencies": {
@@ -36,10 +36,10 @@
         "@nuxtjs/stylelint-module": "^4.0.0",
         "@nuxtjs/tailwindcss": "^3.2.0",
         "babel-eslint": "^10.1.0",
-        "conventional-changelog-eslint": "^3.0.8",
-        "eslint": "^7.12.1",
+        "conventional-changelog-eslint": "^3.0.9",
+        "eslint": "^7.13.0",
         "eslint-plugin-nuxt": "^1.0.0",
-        "semantic-release": "^17.2.1",
+        "semantic-release": "^17.2.2",
         "stylelint": "^13.7.2",
         "stylelint-config-standard": "^20.0.0"
     }

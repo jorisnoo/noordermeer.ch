@@ -28,6 +28,7 @@
 
 <template>
     <div class="px-1/3 selection-blue">
+        <h1 class="sr-only">{{ $t('info') }}</h1>
         <nuxt-content
             :key="'info'+locale"
             :document="body"
