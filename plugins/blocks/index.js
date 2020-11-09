@@ -22,6 +22,7 @@ export default function runIntro (options) {
         previousWindowHeight: window.innerHeight,
         wasOnMobile: isMobile(),
         webDevelopmentBlockIsAround: true,
+        profileBlockIsAround: false,
         blocksHavePassedContentArea: false,
         blockData: {},
         blocks: {},
@@ -143,7 +144,12 @@ export default function runIntro (options) {
 
     const pushBlocksUp = () => {
         if (!isMobile() && !state.wasOnMobile && state.previousWindowHeight > window.innerHeight) {
-            ['joris', 'noordermeer', 'profile', ...state.webDevelopmentBlockIsAround ? ['webDevelopment'] : []].forEach((block) => {
+            [
+                'joris',
+                'noordermeer',
+                ...state.profileBlockIsAround ? ['profile'] : [],
+                ...state.webDevelopmentBlockIsAround ? ['webDevelopment'] : [],
+            ].forEach((block) => {
                 DomBody.applyForce(state.blocks[block], state.blocks[block].position, {
                     x: 0, y: -state.blocks[block].mass * 0.1 * Math.max(0.5, Math.random()),
                 });
@@ -201,6 +207,7 @@ export default function runIntro (options) {
 
     const throwInProfile = () => {
         Matter.Body.setStatic(state.blocks.profile, false);
+        state.profileBlockIsAround = true;
     };
 
     return {

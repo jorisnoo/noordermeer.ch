@@ -5,6 +5,7 @@
         data () {
             return {
                 showWebDevelopment: true,
+                showProfileImage: false,
                 initialised: false,
                 isDragging: false,
                 throwInProfile: null,
@@ -48,6 +49,10 @@
             removeWebdev () {
                 this.showWebDevelopment = false;
             },
+            addProfileImage () {
+                this.throwInProfile();
+                this.showProfileImage = true;
+            },
             clearSelection () {
                 if (window.getSelection) {
                     window.getSelection().removeAllRanges();
@@ -57,7 +62,7 @@
             },
             checkForContactRoute () {
                 if (this.getRouteBaseName() === 'contact') {
-                    this.profileTimer = setTimeout(this.throwInProfile, 2000);
+                    this.profileTimer = setTimeout(this.addProfileImage, 2000);
                 } else {
                     clearTimeout(this.profileTimer);
                 }
@@ -90,6 +95,7 @@
             <div
                 ref="profile"
                 class="typo-large name-block profile-image"
+                :class="{ 'opacity-0': !showProfileImage }"
             />
         </div>
     </div>
