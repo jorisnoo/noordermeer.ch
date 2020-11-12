@@ -207,9 +207,6 @@ export default function runIntro (options) {
 
     const throwInProfile = () => {
         Matter.Body.setStatic(state.blocks.profile, false);
-        setTimeout(() => {
-            Matter.Body.setAngularVelocity(state.blocks.profile, Math.PI * 300);
-        }, 1000);
         state.profileBlockIsAround = true;
     };
 
