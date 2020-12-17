@@ -3,7 +3,7 @@ name: SBB Online Game
 title: Dynamic Rulebook
 url: https://gewinnen.sbb.ch
 date: 2020-06
-enabled: false
+disabled: true
 ---
 Launched for the first time in 2018 at that time in cooperation between Y7K and Partner & Partner; since then reissued annually and systematically perfected: the online competition with which the Swiss Federal Railways SBB promotes large stations as diverse shopping centres.
 
