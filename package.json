@@ -31,6 +31,7 @@
         "vue-slide-up-down": "^2.0.1"
     },
     "devDependencies": {
+        "@netlify/plugin-sitemap": "^0.5.2",
         "@nuxtjs/eslint-config": "^5.0.0",
         "@nuxtjs/eslint-module": "^3.0.2",
         "@nuxtjs/stylelint-module": "^4.0.0",
@@ -39,6 +40,8 @@
         "conventional-changelog-eslint": "^3.0.9",
         "eslint": "^7.15.0",
         "eslint-plugin-nuxt": "^2.0.0",
+        "netlify-plugin-cache-nuxt": "0.0.2",
+        "netlify-plugin-submit-sitemap": "^0.2.3",
         "semantic-release": "^17.3.0",
         "stylelint": "^13.8.0",
         "stylelint-config-standard": "^20.0.0"
