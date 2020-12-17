@@ -1,8 +1,9 @@
 ---
-name: 'SBB Online Game'
-title: 'Dynamic Rulebook'
+name: SBB Online Game
+title: Dynamic Rulebook
 url: https://gewinnen.sbb.ch
 date: 2020-06
+enabled: false
 ---
 2018年に初めて制作系デジタルエージェンシーのY7Kとマーケティングコンサルティング会社のPartner & Partnerで共同開発されたオンライン抽選会。2018年以降毎年再発行され、体系的に完成されました。スイス連邦鉄道SBBが、大規模駅を多様なショッピングセンターとして推進するためのオンラインコンペとして用いられました。
 
