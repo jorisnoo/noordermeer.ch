@@ -3,7 +3,6 @@ name: SBB Gewinnspiel
 title: Dynamisches Regelwerk
 url: https://gewinnen.sbb.ch
 date: 2020-06
-disabled: true
 ---
 2018 erstmals lanciert, damals in Kooperation von Y7K und Partner & Partner, seither von Jahr zu Jahr neu aufgelegt und gezielt perfektioniert: das Online-Gewinnspiel, mit dem die SBB grosse Bahnhöfe als vielfältige Einkaufszentren promoten.  
 
