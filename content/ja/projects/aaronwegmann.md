@@ -1,6 +1,6 @@
 ---
 name: Aaron Wegmann
-title: Each play a new clip
+title: Each replay a new clip
 url: https://aaronwegmann.ch
 date: 2020-04
 ---
