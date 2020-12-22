@@ -21,7 +21,7 @@
     },
     "dependencies": {
         "@nuxt/content": "^1.11.1",
-        "@nuxtjs/pwa": "^3.3.2",
+        "@nuxtjs/pwa": "^3.3.3",
         "matter-dom-plugin": "github:jorisnoo/matter-dom-plugin#main",
         "matter-js": "^0.14.2",
         "nuxt": "^2.14.12",
@@ -31,14 +31,14 @@
         "vue-slide-up-down": "^2.0.1"
     },
     "devDependencies": {
-        "@netlify/plugin-sitemap": "^0.5.2",
+        "@netlify/plugin-sitemap": "^0.6.0",
         "@nuxtjs/eslint-config": "^5.0.0",
         "@nuxtjs/eslint-module": "^3.0.2",
         "@nuxtjs/stylelint-module": "^4.0.0",
-        "@nuxtjs/tailwindcss": "^3.3.4",
+        "@nuxtjs/tailwindcss": "^3.4.1",
         "babel-eslint": "^10.1.0",
         "conventional-changelog-eslint": "^3.0.9",
-        "eslint": "^7.15.0",
+        "eslint": "^7.16.0",
         "eslint-plugin-nuxt": "^2.0.0",
         "netlify-plugin-cache-nuxt": "0.0.2",
         "netlify-plugin-submit-sitemap": "^0.2.3",
