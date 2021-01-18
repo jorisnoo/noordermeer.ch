@@ -1,11 +1,11 @@
 import Matter from 'matter-js';
-import 'matter-dom-plugin';
+import { MatterDomPlugin } from 'matter-dom-plugin';
 import { throttle, debounce } from 'throttle-debounce';
 import { fixMouseUpTouchEvent, changeRelativeMousePosition } from './mouse-fixes.js';
 import { getBlockConfig, domBodyConstructor, wallBodyConstructor, getDomElementSizes } from './block-positions.js';
 
 export default function runIntro (options) {
-    Matter.use('matter-dom-plugin');
+    Matter.use(MatterDomPlugin);
 
     const Engine = Matter.Engine;
     const Runner = Matter.Runner;
