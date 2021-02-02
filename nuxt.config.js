@@ -19,9 +19,6 @@ export default {
             { rel: 'mask-icon', href: '/meta/safari-pinned-tab.svg', color: '#f9325a' },
             { rel: 'msapplication-TileColor', content: '#e6e6e6' },
         ],
-        script: [
-            { async: true, defer: true, 'data-domain': 'noordermeer.ch', src: 'https://prism.noordermeer.ch/js/index.js' },
-        ],
         meta: [
             { hid: 'twitter:image', name: 'twitter:image', property: 'twitter:image', content: 'https://noordermeer.ch/meta/joris_noordermeer_web_development.jpg' },
         ],
