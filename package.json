@@ -20,31 +20,32 @@
         "lint": "npm run lint:js && npm run lint:style"
     },
     "dependencies": {
-        "@nuxt/content": "^1.11.1",
-        "@nuxtjs/pwa": "^3.3.4",
+        "@nuxt/content": "^1.14.0",
+        "@nuxtjs/pwa": "^3.3.5",
         "matter-dom-plugin": "github:jorisnoo/matter-dom-plugin#main",
-        "matter-js": "^0.16.0",
-        "nuxt": "^2.14.12",
-        "nuxt-i18n": "^6.18.0",
+        "matter-js": "^0.17.1",
+        "nuxt": "^2.15.4",
+        "nuxt-i18n": "^6.25.0",
         "poly-decomp": "^0.3.0",
         "tailwindcss-gradients": "^3.0.0",
         "throttle-debounce": "^3.0.1",
         "vue-slide-up-down": "^2.0.1"
     },
     "devDependencies": {
-        "@netlify/plugin-sitemap": "^0.6.2",
-        "@nuxtjs/eslint-config": "^5.0.0",
+        "@netlify/plugin-sitemap": "^0.8.1",
+        "@nuxtjs/eslint-config": "^6.0.0",
         "@nuxtjs/eslint-module": "^3.0.2",
         "@nuxtjs/stylelint-module": "^4.0.0",
-        "@nuxtjs/tailwindcss": "^3.4.2",
+        "@nuxtjs/tailwindcss": "^4.0.3",
         "babel-eslint": "^10.1.0",
         "conventional-changelog-eslint": "^3.0.9",
-        "eslint": "^7.18.0",
+        "eslint": "^7.24.0",
         "eslint-plugin-nuxt": "^2.0.0",
         "netlify-plugin-cache-nuxt": "0.0.2",
         "netlify-plugin-submit-sitemap": "^0.2.3",
-        "semantic-release": "^17.3.3",
-        "stylelint": "^13.8.0",
-        "stylelint-config-standard": "^20.0.0"
+        "postcss": "^8.2.10",
+        "semantic-release": "^17.4.2",
+        "stylelint": "^13.12.0",
+        "stylelint-config-standard": "^21.0.0"
     }
 }
