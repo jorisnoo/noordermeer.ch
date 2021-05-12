@@ -43,8 +43,11 @@
                 <a
                     href="https://www.linkedin.com/in/jorisnoo/"
                     rel="noreferrer noopener nofollow"
-                    target="_blank"
-                >LinkedIn</a>
+                >LinkedIn</a><br>
+                <a
+                    href="https://www.github.com/jorisnoo/"
+                    rel="noreferrer noopener nofollow"
+                >GitHub</a><br>
             </p>
         </div>
     </div>
