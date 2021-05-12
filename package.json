@@ -24,8 +24,8 @@
         "@nuxtjs/pwa": "^3.3.5",
         "matter-dom-plugin": "github:jorisnoo/matter-dom-plugin#main",
         "matter-js": "^0.17.1",
-        "nuxt": "^2.15.4",
-        "nuxt-i18n": "^6.25.0",
+        "nuxt": "^2.15.6",
+        "nuxt-i18n": "^6.27.0",
         "poly-decomp": "^0.3.0",
         "tailwindcss-gradients": "^3.0.0",
         "throttle-debounce": "^3.0.1",
@@ -36,16 +36,17 @@
         "@nuxtjs/eslint-config": "^6.0.0",
         "@nuxtjs/eslint-module": "^3.0.2",
         "@nuxtjs/stylelint-module": "^4.0.0",
-        "@nuxtjs/tailwindcss": "^4.0.3",
+        "@nuxtjs/tailwindcss": "^4.1.1",
+        "autoprefixer": "^10.2.5",
         "babel-eslint": "^10.1.0",
         "conventional-changelog-eslint": "^3.0.9",
-        "eslint": "^7.24.0",
+        "eslint": "^7.26.0",
         "eslint-plugin-nuxt": "^2.0.0",
         "netlify-plugin-cache-nuxt": "0.0.2",
         "netlify-plugin-submit-sitemap": "^0.2.3",
-        "postcss": "^8.2.10",
+        "postcss": "^8.2.15",
         "semantic-release": "^17.4.2",
-        "stylelint": "^13.12.0",
-        "stylelint-config-standard": "^21.0.0"
+        "stylelint": "^13.13.1",
+        "stylelint-config-standard": "^22.0.0"
     }
 }
