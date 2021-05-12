@@ -3,11 +3,8 @@
 @import "./general.css";
 @import "./text-selection.css";
 @import "./transitions.css";
-
 @import 'tailwindcss/components';
 @import "./typography.css";
 @import "./blocks.css";
-
 @import "./dark-mode.css";
-
 @import 'tailwindcss/utilities';

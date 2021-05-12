@@ -15,20 +15,22 @@
                 locale: this.$i18n.locale,
             };
         },
-        created () {
-            this.body = this.info[this.$i18n.locale];
-        },
         head () {
             return {
                 titleTemplate: 'Joris Noordermeer — Web Development',
             };
+        },
+        created () {
+            this.body = this.info[this.$i18n.locale];
         },
     };
 </script>
 
 <template>
     <div class="px-1/3 selection-blue">
-        <h1 class="sr-only">{{ $t('info') }}</h1>
+        <h1 class="sr-only">
+            {{ $t('info') }}
+        </h1>
         <nuxt-content
             :key="'info'+locale"
             :document="body"

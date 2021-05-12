@@ -1,74 +1,74 @@
 <script>
-import runIntro from '../plugins/blocks';
+    import runIntro from '../plugins/blocks';
 
-export default {
-    data() {
-        return {
-            showWebDevelopment: true,
-            showProfileImage: false,
-            initialised: false,
-            isDragging: false,
-            throwInProfile: null,
-            profileTimer: null,
-        };
-    },
-    watch: {
-        $route() {
-            this.checkForContactRoute();
+    export default {
+        data () {
+            return {
+                showWebDevelopment: true,
+                showProfileImage: false,
+                initialised: false,
+                isDragging: false,
+                throwInProfile: null,
+                profileTimer: null,
+            };
         },
-    },
-    mounted() {
-        this.runIntro();
-    },
-    methods: {
-        runIntro() {
-            const {throwInProfile} = runIntro({
-                elements: {
-                    joris: this.$refs.joris,
-                    noordermeer: this.$refs.noordermeer,
-                    webDevelopment: this.$refs.webDevelopment,
-                    profile: this.$refs.profile,
-                },
-                callbacks: {
-                    startdrag: this.startDrag,
-                    enddrag: this.endDrag,
-                    removeWebdev: this.removeWebdev,
-                },
-            });
-            this.throwInProfile = throwInProfile;
-            this.initialised = true;
-            this.profileTimer = setTimeout(this.checkForContactRoute, 2000);
+        watch: {
+            $route () {
+                this.checkForContactRoute();
+            },
         },
-        startDrag() {
-            this.clearSelection();
-            this.isDragging = true;
+        mounted () {
+            this.runIntro();
         },
-        endDrag() {
-            this.isDragging = false;
+        methods: {
+            runIntro () {
+                const { throwInProfile } = runIntro({
+                    elements: {
+                        joris: this.$refs.joris,
+                        noordermeer: this.$refs.noordermeer,
+                        webDevelopment: this.$refs.webDevelopment,
+                        profile: this.$refs.profile,
+                    },
+                    callbacks: {
+                        startdrag: this.startDrag,
+                        enddrag: this.endDrag,
+                        removeWebdev: this.removeWebdev,
+                    },
+                });
+                this.throwInProfile = throwInProfile;
+                this.initialised = true;
+                this.profileTimer = setTimeout(this.checkForContactRoute, 2000);
+            },
+            startDrag () {
+                this.clearSelection();
+                this.isDragging = true;
+            },
+            endDrag () {
+                this.isDragging = false;
+            },
+            removeWebdev () {
+                this.showWebDevelopment = false;
+            },
+            addProfileImage () {
+                this.throwInProfile();
+                this.showProfileImage = true;
+            },
+            clearSelection () {
+                if (window.getSelection) {
+                    window.getSelection().removeAllRanges();
+                } else if (document.selection) {
+                    document.selection.empty();
+                }
+            },
+            checkForContactRoute () {
+                if (this.getRouteBaseName() === 'contact') {
+                    this.profileTimer = setTimeout(this.addProfileImage, 2000);
+                } else {
+                    clearTimeout(this.profileTimer);
+                }
+            },
         },
-        removeWebdev() {
-            this.showWebDevelopment = false;
-        },
-        addProfileImage() {
-            this.throwInProfile();
-            this.showProfileImage = true;
-        },
-        clearSelection() {
-            if (window.getSelection) {
-                window.getSelection().removeAllRanges();
-            } else if (document.selection) {
-                document.selection.empty();
-            }
-        },
-        checkForContactRoute() {
-            if (this.getRouteBaseName() === 'contact') {
-                this.profileTimer = setTimeout(this.addProfileImage, 2000);
-            } else {
-                clearTimeout(this.profileTimer);
-            }
-        },
-    },
-};
+    };
 </script>
 
 <template>

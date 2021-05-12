@@ -8,16 +8,17 @@
 
 .prose a {
     @apply inline-block leading-link-sm;
+
     white-space: nowrap;
 }
 
-.prose a:after {
+.prose a::after {
     display: inline-block;
     content: "\2198";
 }
 
-.prose a[href*="//"]:not([href*="noordermeer.ch"]):after,
-.prose a[href*="mailto:"]:after {
+.prose a[href*="//"]:not([href*="noordermeer.ch"])::after,
+.prose a[href*="mailto:"]::after {
     content: "\2197";
 }
 
@@ -31,12 +32,12 @@
 
 .prose code {
     @apply font-mono px-2 -mx-2 rounded-full inline-block relative;
+
     background-color: #d6d6d6;
     z-index: -1;
 }
 
-.prose-large p
-{
+.prose-large p {
     @apply mb-1/2;
 }
 
@@ -72,4 +73,3 @@
         @apply border-b-3 leading-link-md ;
     }
 }
-

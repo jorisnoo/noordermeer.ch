@@ -23,6 +23,11 @@
                 locale: this.$i18n.locale,
             };
         },
+        head () {
+            return {
+                title: this.currentProject ? this.currentProject.name : this.$t('work'),
+            };
+        },
         computed: {
             currentSlug () {
                 return this.$route.params.slug || null;
@@ -59,11 +64,6 @@
             if (this.currentSlug && this.openProjectIndex === -1) {
                 this.$router.replace(this.localePath({ params: { slug: null } }));
             }
-        },
-        head () {
-            return {
-                title: this.currentProject ? this.currentProject.name : this.$t('work'),
-            };
         },
     };
 </script>
@@ -107,8 +107,8 @@
                 </slide-up-down>
                 <div
                     v-if="openProjectIndex === index"
-                    aria-expanded="true"
                     slot="placeholder"
+                    aria-expanded="true"
                 >
                     <nuxt-content :document="project" />
                 </div>

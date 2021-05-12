@@ -5,15 +5,15 @@
                 init: false,
             };
         },
-        mounted () {
-            this.init = true;
-        },
         head () {
             return {
                 htmlAttrs: {
                     lang: this.$i18n.locale,
                 },
             };
+        },
+        mounted () {
+            this.init = true;
         },
     };
 </script>
