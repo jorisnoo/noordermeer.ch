@@ -107,6 +107,7 @@ export default {
                     contact: 'Contact',
                     zurich: 'Zurich',
                     switzerland: 'Switzerland',
+                    page_not_found: 'Page not found',
                 },
                 de: {
                     info: 'Info',
@@ -114,6 +115,7 @@ export default {
                     contact: 'Kontakt',
                     zurich: 'Zürich',
                     switzerland: 'Schweiz',
+                    page_not_found: 'Seite nicht gefunden',
                 },
                 ja: {
                     info: 'プロフィール',
@@ -121,6 +123,7 @@ export default {
                     contact: 'お仕事のご依頼',
                     zurich: 'チューリッヒ',
                     switzerland: 'スイス',
+                    page_not_found: 'ページが見つかりました。',
                 },
             },
         },
@@ -144,4 +147,11 @@ export default {
     ** See https://nuxtjs.org/api/configuration-build/
     */
     build: {},
+    /*
+    ** Configure the generation of your universal web application to a static web application.
+    ** See https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate
+    */
+    generate: {
+        fallback: '404.html',
+    },
 };
