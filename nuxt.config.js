@@ -21,6 +21,16 @@ export default {
         ],
         meta: [
             { hid: 'twitter:image', name: 'twitter:image', property: 'twitter:image', content: 'https://noordermeer.ch/meta/joris_noordermeer_web_development.jpg' },
+            {
+                hid: 'description',
+                name: 'description',
+                content: 'Joris Noordermeer develops websites and web applications – for clients that value consistent web presences and intuitive user experiences.',
+            },
+            {
+                hid: 'og:description',
+                name: 'og:description',
+                content: 'Joris Noordermeer develops websites and web applications – for clients that value consistent web presences and intuitive user experiences.',
+            },
         ],
     },
     pwa: {
