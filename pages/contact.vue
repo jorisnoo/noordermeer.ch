@@ -23,7 +23,7 @@
 </script>
 
 <template>
-    <div class="px-1/3 selection-red">
+    <main id="main" class="px-1/3 selection-red">
         <h1 class="sr-only">
             {{ $t('contact') }}
         </h1>
@@ -50,7 +50,7 @@
                 >GitHub</a><br>
             </p>
         </div>
-    </div>
+    </main>
 </template>
 
 <style scoped>

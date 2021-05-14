@@ -27,7 +27,7 @@
 </script>
 
 <template>
-    <div class="px-1/3 selection-blue">
+    <main id="main" class="px-1/3 selection-blue">
         <h1 class="sr-only">
             {{ $t('info') }}
         </h1>
@@ -37,5 +37,5 @@
             class="prose prose-large"
             :class="[ locale ]"
         />
-    </div>
+    </main>
 </template>

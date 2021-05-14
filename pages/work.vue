@@ -49,11 +49,13 @@
                     this.$store.dispatch('i18n/setRouteParams', {
                         de: { slug: this.projects.de[index].slug },
                         en: { slug: this.projects.en[index].slug },
+                        ja: { slug: this.projects.ja[index].slug },
                     });
                 } else {
                     this.$store.dispatch('i18n/setRouteParams', {
                         de: { slug: null },
                         en: { slug: null },
+                        ja: { slug: null },
                     });
                 }
             },
@@ -69,7 +71,7 @@
 </script>
 
 <template>
-    <div class="selection-green">
+    <main id="main" class="selection-green">
         <h1 class="sr-only">
             {{ $t('work') }}
         </h1>
@@ -114,7 +116,7 @@
                 </div>
             </client-only>
         </article>
-    </div>
+    </main>
 </template>
 
 <style>

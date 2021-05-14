@@ -108,6 +108,7 @@ export default {
                     zurich: 'Zurich',
                     switzerland: 'Switzerland',
                     page_not_found: 'Page not found',
+                    skip_link: 'Skip to the main content',
                 },
                 de: {
                     info: 'Info',
@@ -116,6 +117,7 @@ export default {
                     zurich: 'Zürich',
                     switzerland: 'Schweiz',
                     page_not_found: 'Seite nicht gefunden',
+                    skip_link: 'Zum Hauptinhalt springen',
                 },
                 ja: {
                     info: 'プロフィール',
@@ -124,6 +126,7 @@ export default {
                     zurich: 'チューリッヒ',
                     switzerland: 'スイス',
                     page_not_found: 'ページが見つかりました。',
+                    skip_link: 'メインコンテンツへスキップ',
                 },
             },
         },
