@@ -27,8 +27,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "docs: Updates Changelog"
-          commit_author: GitHub Actions <actions@github.com>
+#      - uses: stefanzweifel/git-auto-commit-action@v4
+#        with:
+#          commit_message: "docs: Updates Changelog"
+#          commit_author: GitHub Actions <actions@github.com>
 
