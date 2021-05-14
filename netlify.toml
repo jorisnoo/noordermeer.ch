@@ -2,6 +2,18 @@
   publish = "dist"
   command = "npm run generate"
 
+[[redirects]]
+  from = "/200"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/200.html"
+  to = "/"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
