@@ -24,7 +24,7 @@
 
 <template>
     <div class="px-1/3 selection-red">
-        <div class="prose prose-large flex justify-between items-center">
+        <div class="prose prose-large sm:flex justify-between items-center">
             <img src="../assets/img/wolf.gif">
             <span class="text-center">{{ $t('page_not_found') }}</span>
             <img src="../assets/img/wolf.gif">
