@@ -24,12 +24,12 @@ export default {
             {
                 hid: 'description',
                 name: 'description',
-                content: 'Joris Noordermeer develops websites and web applications – for clients that value consistent web presences, intuitive user experiences and trouble-free functioning.',
+                content: 'Joris Noordermeer develops websites and web applications – for clients that value consistent web presences and intuitive user experiences.',
             },
             {
                 hid: 'og:description',
                 name: 'og:description',
-                content: 'Joris Noordermeer develops websites and web applications – for clients that value consistent web presences, intuitive user experiences and trouble-free functioning.',
+                content: 'Joris Noordermeer develops websites and web applications – for clients that value consistent web presences and intuitive user experiences.',
             },
         ],
     },
