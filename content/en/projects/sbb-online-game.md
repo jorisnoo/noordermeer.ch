@@ -10,5 +10,6 @@ Participating is very easy: register with your mobile phone number, win one of t
 
 The digital system in the background is highly complex but everything is done automatically, according to precisely defined rules: dynamically managing the contingent of immediate prizes available each day, returning any winnings not redeemed on time to the game, sending up to 60,000 text messages per day, identifying and blocking abuses, recording, storing and using all data and processes – right up to the main prize draw for one GA Travelcard weekly.
 
-[comment]: <> ([Watch a recording of the gameplay]&#40;https://vimeo.com/491962343&#41;)
-[Visit website](https://gewinnen.sbb.ch)
+[Watch a recording of the gameplay](https://vimeo.com/491962343)
+
+[comment]: <> ([Visit website]&#40;https://gewinnen.sbb.ch&#41;)

@@ -10,5 +10,6 @@ Teilnehmen ist ganz einfach: Mit der Handynummer anmelden, spielerisch einen der
 
 Das digitale System im Hintergrund ist hochkomplex. Alles geschieht automatisch, nach präzise definierten Regeln: das Kontingent der pro Tag zur Verfügung stehenden Sofortpreise dynamisch managen, nicht termingerecht eingelöste Gewinne zurück ins Spiel bringen, bis 60’000 SMS pro Tag verschicken, Missbräuche identifizieren und blockieren, sämtliche Daten und Prozesse erfassen, speichern und nutzbar machen – bis hin zur Hauptverlosung von wöchentlich einem GA.
 
-[comment]: <> ([Gameplay anschauen]&#40;https://vimeo.com/491962343&#41;)
-[Jetzt mitspielen](https://gewinnen.sbb.ch)
+[Gameplay anschauen](https://vimeo.com/491962343)
+
+[comment]: <> ([Jetzt mitspielen]&#40;https://gewinnen.sbb.ch&#41;)
