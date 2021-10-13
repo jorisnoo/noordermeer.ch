@@ -2,23 +2,43 @@
     export default {
         data () {
             return {
+                // setting this to true disables the fade-in
                 init: false,
+                jaFontLoaded: false,
             };
         },
         head () {
-            return {
-                htmlAttrs: {
-                    lang: this.$i18n.locale,
-                },
-            };
+            return this.$nuxtI18nHead({ addSeoAttributes: true });
         },
         computed: {
             mainId () {
                 return this.$route.params.slug || 'main';
             },
         },
+        watch: {
+            '$i18n.locale' (locale) {
+                this.checkLocale(locale);
+            },
+        },
         mounted () {
             this.init = true;
+            this.checkLocale(this.$i18n.locale);
+        },
+        methods: {
+            checkLocale (locale) {
+                if (!this.jaFontLoaded && locale === 'ja') {
+                    const jaFont = new FontFace(
+                        '"Noto Sans JP"',
+                        'local(\'Noto Sans Japanese Medium\'), local(\'NotoSansJapanese-Medium\'), url(\'/fonts/noto-sans-jp-v36-japanese-500.woff2\') format(\'woff2\'), url(\'/fonts/noto-sans-jp-v36-japanese-500.woff\') format(\'woff\')',
+                        {
+                            weight: 500,
+                        },
+                    );
+                    jaFont.load().then(function (loadedFont) {
+                        document.fonts.add(loadedFont);
+                    });
+                }
+            },
         },
     };
 </script>
@@ -39,7 +59,7 @@
 </template>
 
 <style>
-    .content {
-        max-width: 1500px;
-    }
+.content {
+    max-width: 1500px;
+}
 </style>

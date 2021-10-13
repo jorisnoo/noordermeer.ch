@@ -5,10 +5,17 @@ export default {
     ** See https://nuxtjs.org/api/configuration-target
     */
     target: 'static',
+    modern: 'client',
     /*
     ** Headers of the page
     ** See https://nuxtjs.org/api/configuration-head
     */
+    // head () {
+    //     const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true }) || null;
+    //     return {
+    //
+    //     };
+    // },
     head: {
         titleTemplate: '%s | Joris Noordermeer — Web Development',
         link: [
@@ -33,6 +40,7 @@ export default {
             },
         ],
     },
+
     pwa: {
         meta: {
             title: 'Joris Noordermeer — Web Development',
@@ -75,14 +83,18 @@ export default {
     buildModules: [
         '@nuxtjs/pwa',
         '@nuxtjs/tailwindcss',
+        'nuxt-font-loader',
     ],
+    fontLoader: {
+        url: '/fonts/fonts.css',
+    },
     /*
     ** Nuxt.js modules
     */
     modules: [
         // Doc: https://github.com/nuxt/content
         '@nuxt/content',
-        'nuxt-i18n',
+        '@nuxtjs/i18n',
     ],
     /*
     ** Content module configuration
@@ -93,7 +105,7 @@ export default {
             // https://github.com/remarkjs/remark-external-links#options
             remarkExternalLinks: {
                 target: false,
-                rel: ['nofollow', 'noopener'],
+                rel: ['noopener'],
             },
         },
     },
@@ -102,6 +114,7 @@ export default {
     ** See https://nuxt-community.github.io/nuxt-i18n/options-reference.html
     */
     i18n: {
+        baseUrl: 'https://noordermeer.ch',
         locales: [
             { code: 'en', iso: 'en' },
             { code: 'de', iso: 'de' },
@@ -143,10 +156,8 @@ export default {
         detectBrowserLanguage: {
             useCookie: true,
             cookieKey: 'i18n_redirected',
-            onlyOnRoot: true,
+            redirectOn: 'root',
         },
-        seo: true,
-        baseUrl: 'https://noordermeer.ch',
     },
     /*
     ** Page transition
