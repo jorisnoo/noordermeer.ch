@@ -19,9 +19,9 @@
             },
         },
         mounted () {
-            onLoad(() => {
+            // onLoad(() => {
                 this.runIntro();
-            });
+            // });
         },
         methods: {
             runIntro () {
