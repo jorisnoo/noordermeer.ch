@@ -93,7 +93,7 @@ export default {
             // https://github.com/remarkjs/remark-external-links#options
             remarkExternalLinks: {
                 target: false,
-                rel: ['nofollow', 'noopener'],
+                rel: ['noopener'],
             },
         },
     },
