@@ -52,5 +52,6 @@
 <style scoped>
     .ja {
         font-size: 0.9em;
+        font-weight: 500;
     }
 </style>
