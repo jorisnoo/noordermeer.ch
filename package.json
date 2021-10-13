@@ -21,11 +21,11 @@
     },
     "dependencies": {
         "@nuxt/content": "^1.14.0",
+        "@nuxtjs/i18n": "^7.0.3",
         "@nuxtjs/pwa": "^3.3.5",
         "matter-dom-plugin": "github:jorisnoo/matter-dom-plugin#main",
         "matter-js": "^0.17.1",
         "nuxt": "^2.15.8",
-        "nuxt-i18n": "^6.27.0",
         "poly-decomp": "^0.3.0",
         "tailwindcss-gradients": "^3.0.0",
         "throttle-debounce": "^3.0.1",

@@ -8,11 +8,7 @@
             };
         },
         head () {
-            return {
-                htmlAttrs: {
-                    lang: this.$i18n.locale,
-                },
-            };
+            return this.$nuxtI18nHead({ addSeoAttributes: true });
         },
         computed: {
             mainId () {
