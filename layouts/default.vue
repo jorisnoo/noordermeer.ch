@@ -49,13 +49,13 @@
 
 <template>
     <div
-        class="min-h-screen relative p-4 lg:py-6 transition-opacity ease-out duration-300"
+        class="min-h-screen relative p-4 lg:py-6 transition-opacity ease-out duration-700"
         :class="{ 'opacity-0': !init }"
     >
         <div class="skip-links sr-only">
             <a :href="'#'+mainId">{{ $t('skip_link') }}</a>
         </div>
-        <!--        <Blocks />-->
+<!--        <Blocks />-->
         <Navigation />
         <Nuxt class="content typo-large mt-1/2" />
         <BottomPlaceholder />
