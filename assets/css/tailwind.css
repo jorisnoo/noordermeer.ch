@@ -1,5 +1,7 @@
 @import 'tailwindcss/base';
-@import "./fonts.css";
+
+/* @import "./fonts.css"; */
+
 @import "./general.css";
 @import "./text-selection.css";
 @import "./transitions.css";
