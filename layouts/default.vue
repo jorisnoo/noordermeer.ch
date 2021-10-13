@@ -3,7 +3,7 @@
         data () {
             return {
                 // setting this to true disables the fade-in
-                init: false,
+                init: true,
                 jaFontLoaded: false,
             };
         },
@@ -55,7 +55,7 @@
         <div class="skip-links sr-only">
             <a :href="'#'+mainId">{{ $t('skip_link') }}</a>
         </div>
-<!--        <Blocks />-->
+        <Blocks />
         <Navigation />
         <Nuxt class="content typo-large mt-1/2" />
         <BottomPlaceholder />
