@@ -1,5 +1,5 @@
 <script>
-    import runIntro from '../plugins/blocks';
+    // import runIntro from '../plugins/blocks';
 
     export default {
         data () {
@@ -18,26 +18,26 @@
             },
         },
         mounted () {
-            this.runIntro();
+            // this.runIntro();
         },
         methods: {
             runIntro () {
-                const { throwInProfile } = runIntro({
-                    elements: {
-                        joris: this.$refs.joris,
-                        noordermeer: this.$refs.noordermeer,
-                        webDevelopment: this.$refs.webDevelopment,
-                        profile: this.$refs.profile,
-                    },
-                    callbacks: {
-                        startdrag: this.startDrag,
-                        enddrag: this.endDrag,
-                        removeWebdev: this.removeWebdev,
-                    },
-                });
-                this.throwInProfile = throwInProfile;
-                this.initialised = true;
-                this.profileTimer = setTimeout(this.checkForContactRoute, 2000);
+                // const { throwInProfile } = runIntro({
+                //     elements: {
+                //         joris: this.$refs.joris,
+                //         noordermeer: this.$refs.noordermeer,
+                //         webDevelopment: this.$refs.webDevelopment,
+                //         profile: this.$refs.profile,
+                //     },
+                //     callbacks: {
+                //         startdrag: this.startDrag,
+                //         enddrag: this.endDrag,
+                //         removeWebdev: this.removeWebdev,
+                //     },
+                // });
+                // this.throwInProfile = throwInProfile;
+                // this.initialised = true;
+                // this.profileTimer = setTimeout(this.checkForContactRoute, 2000);
             },
             startDrag () {
                 this.clearSelection();
