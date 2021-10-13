@@ -76,7 +76,11 @@ export default {
     buildModules: [
         '@nuxtjs/pwa',
         '@nuxtjs/tailwindcss',
+        'nuxt-font-loader',
     ],
+    fontLoader: {
+        url: '/fonts/fonts.css',
+    },
     /*
     ** Nuxt.js modules
     */
