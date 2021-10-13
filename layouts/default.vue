@@ -3,7 +3,7 @@
         data () {
             return {
                 // setting this to true disables the fade-in
-                init: true,
+                init: false,
             };
         },
         head () {
