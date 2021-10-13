@@ -1,10 +1,10 @@
 export const state = () => ({
-    jaFontLoaded: false,
+    // jaFontLoaded: false,
 });
 
-export const mutations = {
-    loadJaFont (state) {
-        state.jaFontLoaded = true;
-        console.log('loaded');
-    },
-};
+// export const mutations = {
+//     loadJaFont (state) {
+//         state.jaFontLoaded = true;
+//         console.log('loaded');
+//     },
+// };
