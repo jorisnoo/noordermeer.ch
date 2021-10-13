@@ -1,4 +1,5 @@
 <script>
+    import { onLoad } from '../helpers/onLoad';
     import runIntro from '../plugins/blocks';
 
     export default {
@@ -18,7 +19,9 @@
             },
         },
         mounted () {
-            // this.runIntro();
+            onLoad(() => {
+                this.runIntro();
+            });
         },
         methods: {
             runIntro () {
