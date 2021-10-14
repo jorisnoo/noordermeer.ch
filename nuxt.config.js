@@ -28,16 +28,6 @@ export default {
         ],
         meta: [
             { hid: 'twitter:image', name: 'twitter:image', property: 'twitter:image', content: 'https://noordermeer.ch/meta/joris_noordermeer_web_development.jpg' },
-            {
-                hid: 'description',
-                name: 'description',
-                content: 'Joris Noordermeer develops websites and web applications – for clients that value consistent web presences and intuitive user experiences.',
-            },
-            {
-                hid: 'og:description',
-                name: 'og:description',
-                content: 'Joris Noordermeer develops websites and web applications – for clients that value consistent web presences and intuitive user experiences.',
-            },
         ],
     },
 
@@ -128,7 +118,6 @@ export default {
                     switzerland: 'Switzerland',
                     page_not_found: 'Page not found',
                     skip_link: 'Skip to the main content',
-                    info_title: 'About Joris and the services he provides',
                 },
                 de: {
                     info: 'Info',
@@ -138,7 +127,6 @@ export default {
                     switzerland: 'Schweiz',
                     page_not_found: 'Seite nicht gefunden',
                     skip_link: 'Zum Hauptinhalt springen',
-                    info_title: 'Über Joris und die angebotenen Dienstleistungen',
                 },
                 ja: {
                     info: 'プロフィール',
@@ -148,7 +136,6 @@ export default {
                     switzerland: 'スイス',
                     page_not_found: 'ページが見つかりました。',
                     skip_link: 'メインコンテンツへスキップ',
-                    info_title: '提供されるサービスについて',
                 },
             },
         },

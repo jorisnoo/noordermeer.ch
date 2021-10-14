@@ -18,6 +18,10 @@
         head () {
             return {
                 titleTemplate: 'Joris Noordermeer — Web Development, Zurich, Switzerland',
+                meta: [
+                    { hid: 'description', name: 'description', content: this.info[this.$i18n.locale].description },
+                    { hid: 'og:description', name: 'og:description', content: this.info[this.$i18n.locale].description },
+                ],
             };
         },
         created () {
@@ -29,7 +33,7 @@
 <template>
     <main id="main" class="px-1/3 selection-blue">
         <h1 class="sr-only">
-            {{ $t('info_title') }}
+            {{ info[$i18n.locale].title }}
         </h1>
         <nuxt-content
             :key="'info'+locale"
