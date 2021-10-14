@@ -2,8 +2,8 @@
     export default {
         data () {
             return {
-                // setting this to true disables the fade-in
-                init: false,
+                // setting this to false disables the fade-in
+                runFadeInAnimation: false,
                 // Internal state for toggling the loading of the japanese font
                 jaFontLoaded: false,
             };
@@ -30,7 +30,7 @@
             },
         },
         mounted () {
-            this.init = true;
+            this.runFadeInAnimation = false;
             this.checkIfJapaneseFontShouldBeLoaded(this.$i18n.locale);
         },
         methods: {
@@ -54,7 +54,7 @@
 <template>
     <div
         class="min-h-screen relative p-4 lg:py-6 transition-opacity ease-out duration-700"
-        :class="{ 'opacity-0': !init }"
+        :class="{ 'opacity-0': runFadeInAnimation }"
     >
         <div class="skip-links sr-only">
             <a :href="'#'+mainId">{{ $t('skip_link') }}</a>
