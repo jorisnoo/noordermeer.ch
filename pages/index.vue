@@ -17,7 +17,7 @@
         },
         head () {
             return {
-                titleTemplate: 'Joris Noordermeer — Web Development',
+                titleTemplate: 'Joris Noordermeer — Web Development, Zurich, Switzerland',
             };
         },
         created () {
