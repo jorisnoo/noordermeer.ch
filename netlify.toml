@@ -41,6 +41,9 @@
   [context.production.plugins.inputs]
     exclude = [
       './dist/404.html',
+      './dist/work/sbb-gewinnspiel/index.html',
+      './dist/ja/work/sbb-gewinnspiel/index.html',
+      './dist/de/projekte/sbb-online-game/index.html',
     ]
 
 [[context.production.plugins]]
