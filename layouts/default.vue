@@ -8,7 +8,19 @@
             };
         },
         head () {
-            return this.$nuxtI18nHead({ addSeoAttributes: true });
+            const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true });
+            return {
+                htmlAttrs: i18nHead.htmlAttrs,
+                meta: [
+                    {
+                        hid: 'og:url',
+                        name: 'og:url',
+                        content: 'https://noordermeer.ch' + this.$route.fullPath,
+                    },
+                    ...i18nHead.meta,
+                ],
+                link: i18nHead.link,
+            };
         },
         computed: {
             mainId () {
