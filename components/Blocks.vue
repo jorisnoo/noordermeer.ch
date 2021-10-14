@@ -1,6 +1,4 @@
 <script>
-    import runIntro from '../plugins/blocks';
-
     export default {
         data () {
             return {
@@ -18,11 +16,12 @@
             },
         },
         mounted () {
-            setTimeout(this.runIntro, 1000);
+            this.runIntro();
         },
         methods: {
-            runIntro () {
-                const { throwInProfile } = runIntro({
+            async runIntro () {
+                const blocks = await import('../plugins/blocks');
+                const { throwInProfile } = blocks.default({
                     elements: {
                         joris: this.$refs.joris,
                         noordermeer: this.$refs.noordermeer,
