@@ -17,7 +17,7 @@ export default {
     //     };
     // },
     head: {
-        titleTemplate: '%s | Joris Noordermeer — Web Development',
+        titleTemplate: '%s — Joris Noordermeer',
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
             { rel: 'apple-touch-icon', sizes: '180x180', href: '/meta/apple-touch-icon.png' },

@@ -25,7 +25,7 @@
         },
         head () {
             return {
-                title: this.currentProject ? this.currentProject.name : this.$t('work'),
+                title: this.currentProject ? this.currentProject.name + ' – ' + this.$t('work') : this.$t('work'),
             };
         },
         computed: {
