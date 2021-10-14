@@ -28,12 +28,14 @@
             {{ $t('contact') }}
         </h1>
         <div class="prose prose-large">
-            <p>
-                noordermeer gmbh<br>
-                Zentralstr. 43<br>
-                8003 <span :class="[ locale ]">{{ zurich }}</span><br>
-                <span :class="[ locale ]">{{ switzerland }}</span>
-            </p>
+            <address class="not-italic">
+                <p>
+                    noordermeer gmbh<br>
+                    Zentralstr. 43<br>
+                    8003 <span :class="[ locale ]">{{ zurich }}</span><br>
+                    <span :class="[ locale ]">{{ switzerland }}</span>
+                </p>
+            </address>
             <p>
                 <a href="mailto:contact@noordermeer.ch">
                     contact@noordermeer.ch
