@@ -18,7 +18,7 @@
             },
         },
         mounted () {
-            this.$nextTick(this.runIntro);
+            setTimeout(this.runIntro, 1000);
         },
         methods: {
             runIntro () {
