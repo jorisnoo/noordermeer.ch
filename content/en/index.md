@@ -1,6 +1,6 @@
 ---
-pageTitle: Full Stack Web Development — Joris Noordermeer | Webdesign Zurich
-hiddenTitle: What services do I provide as freelance frontend and backend web developer?
+pageTitle: Website & SaaS Development — Joris Noordermeer | Webdesign Zurich
+hiddenTitle: The services I provide as freelance SaaS, frontend and backend web developer
 description: Joris Noordermeer develops websites and web applications – for clients that value consistent web presences and intuitive user experiences.
 ---
 

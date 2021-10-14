@@ -1,6 +1,6 @@
 ---
 pageTitle: Full Stack Webentwicklung — Joris Noordermeer | Webdesign Zürich
-hiddenTitle: Welche Leistungen biete ich als freiberuflicher Frontend- und Backend-Webentwickler an?
+hiddenTitle: Diese Leistungen biete ich als freiberuflicher SaaS-, Frontend- und Backend-Webentwickler an
 description: Joris Noordermeer entwickelt Websites und Webanwendungen — für Kund:innen, die Wert legen auf konsequente Webauftritte, intuitive Benutzererlebnisse und störungsfreies Funktionieren.
 ---
 
