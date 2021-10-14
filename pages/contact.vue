@@ -41,22 +41,26 @@
                     contact@noordermeer.ch
                 </a>
             </p>
-            <p>
-                <a
-                    href="https://www.linkedin.com/in/jorisnoo/"
-                    rel="noreferrer noopener nofollow"
-                >LinkedIn</a><br>
-                <a
-                    href="https://www.github.com/jorisnoo/"
-                    rel="noreferrer noopener nofollow"
-                >GitHub</a><br>
-            </p>
+            <ul>
+                <li>
+                    <a
+                        href="https://www.linkedin.com/in/jorisnoo/"
+                        rel="noreferrer noopener nofollow"
+                    >LinkedIn</a>
+                </li>
+                <li>
+                    <a
+                        href="https://www.github.com/jorisnoo/"
+                        rel="noreferrer noopener nofollow"
+                    >GitHub</a>
+                </li>
+            </ul>
         </div>
     </main>
 </template>
 
 <style scoped>
-    .ja {
-        font-size: 0.9em;
-    }
+.ja {
+    font-size: 0.9em;
+}
 </style>

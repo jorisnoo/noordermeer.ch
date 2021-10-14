@@ -93,7 +93,7 @@
                     'bg-blue': index%3 === 2 && openProjectIndex === index,
                 }"
             >
-                <nuxt-link :to="localePath({ params: { slug: (openProjectIndex === index) ? null : projects[$i18n.locale][index].slug } })">
+                <nuxt-link :to="localePath({ params: { slug: (openProjectIndex === index) ? null : project.slug } })">
                     {{ project.title }}
                 </nuxt-link>
             </h2>

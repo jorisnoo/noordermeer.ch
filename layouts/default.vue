@@ -4,6 +4,7 @@
             return {
                 // setting this to true disables the fade-in
                 init: false,
+                // Internal state for toggling the loading of the japanese font
                 jaFontLoaded: false,
             };
         },
@@ -11,15 +12,11 @@
             const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true });
             return {
                 htmlAttrs: i18nHead.htmlAttrs,
+                link: i18nHead.link,
                 meta: [
-                    {
-                        hid: 'og:url',
-                        name: 'og:url',
-                        content: 'https://noordermeer.ch' + this.$route.fullPath,
-                    },
+                    { hid: 'og:url', name: 'og:url', content: 'https://noordermeer.ch' + this.$route.fullPath },
                     ...i18nHead.meta,
                 ],
-                link: i18nHead.link,
             };
         },
         computed: {
@@ -29,16 +26,17 @@
         },
         watch: {
             '$i18n.locale' (locale) {
-                this.checkLocale(locale);
+                this.checkIfJapaneseFontShouldBeLoaded(locale);
             },
         },
         mounted () {
             this.init = true;
-            this.checkLocale(this.$i18n.locale);
+            this.checkIfJapaneseFontShouldBeLoaded(this.$i18n.locale);
         },
         methods: {
-            checkLocale (locale) {
+            checkIfJapaneseFontShouldBeLoaded (locale) {
                 if (!this.jaFontLoaded && locale === 'ja') {
+                    // Dynamically load font
                     const jaFont = new FontFace(
                         'Noto Sans JP',
                         'local(\'Noto Sans Japanese Medium\'), local(\'NotoSansJapanese-Medium\'), url(\'/fonts/noto-sans-jp-v36-japanese-500.woff2\') format(\'woff2\'), url(\'/fonts/noto-sans-jp-v36-japanese-500.woff\') format(\'woff\')',
