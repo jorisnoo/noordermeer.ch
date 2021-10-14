@@ -28,11 +28,9 @@
             checkLocale (locale) {
                 if (!this.jaFontLoaded && locale === 'ja') {
                     const jaFont = new FontFace(
-                        '"Noto Sans JP"',
+                        'Noto Sans JP',
                         'local(\'Noto Sans Japanese Medium\'), local(\'NotoSansJapanese-Medium\'), url(\'/fonts/noto-sans-jp-v36-japanese-500.woff2\') format(\'woff2\'), url(\'/fonts/noto-sans-jp-v36-japanese-500.woff\') format(\'woff\')',
-                        {
-                            weight: 500,
-                        },
+                        { weight: 500 },
                     );
                     jaFont.load().then(function (loadedFont) {
                         document.fonts.add(loadedFont);
