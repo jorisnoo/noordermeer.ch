@@ -14,7 +14,7 @@
                 htmlAttrs: i18nHead.htmlAttrs,
                 link: i18nHead.link,
                 meta: [
-                    { hid: 'og:url', name: 'og:url', content: 'https://noordermeer.ch' + this.$route.fullPath },
+                    { hid: 'og:url', name: 'og:url', property: 'og:url', content: 'https://noordermeer.ch' + this.$route.fullPath },
                     ...i18nHead.meta,
                 ],
             };

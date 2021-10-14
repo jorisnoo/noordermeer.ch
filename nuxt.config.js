@@ -166,10 +166,10 @@ export default {
         // Manually exclude work pages with varying slugs
         // Otherwise it seems like the crawler would need to be deactivated and
         // the routes manually read from the content folder
-        exclude: [
-            '/work/sbb-gewinnspiel',
-            '/ja/work/sbb-gewinnspiel',
-            '/de/projekte/sbb-online-game',
-        ],
+        // exclude: [
+        //     '/work/sbb-gewinnspiel',
+        //     '/ja/work/sbb-gewinnspiel',
+        //     '/de/projekte/sbb-online-game',
+        // ],
     },
 };

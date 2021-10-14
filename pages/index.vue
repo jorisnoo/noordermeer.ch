@@ -19,8 +19,8 @@
             return {
                 titleTemplate: this.info[this.$i18n.locale].pageTitle,
                 meta: [
-                    { hid: 'description', name: 'description', content: this.info[this.$i18n.locale].description },
-                    { hid: 'og:description', name: 'og:description', content: this.info[this.$i18n.locale].description },
+                    { hid: 'description', name: 'description', property: 'description', content: this.info[this.$i18n.locale].description },
+                    { hid: 'og:description', name: 'og:description', property: 'og:description', content: this.info[this.$i18n.locale].description },
                 ],
             };
         },
