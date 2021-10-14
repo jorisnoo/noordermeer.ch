@@ -128,6 +128,7 @@ export default {
                     switzerland: 'Switzerland',
                     page_not_found: 'Page not found',
                     skip_link: 'Skip to the main content',
+                    info_title: 'About Joris and the services he provides',
                 },
                 de: {
                     info: 'Info',
@@ -137,6 +138,7 @@ export default {
                     switzerland: 'Schweiz',
                     page_not_found: 'Seite nicht gefunden',
                     skip_link: 'Zum Hauptinhalt springen',
+                    info_title: 'Über Joris und die angebotenen Dienstleistungen',
                 },
                 ja: {
                     info: 'プロフィール',
@@ -146,6 +148,7 @@ export default {
                     switzerland: 'スイス',
                     page_not_found: 'ページが見つかりました。',
                     skip_link: 'メインコンテンツへスキップ',
+                    info_title: '提供されるサービスについて',
                 },
             },
         },

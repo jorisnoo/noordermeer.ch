@@ -29,7 +29,7 @@
 <template>
     <main id="main" class="px-1/3 selection-blue">
         <h1 class="sr-only">
-            {{ $t('info') }}
+            {{ $t('info_title') }}
         </h1>
         <nuxt-content
             :key="'info'+locale"
