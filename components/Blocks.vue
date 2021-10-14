@@ -18,7 +18,7 @@
             },
         },
         mounted () {
-            this.runIntro();
+            this.$nextTick(this.runIntro);
         },
         methods: {
             runIntro () {
