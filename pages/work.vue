@@ -72,7 +72,7 @@
 
 <template>
     <main id="main" class="selection-green">
-        <h1 class="sr-only">
+        <h1 v-if="openProjectIndex === -1" class="sr-only">
             {{ $t('work') }}
         </h1>
         <article
@@ -81,7 +81,8 @@
             :aria-labelledby="project.slug"
             :aria-role="openProjectIndex === index ? 'main' : 'article'"
         >
-            <h2
+            <component
+                :is="openProjectIndex === index ? 'h1' : 'h2'"
                 :id="project.slug"
                 class="round-link cursor-pointer"
                 :class="{
@@ -96,7 +97,7 @@
                 <nuxt-link :to="localePath({ params: { slug: (openProjectIndex === index) ? null : project.slug } })">
                     {{ project.title }}
                 </nuxt-link>
-            </h2>
+            </component>
             <client-only>
                 <slide-up-down :active="openProjectIndex === index" :duration="500">
                     <div class="projectDescription px-1/3 pb-4 pt-2">
