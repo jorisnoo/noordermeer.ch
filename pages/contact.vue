@@ -19,6 +19,13 @@
                 title: this.$t('contact'),
             };
         },
+        methods: {
+            plausible (event) {
+                if (typeof plausible !== 'undefined') {
+                    plausible(event);
+                }
+            },
+        },
     };
 </script>
 
@@ -37,7 +44,7 @@
                 </p>
             </address>
             <p>
-                <a href="mailto:contact@noordermeer.ch">
+                <a href="mailto:contact@noordermeer.ch" @click="plausible('Clicked mail')">
                     contact@noordermeer.ch
                 </a>
             </p>
@@ -46,12 +53,14 @@
                     <a
                         href="https://www.linkedin.com/in/jorisnoo/"
                         rel="noreferrer noopener nofollow"
+                        @click="plausible('Clicked Linkedin')"
                     >LinkedIn</a>
                 </li>
                 <li>
                     <a
                         href="https://www.github.com/jorisnoo/"
                         rel="noreferrer noopener nofollow"
+                        @click="plausible('Clicked Github')"
                     >GitHub</a>
                 </li>
             </ul>

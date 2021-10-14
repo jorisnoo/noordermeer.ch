@@ -37,11 +37,13 @@
         font-family: "Comic Sans MS", "Comic Sans", cursive !important;
         background: url("../assets/img/cclouds3.jpg");
     }
+
     @media (prefers-color-scheme: dark) {
         .notfound {
             background: url("../assets/img/alarm.gif");
         }
     }
+
     .notfound .content-fade {
         opacity: 0;
     }
