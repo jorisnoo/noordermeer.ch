@@ -19,6 +19,11 @@
                 }, 100);
             },
         },
+        mounted () {
+            if (typeof plausible !== 'undefined') {
+                plausible('404', { props: { path: this.$route.fullPath } });
+            }
+        },
     };
 </script>
 
