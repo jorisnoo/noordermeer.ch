@@ -19,6 +19,13 @@
                 title: this.$t('contact'),
             };
         },
+        methods: {
+            plausible (event) {
+                if (typeof plausible !== 'undefined') {
+                    plausible(event);
+                }
+            },
+        },
     };
 </script>
 
@@ -37,7 +44,7 @@
                 </p>
             </address>
             <p>
-                <a href="mailto:contact@noordermeer.ch">
+                <a href="mailto:contact@noordermeer.ch" @click="plausible('Clicked mail')">
                     contact@noordermeer.ch
                 </a>
             </p>
