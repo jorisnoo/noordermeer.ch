@@ -28,6 +28,8 @@ export default {
         ],
         meta: [
             { hid: 'twitter:image', name: 'twitter:image', property: 'twitter:image', content: 'https://noordermeer.ch/meta/joris_noordermeer_web_development.jpg' },
+            { hid: 'theme-color', name: 'theme-color', content: '#e6e6e6', media: 'media="(prefers-color-scheme: light)"' },
+            { hid: 'theme-color', name: 'theme-color', content: '#282828', media: 'media="(prefers-color-scheme: dark)"' },
         ],
     },
 
@@ -35,7 +37,6 @@ export default {
         meta: {
             title: 'Joris Noordermeer — Web Development',
             name: 'Joris Noordermeer',
-            theme_color: '#e6e6e6',
             ogTitle: 'Joris Noordermeer — Web Development',
             ogSiteName: 'Joris Noordermeer — Web Development',
             ogHost: 'https://noordermeer.ch',
@@ -45,8 +46,8 @@ export default {
         manifest: {
             name: 'Joris Noordermeer',
             short_name: 'Joris Noordermeer',
-            theme_color: '#ffffff',
-            background_color: '#ffffff',
+            theme_color: '#e6e6e6',
+            background_color: '#e6e6e6',
             display: 'standalone',
             lang: 'en',
         },

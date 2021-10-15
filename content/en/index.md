@@ -1,5 +1,5 @@
 ---
-pageTitle: Website & SaaS Development — Joris Noordermeer | Webdesign Zurich
+pageTitle: Website and SaaS Development — Joris Noordermeer | Webdesign Zurich
 hiddenTitle: The services I provide as full stack web developer
 description: Joris Noordermeer develops websites and web applications – for clients that value consistent web presences and intuitive user experiences.
 ---
