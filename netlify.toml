@@ -13,7 +13,7 @@
   status = 202
 
 [[redirects]]
-  from = "/work"
+  from = "/work/"
   to = "/portfolio"
   status = 301
 
@@ -21,6 +21,7 @@
   from = "/ja/work"
   to = "/ja/portfolio"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/de/projekte"
