@@ -13,6 +13,21 @@
   status = 202
 
 [[redirects]]
+  from = "/work"
+  to = "/portfolio"
+  status = 301
+
+[[redirects]]
+  from = "/ja/work"
+  to = "/ja/portfolio"
+  status = 301
+
+[[redirects]]
+  from = "/de/projekte"
+  to = "/de/portfolio"
+  status = 301
+
+[[redirects]]
   from = "/work/*"
   to = "/portfolio/:splat"
   status = 301
@@ -46,7 +61,6 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
-
 
 [[plugins]]
   package = "netlify-plugin-cache-nuxt"
