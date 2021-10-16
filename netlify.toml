@@ -13,6 +13,21 @@
   status = 202
 
 [[redirects]]
+  from = "/work/*"
+  to = "/portfolio/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/ja/work/*"
+  to = "/ja/portfolio/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/de/projekte/*"
+  to = "/de/portfolio/:splat"
+  status = 301
+
+[[redirects]]
   from = "/200"
   to = "/"
   status = 301
@@ -41,9 +56,9 @@
   [context.production.plugins.inputs]
     exclude = [
       './dist/404.html',
-      './dist/work/sbb-gewinnspiel/index.html',
-      './dist/ja/work/sbb-gewinnspiel/index.html',
-      './dist/de/projekte/sbb-online-game/index.html',
+      './dist/portfolio/sbb-gewinnspiel/index.html',
+      './dist/ja/portfolio/sbb-gewinnspiel/index.html',
+      './dist/de/portfolio/sbb-online-game/index.html',
     ]
 
 [[context.production.plugins]]

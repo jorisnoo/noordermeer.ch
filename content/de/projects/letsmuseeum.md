@@ -3,6 +3,7 @@ name: "#letsmuseeum"
 title: 'Dynamische Schnittstelle, leistungsfähiges Tool'
 url: https://letsmuseeum.com
 date: 2015-05
+description: Eine komplexe Web-Applikation — konsequent integriert, smart verknüpft und weitestmöglich automatisiert
 ---
 [#letsmuseeum](https://letsmuseeum.com) bietet Führungen, Touren und Workshops an. In Museen, Städten, Firmen und in verschiedenen Sprachen. Der von Y7K brutalistisch gestaltete Webauftritt ist die zentrale Schnittstelle zwischen aussen und innen — zwischen Publikum, Auftraggebern und der Organisation, die mit letsmuseeum.com über ein umfassendes und dynamisches Arbeitsinstrument verfügt.
 

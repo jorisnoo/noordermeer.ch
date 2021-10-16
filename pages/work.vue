@@ -3,13 +3,18 @@
         key: 'work',
         nuxtI18n: {
             paths: {
-                en: '/work',
-                de: '/projekte',
-                ja: '/work',
+                en: '/portfolio',
+                de: '/portfolio',
+                ja: '/portfolio',
             },
         },
         async asyncData ({ $content }) {
             return {
+                projectIndex: {
+                    en: await $content('en/projects/index').fetch(),
+                    de: await $content('de/projects/index').fetch(),
+                    ja: await $content('ja/projects/index').fetch(),
+                },
                 projects: {
                     en: await $content('en/projects').where({ disabled: { $ne: true } }).sortBy('date', 'desc').fetch(),
                     de: await $content('de/projects').where({ disabled: { $ne: true } }).sortBy('date', 'desc').fetch(),
@@ -26,9 +31,15 @@
         head () {
             return {
                 title: this.currentProject ? this.currentProject.name + ' – ' + this.$t('work') : this.$t('work'),
+                meta: {
+                    description: this.metaDescription,
+                },
             };
         },
         computed: {
+            metaDescription () {
+                return this.currentProject ? this.currentProject.description || null : this.projectIndex[this.$i18n.locale].description;
+            },
             currentSlug () {
                 return this.$route.params.slug || null;
             },

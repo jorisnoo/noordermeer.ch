@@ -3,6 +3,7 @@ name: 'Büro Krucker'
 title: 'Corporate Design & Headless Architecture'
 url: https://buerokrucker.netlify.app
 date: 2020-09
+description: Eine statische Nuxt.js-Site, mit nach dem Headless-Prinzip eingesetzten Craft CMS im Backend.
 ---
 Der vom Designstudio [Badesaison](https://badesaison.ch) gestaltete Webauftritt für das Architekturbüro [Krucker](https://www.buerokrucker.ch) ist eine klassische Corporate Website. Sie reflektiert das Unternehmensprofil und gibt dem User einen Eindruck davon, wie Krucker denkt und handelt.
 

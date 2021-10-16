@@ -3,6 +3,7 @@ name: 'Aaron Wegmann'
 title: 'Each replay a new clip'
 url: https://aaronwegmann.ch
 date: 2020-04
+description: Ein Online Audio-Video-Player basierend auf dem PHP-Webframework Laravel.
 ---
 Der Online Audio-Video-Player für den Gitarristen, Sänger und Songwriter [Aaron Wegmann](https://aaronwegmann.ch) generiert bei jedem Abspielen eines Songs einen einzigartigen Clip. Das Konzept geht zurück auf den Webauftritt, den die Digitalagentur Hinderling Volkart 2008 für Aaron Wegmanns erste Band ‘Call You Back’ realisierte. Damals mit Flash.
 

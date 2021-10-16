@@ -113,7 +113,7 @@ export default {
             messages: {
                 en: {
                     info: 'Info',
-                    work: 'Work',
+                    work: 'Portfolio',
                     contact: 'Contact',
                     zurich: 'Zurich',
                     switzerland: 'Switzerland',
@@ -122,7 +122,7 @@ export default {
                 },
                 de: {
                     info: 'Info',
-                    work: 'Projekte',
+                    work: 'Portfolio',
                     contact: 'Kontakt',
                     zurich: 'Zürich',
                     switzerland: 'Schweiz',
