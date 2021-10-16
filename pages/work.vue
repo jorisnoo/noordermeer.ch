@@ -31,9 +31,10 @@
         head () {
             return {
                 title: this.currentProject ? this.currentProject.name + ' – ' + this.$t('work') : this.$t('work'),
-                meta: {
-                    description: this.metaDescription,
-                },
+                meta: [
+                    { hid: 'description', name: 'description', property: 'description', content: this.metaDescription },
+                    { hid: 'og:description', name: 'og:description', property: 'og:description', content: this.metaDescription },
+                ],
             };
         },
         computed: {
