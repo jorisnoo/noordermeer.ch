@@ -3,7 +3,7 @@ name: SBB Gewinnspiel
 title: Dynamisches Regelwerk
 url: https://gewinnen.sbb.ch
 date: 2021-06
-description: Eine performante Laravel-Applikation die ein hochkomplexes Regelwerk orchestriert.
+description: Eine Webanwendung – basierend auf dem PHP-Framework Laravel – die ein hochkomplexes Regelwerk orchestriert.
 ---
 2018 erstmals lanciert, damals in Kooperation von Y7K und Partner & Partner, seither von Jahr zu Jahr neu aufgelegt und gezielt perfektioniert: das Online-Gewinnspiel, mit dem die SBB grosse Bahnhöfe als vielfältige Einkaufszentren promoten.  
 
