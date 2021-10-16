@@ -74,6 +74,7 @@ export default {
     buildModules: [
         '@nuxtjs/pwa',
         '@nuxtjs/tailwindcss',
+        '@aceforth/nuxt-netlify',
     ],
     /*
     ** Nuxt.js modules
@@ -172,5 +173,37 @@ export default {
         //     '/ja/work/sbb-gewinnspiel',
         //     '/de/projekte/sbb-online-game',
         // ],
+    },
+
+    netlify: {
+        redirects: [
+            {
+                from: '/work',
+                to: '/portfolio',
+                force: true,
+            },
+            {
+                from: '/ja/work',
+                to: '/ja/portfolio',
+                force: true,
+            },
+            {
+                from: '/de/projekte',
+                to: '/de/portfolio',
+                force: true,
+            },
+            {
+                from: '/work/*',
+                to: '/portfolio/:splat',
+            },
+            {
+                from: '/ja/work/*',
+                to: '/ja/portfolio/:splat',
+            },
+            {
+                from: '/de/projekte/*',
+                to: '/de/portfolio/:splat',
+            },
+        ],
     },
 };

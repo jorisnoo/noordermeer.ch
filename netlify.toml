@@ -12,57 +12,6 @@
   to = "https://plausible.io/api/event"
   status = 202
 
-[[redirects]]
-  from = "/work/"
-  to = "/portfolio"
-  status = 301
-
-[[redirects]]
-  from = "/ja/work"
-  to = "/ja/portfolio"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/de/projekte"
-  to = "/de/portfolio"
-  status = 301
-
-[[redirects]]
-  from = "/work/*"
-  to = "/portfolio/:splat"
-  status = 301
-
-[[redirects]]
-  from = "/ja/work/*"
-  to = "/ja/portfolio/:splat"
-  status = 301
-
-[[redirects]]
-  from = "/de/projekte/*"
-  to = "/de/portfolio/:splat"
-  status = 301
-
-[[redirects]]
-  from = "/200"
-  to = "/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/200.html"
-  to = "/"
-  status = 301
-  force = true
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-
 [[plugins]]
   package = "netlify-plugin-cache-nuxt"
 
