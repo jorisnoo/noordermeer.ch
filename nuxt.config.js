@@ -6,6 +6,7 @@ export default {
     */
     target: 'static',
     modern: 'client',
+    srcDir: 'src',
     /*
     ** Headers of the page
     ** See https://nuxtjs.org/api/configuration-head
@@ -96,6 +97,10 @@ export default {
                 rel: ['noopener'],
             },
         },
+    },
+
+    tailwindcss: {
+        configPath: '../tailwind.config.js',
     },
     /*
     ** i18n module configuration
