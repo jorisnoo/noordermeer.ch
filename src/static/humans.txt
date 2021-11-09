@@ -1,0 +1,19 @@
+# humanstxt.org
+
+# TEAM
+
+    - Joris Noordermeer (Code)    https://noordermeer.ch/
+    - Badesaison (Design)         https://badesaison.ch/
+    - Ruedi Wegmann (Copywriting)
+
+# THANKS
+
+    - Fabienne Baeriswyl
+    - Pandora Moloney
+    - Hiromi Kobayashi
+    - The Open Source Community
+    - The Internet
+
+# Technology
+
+    Nuxt.js, TailwindCSS
