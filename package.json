@@ -1,6 +1,7 @@
 {
     "name": "noordermeer.ch",
     "private": true,
+    "license": "GNU GPLv3",
     "author": "Joris Noordermeer",
     "description": "Joris Noordermeer develops websites and web applications – for clients that value consistent web presences and intuitive user experiences.",
     "repository": {
