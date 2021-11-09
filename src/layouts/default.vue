@@ -3,7 +3,7 @@
         data () {
             return {
                 // setting this to false disables the fade-in
-                runFadeInAnimation: false,
+                runFadeInAnimation: true,
                 // Internal state for toggling the loading of the japanese font
                 jaFontLoaded: false,
             };
