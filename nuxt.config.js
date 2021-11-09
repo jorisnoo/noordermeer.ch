@@ -1,5 +1,7 @@
 
 export default {
+    // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
+    ssr: false,
     /*
     ** Nuxt target
     ** See https://nuxtjs.org/api/configuration-target
@@ -11,12 +13,6 @@ export default {
     ** Headers of the page
     ** See https://nuxtjs.org/api/configuration-head
     */
-    // head () {
-    //     const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true }) || null;
-    //     return {
-    //
-    //     };
-    // },
     head: {
         titleTemplate: '%s – Joris Noordermeer',
         link: [
