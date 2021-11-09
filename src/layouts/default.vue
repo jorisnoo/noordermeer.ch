@@ -30,7 +30,9 @@
             },
         },
         mounted () {
-            this.runFadeInAnimation = false;
+            this.$nextTick(() => {
+               this.runFadeInAnimation = false;
+            });
             this.checkIfJapaneseFontShouldBeLoaded(this.$i18n.locale);
         },
         methods: {
