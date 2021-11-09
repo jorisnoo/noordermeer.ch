@@ -1,5 +1,5 @@
 ---
-pageTitle: Frontend und Full Stack Webentwicklung — Joris Noordermeer | Webdesign Zürich
+pageTitle: Frontend und Full Stack Webentwicklung – Joris Noordermeer | Webdesign Zürich
 hiddenTitle: Meine Leistungen und mein Angebot als Full Stack Web Developer
 description: Joris Noordermeer entwickelt Websites und Webanwendungen — für Kund:innen, die Wert legen auf konsequente Webauftritte und intuitive Benutzererlebnisse.
 ---

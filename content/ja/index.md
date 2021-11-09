@@ -1,5 +1,5 @@
 ---
-pageTitle: フルスタックのWeb開発 — Joris Noordermeer | Webdesign & Web Development
+pageTitle: フルスタックのWeb開発 – Joris Noordermeer | Webdesign & Web Development
 hiddenTitle: フリーランスのフルスタックおよびフロントエンドのウェブ開発者として、どのようなサービスを提供していますか？
 description: Joris Noordermeer develops websites and web applications – for clients that value consistent web presences and intuitive user experiences.
 ---

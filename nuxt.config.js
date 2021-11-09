@@ -17,7 +17,7 @@ export default {
     //     };
     // },
     head: {
-        titleTemplate: '%s — Joris Noordermeer',
+        titleTemplate: '%s – Joris Noordermeer',
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
             { rel: 'apple-touch-icon', sizes: '180x180', href: '/meta/apple-touch-icon.png' },
@@ -165,14 +165,6 @@ export default {
     */
     generate: {
         fallback: '404.html',
-        // Manually exclude work pages with varying slugs
-        // Otherwise it seems like the crawler would need to be deactivated and
-        // the routes manually read from the content folder
-        // exclude: [
-        //     '/work/sbb-gewinnspiel',
-        //     '/ja/work/sbb-gewinnspiel',
-        //     '/de/projekte/sbb-online-game',
-        // ],
     },
 
     netlify: {
