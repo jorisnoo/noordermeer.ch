@@ -1,4 +1,6 @@
-# humanstxt.org
+   (\_/)
+  (='.'=)
+  (")^(")
 
 # TEAM
 
@@ -14,6 +16,7 @@
     - The Open Source Community
     - The Internet
 
-# Technology
+# TECHNOLOGY
 
-    Nuxt.js, TailwindCSS
+    Nuxt.js, Vue.js, TailwindCSS, Netlify
+    ESLint, Stylelint
