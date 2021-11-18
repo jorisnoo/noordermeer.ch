@@ -1,9 +1,12 @@
 <script>
+    import isbot from 'isbot';
+
     export default {
         data () {
             return {
                 // setting this to false disables the fade-in
                 runFadeInAnimation: true,
+                fadeInitialised: false,
                 // Internal state for toggling the loading of the japanese font
                 jaFontLoaded: false,
             };
@@ -30,9 +33,14 @@
             },
         },
         mounted () {
-            setTimeout(() => {
+            if (isbot(navigator.userAgent)) {
+                this.fadeInitialised = true;
                 this.runFadeInAnimation = false;
-            }, 10);
+            } else {
+                setTimeout(() => {
+                    this.fadeInitialised = true;
+                }, 10);
+            }
             this.checkIfJapaneseFontShouldBeLoaded(this.$i18n.locale);
         },
         methods: {
@@ -56,8 +64,8 @@
 <template>
     <!-- Main layout -->
     <div
-        class="min-h-screen relative p-4 lg:py-6 transition-opacity ease-out duration-700"
-        :class="{ 'opacity-0': runFadeInAnimation }"
+        class="min-h-screen relative p-4 lg:py-6"
+        :class="{ 'transition-opacity ease-out duration-700': runFadeInAnimation, 'opacity-0': !fadeInitialised }"
     >
         <div class="skip-links sr-only">
             <a :href="'#'+mainId">{{ $t('skip_link') }}</a>
