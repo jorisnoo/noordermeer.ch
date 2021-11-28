@@ -1,7 +1,5 @@
 
 export default {
-    // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-    ssr: false,
     /*
     ** Nuxt target
     ** See https://nuxtjs.org/api/configuration-target

@@ -5,8 +5,8 @@
         data () {
             return {
                 // setting this to false disables the fade-in
-                runFadeInAnimation: false,
-                introAnimationHasRun: true,
+                runFadeInAnimation: true,
+                introAnimationHasRun: false,
                 // Internal state for toggling the loading of the japanese font
                 jaFontLoaded: false,
             };
@@ -33,14 +33,14 @@
             },
         },
         mounted () {
-            // if (isbot(navigator.userAgent)) {
-            //     this.introAnimationHasRun = true;
-            //     this.runFadeInAnimation = false;
-            // } else {
-            //     setTimeout(() => {
-            //         this.introAnimationHasRun = true;
-            //     }, 10);
-            // }
+            if (isbot(navigator.userAgent)) {
+                this.introAnimationHasRun = true;
+                this.runFadeInAnimation = false;
+            } else {
+                setTimeout(() => {
+                    this.introAnimationHasRun = true;
+                }, 50);
+            }
             this.checkIfJapaneseFontShouldBeLoaded(this.$i18n.locale);
         },
         methods: {
@@ -65,7 +65,7 @@
     <!-- Main layout -->
     <div
         class="min-h-screen relative p-4 lg:py-6"
-        :class="{ 'transition-opacity ease-out duration-700': runFadeInAnimation, 'opacity-0': !introAnimationHasRun }"
+        :class="{ 'transition-opacity ease-out duration-1000': runFadeInAnimation, 'opacity-0': !introAnimationHasRun }"
     >
         <div class="skip-links sr-only">
             <a :href="'#'+mainId">{{ $t('skip_link') }}</a>
