@@ -91,6 +91,7 @@ export default {
                 rel: ['noopener'],
             },
         },
+        dir: '../content',
     },
 
     tailwindcss: {
