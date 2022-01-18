@@ -62,7 +62,6 @@
 </script>
 
 <template>
-    <!-- Main layout -->
     <div
         class="min-h-screen relative p-4 lg:py-6"
         :class="{ 'transition-opacity ease-out duration-1000': runFadeInAnimation, 'opacity-0': !introAnimationHasRun }"
