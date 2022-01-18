@@ -24,6 +24,7 @@ module.exports = {
             mono: ['"DM Mono"', ...defaultTheme.fontFamily.mono],
         },
         colors: {
+            current: 'currentColor',
             transparent: 'transparent',
             black: '#000000',
             white: '#e6e6e6',
