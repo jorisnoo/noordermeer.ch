@@ -1,7 +1,7 @@
 {
     "name": "noordermeer.ch",
     "private": true,
-    "license": "GNU GPLv3",
+    "license": "proprietary",
     "author": "Joris Noordermeer",
     "description": "Joris Noordermeer develops websites and web applications – for clients that value consistent web presences and intuitive user experiences.",
     "repository": {
@@ -21,12 +21,13 @@
         "lint": "npm run lint:js && npm run lint:style"
     },
     "dependencies": {
-        "@nuxt/content": "^1.15.0",
+        "@nuxt/content": "^1.15.1",
         "@nuxtjs/i18n": "^7.2.0",
         "@nuxtjs/pwa": "^3.3.5",
-        "isbot": "^3.3.4",
+        "core-js": "^3.20.3",
+        "isbot": "^3.4.0",
         "matter-dom-plugin": "github:jorisnoo/matter-dom-plugin#main",
-        "matter-js": "^0.17.1",
+        "matter-js": "0.17.1",
         "nuxt": "^2.15.8",
         "poly-decomp": "^0.3.0",
         "tailwindcss-gradients": "^3.0.0",
@@ -35,21 +36,22 @@
     },
     "devDependencies": {
         "@aceforth/nuxt-netlify": "^1.1.0",
-        "@babel/eslint-parser": "^7.14.7",
+        "@babel/eslint-parser": "^7.16.5",
         "@netlify/plugin-sitemap": "^0.8.1",
+        "@nuxt/postcss8": "^1.1.3",
         "@nuxtjs/eslint-config": "^6.0.1",
         "@nuxtjs/eslint-module": "^3.0.2",
-        "@nuxtjs/stylelint-module": "^4.0.0",
-        "@nuxtjs/tailwindcss": "^4.2.1",
-        "autoprefixer": "^10.4.0",
-        "eslint": "^7.29.0",
+        "@nuxtjs/stylelint-module": "^4.1.0",
+        "autoprefixer": "^10.4.2",
+        "eslint": "^7.32.0",
         "eslint-plugin-nuxt": "^2.0.0",
-        "eslint-plugin-vue": "^7.12.1",
+        "eslint-plugin-vue": "^7.20.0",
         "netlify-plugin-cache-nuxt": "0.0.2",
         "netlify-plugin-submit-sitemap": "^0.2.3",
-        "postcss": "^8.3.11",
-        "semantic-release": "^18.0.0",
+        "postcss": "^8.4.5",
+        "semantic-release": "^18.0.1",
         "stylelint": "^13.13.1",
-        "stylelint-config-standard": "^22.0.0"
+        "stylelint-config-standard": "^22.0.0",
+        "tailwindcss": "^3.0.15"
     }
 }

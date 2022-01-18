@@ -50,7 +50,9 @@ export default {
     /*
     ** Global CSS
     */
-    css: [],
+    css: [
+        '@/assets/css/main.css',
+    ],
     /*
     ** Plugins to load before mounting the App
     ** https://nuxtjs.org/guide/plugins
@@ -67,8 +69,8 @@ export default {
     ** Nuxt.js dev-modules
     */
     buildModules: [
+        '@nuxt/postcss8',
         '@nuxtjs/pwa',
-        '@nuxtjs/tailwindcss',
         '@aceforth/nuxt-netlify',
     ],
     /*
@@ -84,6 +86,7 @@ export default {
     ** See https://content.nuxtjs.org/configuration
     */
     content: {
+        dir: '../content',
         markdown: {
             // https://github.com/remarkjs/remark-external-links#options
             remarkExternalLinks: {
@@ -91,11 +94,6 @@ export default {
                 rel: ['noopener'],
             },
         },
-        dir: '../content',
-    },
-
-    tailwindcss: {
-        configPath: '../tailwind.config.js',
     },
     /*
     ** i18n module configuration
@@ -158,7 +156,14 @@ export default {
     ** Build configuration
     ** See https://nuxtjs.org/api/configuration-build/
     */
-    build: {},
+    build: {
+        postcss: {
+            plugins: {
+                tailwindcss: { config: './tailwind.config.js' },
+                autoprefixer: {},
+            },
+        },
+    },
     /*
     ** Configure the generation of your universal web application to a static web application.
     ** See https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-generate
