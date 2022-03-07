@@ -30,7 +30,8 @@
     @apply border-b-2;
 }
 
-.prose code {
+.prose code,
+.prose .code {
     @apply font-mono px-2 -mx-2 rounded-full inline-block relative;
 
     background-color: #d6d6d6;

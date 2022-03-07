@@ -9,6 +9,6 @@ description: Ein virtueller Ausstellungsraum, realisert mit Three.js sowie einer
 
 Neverland Space zeigt verschiedene Künstler in indiviuellen Ausstellungen. Alle Werke basieren auf spezifischen Programmiertechniken, das Spektrum reicht vom einfachen GIF und subtil bewegten Visual bis zu interaktiven Animationen und Aktionen, die im Neverland Space eine adäquate Bühne finden.
 
-Das Frontend, die sichtbare Oberfläche von Neverland Space, wird mit dem JavaScript Framework `Three.js` dargestellt. Das Organisieren und Bearbeiten der Inhalte, das Kuratieren der digitalen Ausstellungen, erfolgt im auf dem PHP Framework `Laravel` aufgebauten Backend.
+Das Frontend, die sichtbare Oberfläche von Neverland Space, wird mit dem JavaScript Framework <span class="code">Three.js</span> dargestellt. Das Organisieren und Bearbeiten der Inhalte, das Kuratieren der digitalen Ausstellungen, erfolgt im auf dem PHP Framework <span class="code">Laravel</span> aufgebauten Backend.
 
 [Website besuchen](https://neverlandspace.com)

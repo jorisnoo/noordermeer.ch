@@ -8,6 +8,6 @@ In 2013 I visited my long-time friend and later colleague Ruben Feurer, who was 
 
 Neverland Space shows various artists in individual exhibitions. All works are based on specific programming techniques, the spectrum ranges from the simple GIF and subtly moving visuals to interactive animations and actions that find an optimal stage in Neverland Space.
 
-The frontend, the visible surface of Neverland Space, is rendered with the JavaScript framework `Three.js`. The organisation and editing of the content, the curating of the digital exhibitions, takes place in the backend, which is built on the PHP framework `Laravel`.
+The frontend, the visible surface of Neverland Space, is rendered with the JavaScript framework <span class="code">Three.js</span>. The organisation and editing of the content, the curating of the digital exhibitions, takes place in the backend, which is built on the PHP framework <span class="code">Laravel</span>.
 
 [Visit website](https://neverlandspace.com)

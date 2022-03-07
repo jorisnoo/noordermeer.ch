@@ -9,6 +9,6 @@ Der Online Audio-Video-Player für den Gitarristen, Sänger und Songwriter [Aaro
 
 Das Prinzip bleibt auch in der 2020er Neuauflage aussergewöhnlich: Die einzelnen Wörter der Lyrics gehen als Tags an die Fotoplattformen Flickr und Unsplash, wo nach dem Zufallsprinzip dynamisch Bilder ausgewählt und im Hintergrund der Applikation permanent nachgeladen werden. So entsteht ein unendliches Spiel von Songs mit Visuals. Jedes Mal neu, jedes Mal anders.
 
-Die für das aktuelle Projekt entwickelte App basiert auf dem PHP-Webframework `Laravel`, das Frontend auf den JavaScript-Frameworks `Svelte` und `Alpine.js`. Die Lyrics werden mit einer Uralt-Karaoke-Software synchronisiert, das Backend ermöglicht differenzierte Feineinstellungen für das Ausspielen einzelner Wörter und Visuals.
+Die für das aktuelle Projekt entwickelte App basiert auf dem PHP-Webframework <span class="code">Laravel</span>, das Frontend auf den JavaScript-Frameworks <span class="code">Svelte</span> und <span class="code">Alpine.js</span>. Die Lyrics werden mit einer Uralt-Karaoke-Software synchronisiert, das Backend ermöglicht differenzierte Feineinstellungen für das Ausspielen einzelner Wörter und Visuals.
 
 [Website besuchen](https://aaronwegmann.ch)

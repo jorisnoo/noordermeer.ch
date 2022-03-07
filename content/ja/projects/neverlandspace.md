@@ -8,6 +8,6 @@ date: 2014-05
 
 「Neverland Space」では、様々なアーティストの個展を開催しています。すべての作品は特定のプログラミング技術に基づいており、シンプルなGIFや微動するビジュアルから、インタラクティブなアニメーションやアクションまでそのスペクトルは多岐に渡り、「Neverland Space」にふさわしいステージをご覧いただけます。
 
-「Neverland Space」の可視できるフロントエンドは、JavaScriptフレームワークの`Three.js`でレンダリングされています。コンテンツの整理と編集、デジタル展示のキュレーションは、PHPフレームワーク`Laravel`で構築されたバックエンドを使用しています。
+「Neverland Space」の可視できるフロントエンドは、JavaScriptフレームワークの<span class="code">Three.js</span>でレンダリングされています。コンテンツの整理と編集、デジタル展示のキュレーションは、PHPフレームワーク<span class="code">Laravel</span>で構築されたバックエンドを使用しています。
 
 [実例のWebサイトはこちらをご覧ください](https://neverlandspace.com)
