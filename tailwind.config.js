@@ -1,9 +1,4 @@
-/*
-** TailwindCSS Configuration File
-**
-** Docs: https://tailwindcss.com/docs/configuration
-** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
-*/
+/** @type {import('tailwindcss').Config} */
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
@@ -12,7 +7,7 @@ module.exports = {
         './src/layouts/**/*.vue',
         './src/pages/**/*.vue',
         './src/plugins/**/*.{js,ts}',
-        './src/nuxt.config.{js,ts}',
+        './nuxt.config.{js,ts}',
     ],
     theme: {
         fontFamily: {

@@ -20,6 +20,7 @@ export default {
             { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/meta/favicon-16x16.png' },
             { rel: 'mask-icon', href: '/meta/safari-pinned-tab.svg', color: '#f9325a' },
             { rel: 'msapplication-TileColor', content: '#e6e6e6' },
+            { rel: 'author', type: 'text/plain', href: '/humans.txt' },
         ],
         meta: [
             { hid: 'twitter:image', name: 'twitter:image', property: 'twitter:image', content: 'https://noordermeer.ch/meta/joris_noordermeer_web_development.jpg' },
