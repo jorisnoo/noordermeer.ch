@@ -24,14 +24,13 @@
         "@nuxt/content": "^1.15.1",
         "@nuxtjs/i18n": "^7.2.0",
         "@nuxtjs/pwa": "^3.3.5",
-        "core-js": "^3.21.1",
         "isbot": "^3.4.3",
         "matter-dom-plugin": "github:jorisnoo/matter-dom-plugin#main",
         "matter-js": "0.17.1",
         "nuxt": "^2.15.8",
         "poly-decomp": "^0.3.0",
         "tailwindcss-gradients": "^3.0.0",
-        "throttle-debounce": "^3.0.1",
+        "throttle-debounce": "^5.0.0",
         "vue-slide-up-down": "^2.0.1"
     },
     "devDependencies": {
