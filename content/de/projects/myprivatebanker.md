@@ -4,6 +4,7 @@ title: 'Progressive Web App'
 url: https://myprivatebanker.io
 date: 2020-03
 description: Eine Progressive Web App, basierend auf Nuxt.js.
+disabled: true
 ---
 My Private Banker ist ein innert kürzester Zeit entwickelter [Prototyp](https://myprivatebanker.io/) für eine Mobile App, die im Kontext professioneller Finanzberatung individuelle Anlagemodelle berechnet. Dies präzise abgestimmt auf die eingegebenen Vermögens- und Einkommensverhältnisse und — im Experten-Modus — auf die persönliche Risikobereitschaft des Users.
 

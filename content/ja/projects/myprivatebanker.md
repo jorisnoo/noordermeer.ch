@@ -3,6 +3,7 @@ name: My Private Banker
 title: Progressive Web App
 url: https://myprivatebanker.io
 date: 2020-03
+disabled: true
 ---
 My Private Bankerは、非常に短期間で開発されたモバイルアプリのプロトタイプ（試作品）です。専門的な金融アドバイスのコンテキストで個人の投資モデルを計算します。入力された資産と収入の状況に合わせて、エキスパートモードではユーザーの個人的なリスク許容度に合わせて正確に調整されます。
 
