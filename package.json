@@ -45,6 +45,7 @@
         "eslint-plugin-vue": "^7.20.0",
         "netlify-plugin-cache-nuxt": "0.0.2",
         "netlify-plugin-submit-sitemap": "^0.4.0",
+        "node-fetch": "^2.6.6",
         "postcss": "^8.4.20",
         "stylelint": "^13.13.1",
         "stylelint-config-standard": "^22.0.0",
