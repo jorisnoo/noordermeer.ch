@@ -70,7 +70,6 @@ export default {
     ** Nuxt.js dev-modules
     */
     buildModules: [
-        '@nuxt/postcss8',
         '@nuxtjs/pwa',
         '@aceforth/nuxt-netlify',
     ],
@@ -159,10 +158,19 @@ export default {
     */
     build: {
         postcss: {
-            plugins: {
-                tailwindcss: { config: './tailwind.config.js' },
-                autoprefixer: {},
+            postcssOptions: {
+                plugins: {
+                    tailwindcss: { config: './tailwind.config.js' },
+                    autoprefixer: {},
+                },
             },
+        },
+        babel: {
+            presets(env, [ preset, options ]) {
+                return [
+                    [ "@babel/preset-env", options ]
+                ]
+            }
         },
     },
     /*

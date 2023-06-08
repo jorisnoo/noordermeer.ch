@@ -12,9 +12,6 @@
   to = "https://plausible.io/api/event"
   status = 202
 
-[[plugins]]
-  package = "netlify-plugin-cache-nuxt"
-
 [[context.production.plugins]]
   package = "@netlify/plugin-sitemap"
   [context.production.plugins.inputs]
@@ -24,6 +21,3 @@
       './dist/ja/portfolio/sbb-gewinnspiel/index.html',
       './dist/de/portfolio/sbb-online-game/index.html',
     ]
-
-[[context.production.plugins]]
-  package = "netlify-plugin-submit-sitemap"
