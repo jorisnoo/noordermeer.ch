@@ -42,7 +42,7 @@
                     // Dynamically load font
                     const jaFont = new FontFace(
                         'Noto Sans JP',
-                        'local(\'Noto Sans Japanese Medium\'), local(\'NotoSansJapanese-Medium\'), url(\'/fonts/noto-sans-jp-v36-japanese-500.woff2\') format(\'woff2\'), url(\'/fonts/noto-sans-jp-v36-japanese-500.woff\') format(\'woff\')',
+                        'url(\'/fonts/noto-sans-jp-v36-japanese-500.woff2\') format(\'woff2\')',
                         { weight: 500 },
                     );
                     jaFont.load().then(function (loadedFont) {
