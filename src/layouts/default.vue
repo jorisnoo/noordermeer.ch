@@ -1,6 +1,4 @@
 <script>
-    import isbot from 'isbot';
-
     export default {
         data () {
             return {
@@ -33,14 +31,9 @@
             },
         },
         mounted () {
-            if (isbot(navigator.userAgent)) {
+            setTimeout(() => {
                 this.introAnimationHasRun = true;
-                this.runFadeInAnimation = false;
-            } else {
-                setTimeout(() => {
-                    this.introAnimationHasRun = true;
-                }, 50);
-            }
+            }, 50);
             this.checkIfJapaneseFontShouldBeLoaded(this.$i18n.locale);
         },
         methods: {
